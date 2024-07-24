@@ -15,7 +15,7 @@ public class PruebaOracle : PageModel
 
     public void OnGet()
     {
-        string query = "SELECT * FROM HR.EMPLOYEES";
+        string query = "SELECT * FROM EMPLOYEES";
         ResultTable = _oracleDbService.ExecuteQuery(query);
     }
 }

@@ -12,12 +12,17 @@ public class OracleDBContext
         _connectionString = configuration.GetConnectionString("OracleConn") ?? "User Id=<usuario>;Password=<contraseña>;Data Source=<data source>";
     }
 
-    public DataTable ExecuteQuery(string query)
+    public DataTable ExecuteQuery(string query, OracleParameter[] parameters = null)
     {
         using (OracleConnection connection = new OracleConnection(_connectionString))
         {
             using (OracleCommand command = new OracleCommand(query, connection))
             {
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
                 using (OracleDataAdapter adapter = new OracleDataAdapter(command))
                 {
                     DataTable resultTable = new DataTable();

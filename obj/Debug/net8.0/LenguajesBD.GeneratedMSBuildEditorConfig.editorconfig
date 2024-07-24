@@ -9,43 +9,47 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LenguajesBD
 build_property.RootNamespace = LenguajesBD
-build_property.ProjectDir = C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\
+build_property.ProjectDir = C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD
+build_property.MSBuildProjectDirectory = C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/Pages/Error.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Comun/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tdW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/Pages/Index.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/Pages/Mantenimientos/Prueba/PruebaOracle.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Mantenimientos/Prueba/PruebaOracle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcUHJ1ZWJhXFBydWViYU9yYWNsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/Pages/Privacy.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/Pages/_ViewImports.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/Pages/_ViewStart.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/Pages/Shared/_Layout.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-0ji0nodu1i
