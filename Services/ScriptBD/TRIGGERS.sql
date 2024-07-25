@@ -32,12 +32,3 @@ BEGIN
     AND ID_Sucursal = :NEW.ID_Sucursal;
 END;
 /
-
-CREATE OR REPLACE TRIGGER registrar_actualizacion_cliente
-AFTER UPDATE ON Cliente
-FOR EACH ROW
-BEGIN
-    INSERT INTO Auditoria (Fecha, Operacion, ID_Trabajador, Detalles)
-    VALUES (SYSDATE, 'UPDATE', :NEW.ID_Cliente, 'Actualización de datos del cliente');
-END;
-/
