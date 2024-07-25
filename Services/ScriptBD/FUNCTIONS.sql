@@ -55,3 +55,23 @@ BEGIN
     RETURN codigo;
 END;
 /
+
+-- Creación de la Función VerificarDisponibilidadProducto
+CREATE OR REPLACE FUNCTION VerificarDisponibilidadProducto(id_producto NUMBER, id_sucursal NUMBER) RETURN VARCHAR2 IS
+    cantidad_disponible NUMBER;
+    mensaje VARCHAR2(100);
+BEGIN
+    SELECT Cantidad_Disponible INTO cantidad_disponible
+    FROM Inventario
+    WHERE ID_Producto = id_producto AND ID_Sucursal = id_sucursal;
+
+    IF cantidad_disponible > 0 THEN
+        mensaje := 'Disponible';
+    ELSE
+        mensaje := 'No Disponible';
+    END IF;
+
+    RETURN mensaje;
+END;
+/
+
