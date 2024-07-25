@@ -9,7 +9,7 @@ public class OracleDBContext
 
     public OracleDBContext(IConfiguration configuration)
     {
-        _connectionString = configuration.GetConnectionString("OracleConn") ?? "User Id=<usuario>;Password=<contraseña>;Data Source=<data source>";
+        _connectionString = configuration.GetConnectionString("OracleConn") ?? "User Id=HR;Password=123;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.100.92)(PORT=1521))(CONNECT_DATA=(SID=ORCL)))";
     }
 
     public DataTable ExecuteQuery(string query, OracleParameter[] parameters = null)
@@ -29,6 +29,23 @@ public class OracleDBContext
                     adapter.Fill(resultTable);
                     return resultTable;
                 }
+            }
+        }
+    }
+
+    public int ExecuteNonQuery(string query, OracleParameter[] parameters = null)
+    {
+        using (OracleConnection connection = new OracleConnection(_connectionString))
+        {
+            using (OracleCommand command = new OracleCommand(query, connection))
+            {
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                connection.Open();
+                return command.ExecuteNonQuery();
             }
         }
     }

@@ -1,13 +1,26 @@
 ﻿@page
-@model IndexModel
+@model IniciarSesion 
 @{
-    ViewData["Title"] = "Home page";
+    Layout = "_LayoutLogin";
+    ViewData["Title"] = "Iniciar Sesion";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-<div class="text-center">
-    <a href="Comun\Login">Login</a>
-</div>
+<h2>Login del Empleado</h2>
+<form method="post" asp-page-handler="FormLogin">
+    <label for="inptUser">Usuario</label>
+    <input id="inptUser" type="text" name="usuario" required  >
+    <hr>
+    <label for="inptPass">Contraseña</label>
+    <input id="inptPass" type="text" name="contrasena" required >
+    
+    <button type="submit" >Iniciar Sesion</button>
+
+</form>
+
+@if (Model.Result != null)
+{
+    <div>
+        <h3>Result:</h3>
+        <p>@Model.Result</p>
+    </div>
+}
