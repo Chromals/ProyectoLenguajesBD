@@ -35,18 +35,20 @@ public class OracleDBContext
 
     public int ExecuteNonQuery(string query, OracleParameter[] parameters = null)
     {
-        using (OracleConnection connection = new OracleConnection(_connectionString))
+        using (var connection = new OracleConnection(_connectionString))
         {
-            using (OracleCommand command = new OracleCommand(query, connection))
+            connection.Open();
+            //System.Diagnostics.Debug.WriteLine($"Conexión abierta: {connection.State == ConnectionState.Open}");
+            
+            using (var command = new OracleCommand(query, connection))
             {
-                if (parameters != null)
-                {
-                    command.Parameters.AddRange(parameters);
-                }
-
-                connection.Open();
-                return command.ExecuteNonQuery();
+                command.Parameters.AddRange(parameters);
+                int rowsAffected = command.ExecuteNonQuery();
+                //System.Diagnostics.Debug.WriteLine($"Filas afectadas por la actualización: {rowsAffected}");
+        
+                return rowsAffected;
             }
         }
+
     }
 }
