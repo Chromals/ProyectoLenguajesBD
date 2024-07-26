@@ -1,17 +1,6 @@
 -- Creación de procedimientos almacenados en el esquema Mantenimientos
 
-CREATE OR REPLACE PROCEDURE AgregarProducto(
-    p_nombre_producto VARCHAR2,
-    p_descripcion VARCHAR2,
-    p_id_categoria INT,
-    p_precio NUMBER,
-    p_cantidad INT
-) AS
-BEGIN
-    INSERT INTO Producto (Nombre, Descripcion, ID_Categoria, Precio, Cantidad)
-    VALUES (p_nombre_producto, p_descripcion, p_id_categoria, p_precio, p_cantidad);
-END;
-/
+
 
 CREATE OR REPLACE PROCEDURE BuscarProductosXNomXCat(
     p_nombre_producto VARCHAR2 DEFAULT NULL,
