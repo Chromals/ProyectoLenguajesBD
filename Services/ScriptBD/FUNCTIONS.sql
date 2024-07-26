@@ -74,4 +74,21 @@ BEGIN
     RETURN mensaje;
 END;
 /
+CREATE OR REPLACE FUNCTION CalcularValorInventarioCategoria(
+    p_id_categoria INT
+) RETURN NUMBER IS
+    v_valor_total NUMBER := 0;
+BEGIN
+    SELECT SUM(Precio * Cantidad)
+    INTO v_valor_total
+    FROM Producto
+    WHERE ID_Categoria = p_id_categoria;
 
+    RETURN v_valor_total;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 0;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
