@@ -1,5 +1,18 @@
 -- Creación de procedimientos almacenados en el esquema Mantenimientos
 
+CREATE OR REPLACE PROCEDURE AgregarProducto(
+    p_nombre_producto VARCHAR2,
+    p_descripcion VARCHAR2,
+    p_id_categoria INT,
+    p_precio NUMBER,
+    p_cantidad INT
+) AS
+BEGIN
+    INSERT INTO Producto (Nombre, Descripcion, ID_Categoria, Precio, Cantidad)
+    VALUES (p_nombre_producto, p_descripcion, p_id_categoria, p_precio, p_cantidad);
+END;
+/
+
 CREATE OR REPLACE PROCEDURE BuscarProductosXNomXCat(
     p_nombre_producto VARCHAR2 DEFAULT NULL,
     p_id_categoria INT DEFAULT NULL
@@ -18,9 +31,10 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE PROCEDURE CalcImpuestosxCantProd(
-    p_id_producto INT
-) AS
+create or replace PROCEDURE CalcImpuestosxCantProd(
+    p_id_producto IN INT,
+     p_resultado OUT NUMBER ) 
+AS
     v_cantidad_productos INT;
     v_impuestos NUMBER;
 BEGIN
@@ -29,14 +43,14 @@ BEGIN
 
     -- Calcular los impuestos según la cantidad de productos
     IF v_cantidad_productos < 30 THEN
-        v_impuestos := CalcularImpuestos(v_cantidad_productos * 10); -- Aplica un 10% 
+        v_impuestos := CALCULARIMPUESTOS(v_cantidad_productos * 10); -- Aplica un 10% 
     ELSIF v_cantidad_productos > 100 THEN
         v_impuestos := CalcularImpuestos(v_cantidad_productos * 15); -- Aplica un 15% 
     ELSE
         v_impuestos := CalcularImpuestos(v_cantidad_productos * 13); -- Aplica un 13% por defecto
     END IF;
 
-    :resultado := v_impuestos;
+    p_resultado := v_impuestos;
 END;
 /
 

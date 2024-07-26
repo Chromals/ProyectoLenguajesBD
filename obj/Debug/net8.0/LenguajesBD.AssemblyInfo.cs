@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LenguajesBD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+811b5c3d0ab683dc920373bc0615e28e7638ef68")]
 [assembly: System.Reflection.AssemblyProductAttribute("LenguajesBD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LenguajesBD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
