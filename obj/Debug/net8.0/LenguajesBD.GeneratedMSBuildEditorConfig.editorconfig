@@ -9,59 +9,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LenguajesBD
 build_property.RootNamespace = LenguajesBD
-build_property.ProjectDir = C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\
+build_property.ProjectDir = C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD
+build_property.MSBuildProjectDirectory = C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Error.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Index.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Clientes/ClientesIndex.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Mantenimientos/Clientes/ClientesIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcQ2xpZW50ZXNcQ2xpZW50ZXNJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Direccion/DireccionIndex.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Mantenimientos/Direccion/DireccionIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcRGlyZWNjaW9uXERpcmVjY2lvbkluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Proveedor/ProveedorIndex.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Mantenimientos/Proveedor/ProveedorIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcUHJvdmVlZG9yXFByb3ZlZWRvckluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Sucursal/SucursalIndex.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Mantenimientos/Sucursal/SucursalIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcU3VjdXJzYWxcU3VjdXJzYWxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Trabajador/TrabajadorIndex.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Mantenimientos/Trabajador/TrabajadorIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcVHJhYmFqYWRvclxUcmFiYWphZG9ySW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Shared/_LayoutLogin.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Shared/_LayoutLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/_ViewImports.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/_ViewStart.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Shared/_Layout.cshtml]
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-0ji0nodu1i
