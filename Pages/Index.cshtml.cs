@@ -16,9 +16,9 @@ public class IniciarSesion : PageModel
     }
 
     [BindProperty]
-    public string usuario { get; set; }
+    public string nombre { get; set; }
     [BindProperty]
-    public string contrasena { get; set; }
+    public string id { get; set; }
     public string Result { get; set; }
     public DataTable ResultTable { get; private set; }
     
@@ -30,11 +30,11 @@ public class IniciarSesion : PageModel
     {
         try
         {
-            string query = $"SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID = :usuario ";//AND PASSWORD = :contrasena
+            string query = $"SELECT * FROM TRABAJADOR WHERE NOMBRE = :nombre AND ID_TRABAJADOR = :id ";
             var parameters = new OracleParameter[]
             {
-                new OracleParameter("usuario", usuario),
-                //new OracleParameter("contrasena", contrasena)
+                new OracleParameter("nombre", nombre),
+                new OracleParameter("id", id)
             };
 
             ResultTable = _oracleDbService.ExecuteQuery(query, parameters);
