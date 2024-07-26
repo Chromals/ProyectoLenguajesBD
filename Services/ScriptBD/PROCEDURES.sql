@@ -2,27 +2,33 @@
 
 
 
-CREATE OR REPLACE PROCEDURE BuscarProductosXNomXCat(
-    p_nombre_producto VARCHAR2 DEFAULT NULL,
-    p_id_categoria INT DEFAULT NULL
+create or replace PROCEDURE BuscarProductosXNomXCat(
+    p_nombre_producto IN VARCHAR2 DEFAULT NULL,
+    p_id_categoria IN INT DEFAULT NULL,
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
 ) AS
 BEGIN
     IF p_nombre_producto IS NOT NULL THEN
         -- Buscar por nombre de producto
-        OPEN :cursor FOR SELECT * FROM Producto WHERE Nombre LIKE '%' || p_nombre_producto || '%';
+        OPEN p_cursor FOR SELECT * FROM Producto WHERE Nombre LIKE '%' || p_nombre_producto || '%';
     ELSIF p_id_categoria IS NOT NULL THEN
         -- Buscar por categoría
-        OPEN :cursor FOR SELECT * FROM Producto WHERE ID_Categoria = p_id_categoria;
+        OPEN p_cursor FOR SELECT * FROM Producto WHERE ID_Categoria = p_id_categoria;
     ELSE
         -- No se especificó ni nombre ni categoría
-        DBMS_OUTPUT.PUT_LINE('Por favor, especifique un nombre de producto o una categoría para buscar.');
+        p_error :='Por favor, especifique un nombre de producto o una categoría para buscar.';
+         --DBMS_OUTPUT.PUT_LINE('Por favor, especifique un nombre de producto o una categoría para buscar.');
     END IF;
+    EXCEPTION 
+        WHEN OTHERS THEN
+        p_error:= 'Error en el procedure BuscarProductosXNomXCat  '|| SQLERRM;
 END;
-/
 
 create or replace PROCEDURE CalcImpuestosxCantProd(
     p_id_producto IN INT,
-     p_resultado OUT NUMBER ) 
+     p_resultado OUT NUMBER,
+     p_error OUT VARCHAR2) 
 AS
     v_cantidad_productos INT;
     v_impuestos NUMBER;
@@ -40,14 +46,21 @@ BEGIN
     END IF;
 
     p_resultado := v_impuestos;
-END;
-/
 
-CREATE OR REPLACE PROCEDURE CalcularDescuentoClienteXID(
-    p_id_cliente INT,
-    p_id_producto INT
+EXCEPTION 
+    WHEN OTHERS THEN
+    p_error :='Error en el procedimiento CalcImpuestosxCantProd ' || SQLERRM;
+
+END;
+
+create or replace PROCEDURE CalcularDescuentoClienteXID(
+    p_id_cliente IN INT,
+    p_id_producto IN INT,
+    p_resultado OUT NUMBER,
+    p_error OUT VARCHAR2
 ) AS
     v_descuento NUMBER;
+    
 BEGIN
     SELECT CalcularDescuentoCliente(p_id_producto)
     INTO v_descuento
@@ -55,30 +68,52 @@ BEGIN
     INNER JOIN Venta V ON C.ID_Cliente = V.ID_Cliente
     WHERE C.ID_Cliente = p_id_cliente;
 
-    :resultado := v_descuento;
-END;
-/
+    p_resultado := v_descuento;
+    
 
-CREATE OR REPLACE PROCEDURE CalcularValorTotalVentas AS
+EXCEPTION 
+    WHEN OTHERS THEN
+    p_error :='Error en el procedimiento CalcularDescuentoClienteXID ' || SQLERRM;
+END;
+
+
+create or replace PROCEDURE CalcularValorTotalVentas (
+
+p_resultado OUT NUMBER,
+p_error OUT VARCHAR2)
+AS
     v_total NUMBER;
+    
 BEGIN
     SELECT SUM(Total_Venta)
     INTO v_total
     FROM Venta;
 
-    :resultado := v_total;
+    p_resultado := v_total;
+    
+EXCEPTION 
+    WHEN OTHERS THEN
+    p_error :='Error en el procedimiento CalcularValorTotalVentas ' || SQLERRM;
 END;
 /
 
-CREATE OR REPLACE PROCEDURE ListarVentasEntreFechas(
-    p_fecha_inicio DATE,
-    p_fecha_fin DATE
+create or replace PROCEDURE ListarVentasEntreFechas(
+    p_fecha_inicio IN DATE,
+    p_fecha_fin IN DATE,
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
 ) AS
+
+    
 BEGIN
-    OPEN :cursor FOR 
-    SELECT ID_Venta, ID_Producto, Cantidad_Vendida, Total_Venta, Fecha
-    FROM Venta
-    WHERE Fecha BETWEEN p_fecha_inicio AND p_fecha_fin;
+    OPEN p_cursor FOR 
+        SELECT ID_Venta, ID_Producto, Cantidad_Vendida, Total_Venta, Fecha
+        FROM Venta
+        WHERE Fecha BETWEEN p_fecha_inicio AND p_fecha_fin;
+        
+EXCEPTION 
+    WHEN OTHERS THEN
+    p_error :='Error en el procedimiento ListarVentasEntreFechas ' || SQLERRM;
 END;
 /
 
