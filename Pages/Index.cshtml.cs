@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;
+using System.Net;
 
 public class IniciarSesion : PageModel
 {
@@ -41,13 +42,15 @@ public class IniciarSesion : PageModel
             if (ResultTable.Rows.Count > 0)
             {
                 Result = "Login successful!";
+                return Redirect("/Comun/MenuPrincipal");
             }
             else
             {
                 Result = "Login failed. Invalid username or password.";
+                return Page();
             }
 
-            return Redirect("/Menu/MenuPrincipal");
+            
         }
         catch (Exception ex)
         {

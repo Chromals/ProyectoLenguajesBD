@@ -12,7 +12,7 @@ public class OracleDBContext
         _connectionString = configuration.GetConnectionString("OracleConn") ?? "User Id=HR;Password=123;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.100.92)(PORT=1521))(CONNECT_DATA=(SID=ORCL)))";
     }
 
-    public DataTable ExecuteQuery(string query, OracleParameter[] parameters = null)
+    public DataTable ExecuteQuery(string query, OracleParameter[]? parameters = null)
     {
         using (OracleConnection connection = new OracleConnection(_connectionString))
         {

@@ -1,131 +1,175 @@
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\appsettings.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\package-lock.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\package.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\LenguajesBD.staticwebassets.runtime.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\LenguajesBD.exe
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\LenguajesBD.deps.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\LenguajesBD.runtimeconfig.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\LenguajesBD.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\LenguajesBD.pdb
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\Oracle.ManagedDataAccess.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\System.Diagnostics.PerformanceCounter.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.AssemblyReference.cache
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.AssemblyInfoInputs.cache
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.AssemblyInfo.cs
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.CoreCompileInputs.cache
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.RazorAssemblyInfo.cache
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.RazorAssemblyInfo.cs
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.LenguajesBD.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.build.LenguajesBD.props
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.LenguajesBD.props
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.LenguajesBD.props
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\scopedcss\bundle\LenguajesBD.styles.css
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\scopedcss\projectbundle\LenguajesBD.bundle.scp.css
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.CopyComplete
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\refint\LenguajesBD.dll
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.pdb
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\LenguajesBD.genruntimeconfig.cache
-C:\Users\dchav\Desktop\Proyecto Lenguaje BD\LenguajesBD\obj\Debug\net8.0\ref\LenguajesBD.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\appsettings.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\package-lock.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\package.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.staticwebassets.runtime.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.exe
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.deps.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.runtimeconfig.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.pdb
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\Oracle.ManagedDataAccess.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\System.Diagnostics.PerformanceCounter.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.AssemblyReference.cache
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.AssemblyInfoInputs.cache
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.AssemblyInfo.cs
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.CoreCompileInputs.cache
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.RazorAssemblyInfo.cache
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.RazorAssemblyInfo.cs
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.sourcelink.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.LenguajesBD.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.build.LenguajesBD.props
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.LenguajesBD.props
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.LenguajesBD.props
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\scopedcss\bundle\LenguajesBD.styles.css
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\scopedcss\projectbundle\LenguajesBD.bundle.scp.css
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\Lenguaje.0355CA79.Up2Date
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\refint\LenguajesBD.dll
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.pdb
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.genruntimeconfig.cache
-C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\ref\LenguajesBD.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\package-lock.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\package.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\appsettings.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.staticwebassets.runtime.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.exe
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.deps.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.runtimeconfig.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.pdb
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\Oracle.ManagedDataAccess.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\System.Diagnostics.PerformanceCounter.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.AssemblyReference.cache
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.AssemblyInfoInputs.cache
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.AssemblyInfo.cs
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.CoreCompileInputs.cache
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.RazorAssemblyInfo.cache
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.RazorAssemblyInfo.cs
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.sourcelink.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.LenguajesBD.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.build.LenguajesBD.props
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.LenguajesBD.props
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.LenguajesBD.props
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\scopedcss\bundle\LenguajesBD.styles.css
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\scopedcss\projectbundle\LenguajesBD.bundle.scp.css
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.CopyComplete
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\refint\LenguajesBD.dll
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.pdb
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.genruntimeconfig.cache
-C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\obj\Debug\net8.0\ref\LenguajesBD.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/appsettings.Development.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/appsettings.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/package-lock.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/package.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/LenguajesBD.staticwebassets.runtime.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/LenguajesBD.exe
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/LenguajesBD.deps.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/LenguajesBD.runtimeconfig.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/LenguajesBD.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/LenguajesBD.pdb
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/Oracle.ManagedDataAccess.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/System.Diagnostics.PerformanceCounter.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/runtimes/linux/lib/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/runtimes/osx/lib/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.AssemblyReference.cache
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.AssemblyInfoInputs.cache
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.AssemblyInfo.cs
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.CoreCompileInputs.cache
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.RazorAssemblyInfo.cache
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.RazorAssemblyInfo.cs
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/staticwebassets.build.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/staticwebassets.development.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.LenguajesBD.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.build.LenguajesBD.props
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.LenguajesBD.props
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.LenguajesBD.props
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/staticwebassets.pack.json
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/scopedcss/bundle/LenguajesBD.styles.css
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/scopedcss/projectbundle/LenguajesBD.bundle.scp.css
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.CopyComplete
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/refint/LenguajesBD.dll
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.pdb
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/LenguajesBD.genruntimeconfig.cache
+C:/Users/dchav/Desktop/Proyecto Lenguaje BD/LenguajesBD/obj/Debug/net8.0/ref/LenguajesBD.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/appsettings.Development.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/appsettings.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/package-lock.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/package.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.staticwebassets.runtime.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.exe
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.deps.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.runtimeconfig.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.pdb
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/Oracle.ManagedDataAccess.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/System.Diagnostics.PerformanceCounter.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/linux/lib/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/osx/lib/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.AssemblyReference.cache
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.AssemblyInfoInputs.cache
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.AssemblyInfo.cs
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.CoreCompileInputs.cache
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.RazorAssemblyInfo.cache
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.RazorAssemblyInfo.cs
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.sourcelink.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets.build.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets.development.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.LenguajesBD.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.build.LenguajesBD.props
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.LenguajesBD.props
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.LenguajesBD.props
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets.pack.json
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/scopedcss/bundle/LenguajesBD.styles.css
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/scopedcss/projectbundle/LenguajesBD.bundle.scp.css
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/Lenguaje.0355CA79.Up2Date
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/refint/LenguajesBD.dll
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.pdb
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.genruntimeconfig.cache
+C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/obj/Debug/net8.0/ref/LenguajesBD.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/appsettings.Development.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/package-lock.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/package.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/appsettings.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.staticwebassets.runtime.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.exe
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.deps.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.runtimeconfig.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.pdb
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/Oracle.ManagedDataAccess.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/System.Diagnostics.PerformanceCounter.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/linux/lib/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/osx/lib/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.DirectoryServices.Protocols.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.AssemblyReference.cache
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.AssemblyInfoInputs.cache
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.AssemblyInfo.cs
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.CoreCompileInputs.cache
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.RazorAssemblyInfo.cache
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.RazorAssemblyInfo.cs
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.sourcelink.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets.build.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets.development.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.LenguajesBD.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.build.LenguajesBD.props
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.LenguajesBD.props
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.LenguajesBD.props
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets.pack.json
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/scopedcss/bundle/LenguajesBD.styles.css
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/scopedcss/projectbundle/LenguajesBD.bundle.scp.css
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.CopyComplete
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/refint/LenguajesBD.dll
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.pdb
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.genruntimeconfig.cache
+C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/ref/LenguajesBD.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/appsettings.Development.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/appsettings.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/package-lock.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/package.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.staticwebassets.runtime.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.deps.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.runtimeconfig.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/LenguajesBD.pdb
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/Oracle.ManagedDataAccess.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/System.Diagnostics.PerformanceCounter.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/System.DirectoryServices.Protocols.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/linux/lib/net8.0/System.DirectoryServices.Protocols.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/osx/lib/net8.0/System.DirectoryServices.Protocols.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.DirectoryServices.Protocols.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.AssemblyReference.cache
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.GeneratedMSBuildEditorConfig.editorconfig
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.AssemblyInfoInputs.cache
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.AssemblyInfo.cs
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.csproj.CoreCompileInputs.cache
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.MvcApplicationPartsAssemblyInfo.cache
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.RazorAssemblyInfo.cache
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.RazorAssemblyInfo.cs
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.sourcelink.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets.build.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets.development.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.LenguajesBD.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.build.LenguajesBD.props
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.LenguajesBD.props
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.LenguajesBD.props
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/staticwebassets.pack.json
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/scopedcss/bundle/LenguajesBD.styles.css
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/scopedcss/projectbundle/LenguajesBD.bundle.scp.css
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/Lenguaje.0355CA79.Up2Date
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/refint/LenguajesBD.dll
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.pdb
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.genruntimeconfig.cache
+/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/ref/LenguajesBD.dll

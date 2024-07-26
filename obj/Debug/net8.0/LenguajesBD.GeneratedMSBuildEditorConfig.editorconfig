@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Comun/MenuPrincipal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tdW5cTWVudVByaW5jaXBhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/campo/OneDrive - Universidad Fidélitas/V Cuatri/Lenguajes de BD/ProyectoLenguajesBD/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
