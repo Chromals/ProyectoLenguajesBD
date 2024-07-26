@@ -118,3 +118,146 @@ BEGIN
     WHERE ID_Producto = p_id_producto;
 END;
 /
+
+CREATE OR REPLACE PROCEDURE CalcularPromedioVentasXProducto(
+    p_id_producto IN NUMBER,
+    p_promedio OUT NUMBER,
+    p_error OUT VARCHAR2
+) AS
+BEGIN
+    SELECT AVG(Cantidad_Vendida)
+    INTO p_promedio
+    FROM Venta
+    WHERE ID_Producto = p_id_producto;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_promedio := -1;
+        p_error:= 'Error al calcular el promedio de ventas: ' || SQLERRM;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE CalcularIngresosTotalesXSucursal(
+    p_id_sucursal IN NUMBER,
+    p_ingresos_totales OUT NUMBER,
+    p_error OUT VARCHAR2
+) AS
+BEGIN
+    SELECT SUM(Total_Venta)
+    INTO p_ingresos_totales
+    FROM Venta
+    WHERE ID_Sucursal = p_id_sucursal;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_ingresos_totales := -1;
+       p_error:= 'Error al calcular los ingresos totales: ' || SQLERRM;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE ObtenerProductosMasVendidos(
+    p_fecha_inicio IN DATE,
+    p_fecha_fin IN DATE,
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+BEGIN
+    OPEN p_cursor FOR 
+        SELECT p.Nombre AS Producto, SUM(v.Cantidad_Vendida) AS Cantidad_Total_Vendida
+            FROM Venta v
+            JOIN Producto p ON v.ID_Producto = p.ID_Producto
+        WHERE v.Fecha BETWEEN p_fecha_inicio AND p_fecha_fin
+            GROUP BY p.Nombre
+            ORDER BY SUM(v.Cantidad_Vendida) DESC;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error:= 'Error al obtener los productos más vendidos: ' || SQLERRM;
+END;
+/
+
+
+
+SET SERVEROUTPUT ON;
+CREATE OR REPLACE PROCEDURE ListarProductosPorSucursal(
+    p_id_sucursal  IN NUMBER,
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+BEGIN
+    OPEN p_cursor  FOR 
+    SELECT p.Nombre AS Producto, i.Cantidad_Disponible
+    FROM Producto p
+    JOIN Inventario i ON p.ID_Producto = i.ID_Producto
+    WHERE i.ID_Sucursal = p_id_sucursal;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error:= 'Error al obtener los productos por sucursal ' || SQLERRM;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE RegistrarCompraProductoProveedor(
+    p_id_proveedor IN INT,
+    p_id_producto IN INT,
+    p_cantidad_comprada IN INT,
+    p_costo_total IN NUMBER,
+    p_fecha_compra IN DATE,
+    p_sucursal IN NUMBER,
+    p_error OUT VARCHAR2
+) AS
+BEGIN
+    INSERT INTO CompraProductos (ID_Proveedor, ID_Producto, Cantidad_Comprada, Costo_Total, Fecha_Compra)
+    VALUES (p_id_proveedor, p_id_producto, p_cantidad_comprada, p_costo_total, p_fecha_compra);
+    UPDATE Inventario
+    SET Cantidad_Disponible = Cantidad_Disponible + p_cantidad_comprada
+    WHERE ID_Producto = p_id_producto AND id_sucursal=p_sucursal;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error:= 'Error al registrar la compra del producto al proveedor' || SQLERRM;
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE CalcularValorInventarioPorSucursal(
+    p_id_sucursal IN INT,
+    p_resultado OUT NUMBER,
+    p_error OUT VARCHAR2
+) AS
+    v_valor_total NUMBER;
+BEGIN
+    SELECT SUM(p.Precio * i.Cantidad_Disponible)
+    INTO v_valor_total
+    FROM Inventario i
+    JOIN Producto p ON i.ID_Producto = p.ID_Producto
+    WHERE i.ID_Sucursal = p_id_sucursal;
+
+    p_resultado := v_valor_total;
+    
+    EXCEPTION
+    WHEN OTHERS THEN
+        p_error:= 'Error al calcular valor del inventario por sucursal' || SQLERRM;
+END;
+/
+
+CREATE OR REPLACE PROCEDURE GenerarReporteVentasMensuales(
+    p_fecha_inicio IN DATE,
+    p_fecha_fin IN DATE,
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+BEGIN
+    OPEN p_cursor FOR
+        SELECT
+            s.Nombre AS Sucursal,
+            TO_CHAR(v.Fecha, 'YYYY-MM') AS Mes,
+            SUM(v.Total_Venta) AS Total_Ventas
+        FROM Venta v
+        JOIN Sucursal s ON v.ID_Sucursal = s.ID_Sucursal
+        WHERE v.Fecha BETWEEN p_fecha_inicio AND p_fecha_fin
+        GROUP BY s.Nombre, TO_CHAR(v.Fecha, 'YYYY-MM')
+        ORDER BY s.Nombre, TO_CHAR(v.Fecha, 'YYYY-MM');
+    CLOSE p_cursor;
+    p_error := NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error := 'Error al generar el reporte de ventas mensuales: ' || SQLERRM;
+END;
+/
