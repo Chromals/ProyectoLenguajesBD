@@ -1,3 +1,29 @@
+CREATE TABLE Direccion_Audit (
+    Audit_ID NUMBER GENERATED ALWAYS AS IDENTITY,
+    Audit_Action VARCHAR2(10),
+    ID_Direccion NUMBER,
+    Provincia VARCHAR2(50),
+    Canton VARCHAR2(50),
+    Distrito VARCHAR2(50),
+    Audit_Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE OR REPLACE TRIGGER trg_Direccion_Audit
+AFTER INSERT OR UPDATE OR DELETE ON Direccion
+FOR EACH ROW
+BEGIN
+    IF INSERTING THEN
+        INSERT INTO Direccion_Audit (Audit_Action, ID_Direccion, p_Provincia, p_Canton, p_Distrito)
+        VALUES ('INSERT', :NEW.ID_Direccion, :NEW.Provincia, :NEW.Canton, :NEW.Distrito);
+    ELSIF UPDATING THEN
+        INSERT INTO Direccion_Audit (Audit_Action, ID_Direccion, p_Provincia, p_Canton, p_Distrito)
+        VALUES ('UPDATE', :OLD.ID_Direccion, :NEW.Provincia, :NEW.Canton, :NEW.Distrito);
+    ELSIF DELETING THEN
+        INSERT INTO Direccion_Audit (Audit_Action, ID_Direccion, p_Provincia, p_Canton, p_Distrito)
+        VALUES ('DELETE', :OLD.ID_Direccion, :OLD.Provincia, :OLD.Canton, :OLD.Distrito);
+    END IF;
+END trg_Direccion_Audit;
+/
+    
 CREATE OR REPLACE PACKAGE CRUD_DIRECCION AS
     PROCEDURE Insert_Direccion(p_Provincia IN VARCHAR2, p_Canton IN VARCHAR2, p_Distrito IN VARCHAR2, p_Success OUT NUMBER);
     PROCEDURE Update_Direccion(p_ID_Direccion IN NUMBER, p_Provincia IN VARCHAR2, p_Canton IN VARCHAR2, p_Distrito IN VARCHAR2, p_Success OUT NUMBER);
