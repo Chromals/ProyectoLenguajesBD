@@ -16,7 +16,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CLIENTE AS
     BEGIN
         INSERT INTO Cliente (Nombre, Apellido_1, Apellido_2, Telefono, Correo, ID_Direccion)
         VALUES (p_Nombre, p_Apellido_1, p_Apellido_2, p_Telefono, p_Correo, p_ID_Direccion);
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;
@@ -25,7 +25,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CLIENTE AS
     PROCEDURE Update_Cliente(p_ID_Cliente IN NUMBER, p_Nombre IN VARCHAR2, p_Apellido_1 IN VARCHAR2, p_Apellido_2 IN VARCHAR2, p_Telefono IN NUMBER, p_Correo IN VARCHAR2, p_ID_Direccion IN NUMBER, p_Result OUT VARCHAR2) IS
     BEGIN
         UPDATE Cliente SET Nombre = p_Nombre, Apellido_1 = p_Apellido_1, Apellido_2 = p_Apellido_2, Telefono = p_Telefono, Correo = p_Correo, ID_Direccion = p_ID_Direccion WHERE ID_Cliente = p_ID_Cliente;
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;
@@ -39,7 +39,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CLIENTE AS
         DELETE FROM Venta WHERE ID_Cliente = p_ID_Cliente;
 
         DELETE FROM Cliente WHERE ID_Cliente = p_ID_Cliente;
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;

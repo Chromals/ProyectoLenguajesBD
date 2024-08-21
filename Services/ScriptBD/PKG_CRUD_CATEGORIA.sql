@@ -16,7 +16,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CATEGORIA AS
     BEGIN
         INSERT INTO Categoria (Nombre)
         VALUES (p_Nombre);
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;
@@ -27,7 +27,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CATEGORIA AS
         UPDATE Categoria
         SET Nombre = p_Nombre
         WHERE ID_Categoria = p_ID_Categoria;
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;
@@ -37,7 +37,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CATEGORIA AS
     BEGIN
         DELETE FROM Categoria
         WHERE ID_Categoria = p_ID_Categoria;
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;

@@ -294,7 +294,6 @@ ALTER TABLE Devolucion ADD CONSTRAINT FK_Devolucion_Venta FOREIGN KEY (ID_Venta)
 ALTER TABLE Inventario ADD CONSTRAINT FK_Inventario_Producto FOREIGN KEY (ID_Producto) REFERENCES Producto(ID_Producto);
 ALTER TABLE Inventario ADD CONSTRAINT FK_Inventario_Sucursal FOREIGN KEY (ID_Sucursal) REFERENCES Sucursal(ID_Sucursal);
 ALTER TABLE Producto ADD CONSTRAINT FK_Producto_Categoria FOREIGN KEY (ID_Categoria) REFERENCES Categoria(ID_Categoria);
-ALTER TABLE Proveedor ADD CONSTRAINT FK_Proveedor_Direccion FOREIGN KEY (ID_Direccion) REFERENCES Direccion(ID_Direccion);
 ALTER TABLE Sucursal ADD CONSTRAINT FK_Sucursal_Direccion FOREIGN KEY (ID_Direccion) REFERENCES Direccion(ID_Direccion);
 ALTER TABLE Trabajador ADD CONSTRAINT FK_Trabajador_Direccion FOREIGN KEY (ID_Direccion) REFERENCES Direccion(ID_Direccion);
 ALTER TABLE Trabajador ADD CONSTRAINT FK_Trabajador_Sucursal FOREIGN KEY (ID_Sucursal) REFERENCES Sucursal(ID_Sucursal);

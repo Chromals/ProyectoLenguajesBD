@@ -22,6 +22,18 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tdW5cTWVudVByaW5jaXBhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Consultas/Auditoria/AuditoriaIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFzXEF1ZGl0b3JpYVxBdWRpdG9yaWFJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Consultas/CompraProductos/CompraProductosIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFzXENvbXByYVByb2R1Y3Rvc1xDb21wcmFQcm9kdWN0b3NJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Consultas/Devolucion/DevolucionIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFzXERldm9sdWNpb25cRGV2b2x1Y2lvbkluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -11,7 +11,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_SUCURSAL AS
     PROCEDURE Insert_Sucursal(p_Nombre IN VARCHAR2, p_ID_Direccion IN NUMBER, p_Result OUT VARCHAR2) IS
     BEGIN
         INSERT INTO Sucursal (Nombre, ID_Direccion) VALUES (p_Nombre, p_ID_Direccion);
-        p_Result := 1;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result:= 'Error: ' || SQLERRM;
@@ -20,7 +20,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_SUCURSAL AS
     PROCEDURE Update_Sucursal(p_ID_Sucursal IN NUMBER, p_Nombre IN VARCHAR2, p_ID_Direccion IN NUMBER, p_Result OUT VARCHAR2) IS
     BEGIN
         UPDATE Sucursal SET Nombre = p_Nombre, ID_Direccion = p_ID_Direccion WHERE ID_Sucursal = p_ID_Sucursal;
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result:= 'Error: ' || SQLERRM;
@@ -29,7 +29,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_SUCURSAL AS
     PROCEDURE Delete_Sucursal(p_ID_Sucursal IN NUMBER, p_Result OUT VARCHAR2) IS
     BEGIN
         DELETE FROM Sucursal WHERE ID_Sucursal = p_ID_Sucursal;
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result:= 'Error: ' || SQLERRM;

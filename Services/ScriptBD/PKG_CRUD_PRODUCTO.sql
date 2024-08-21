@@ -16,7 +16,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_PRODUCTO AS
     BEGIN
         INSERT INTO Producto (Nombre, Descripcion, Precio, ID_Categoria, cantidad)
         VALUES (p_Nombre, p_Descripcion, p_Precio, p_ID_Categoria, p_Cantidad);
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;
@@ -31,7 +31,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_PRODUCTO AS
             ID_Categoria = p_ID_Categoria,
             cantidad = p_Cantidad
         WHERE ID_Producto = p_ID_Producto;
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;
@@ -41,7 +41,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_PRODUCTO AS
     BEGIN
         DELETE FROM Producto
         WHERE ID_Producto = p_ID_Producto;
-        p_Result := SQL%ROWCOUNT;
+        p_Result := '1';
     EXCEPTION
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;

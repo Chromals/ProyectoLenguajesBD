@@ -1,0 +1,35 @@
+@page
+@model CompraProductosIndex
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Compras de Productos";
+}
+<h2>Compras de Productos</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            @foreach (System.Data.DataColumn column in Model.ResultTable.Columns)
+            {
+                <th>@column.ColumnName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.ResultTable.Rows)
+        {
+            <tr>
+                @foreach (var item in row.ItemArray)
+                {
+                    <td>@item</td>
+                }
+            </tr>
+        }
+        @if (Model.ResultTable.Rows.Count == 0)
+        {
+            <tr>
+                <td colspan="@Model.ResultTable.Columns.Count+1">No hay datos disponibles</td>
+            </tr>
+        }
+    </tbody>
+</table>
