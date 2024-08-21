@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 
 public class OracleDBContext
 {
@@ -12,12 +13,14 @@ public class OracleDBContext
         _connectionString = configuration.GetConnectionString("OracleConn") ?? "User Id=HR;Password=123;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.100.92)(PORT=1521))(CONNECT_DATA=(SID=ORCL)))";
     }
 
-    public DataTable ExecuteQuery(string query, OracleParameter[]? parameters = null)
+    public DataTable ExecuteStoredProcCursor(string storedProcName, OracleParameter[]? parameters = null)
     {
         using (OracleConnection connection = new OracleConnection(_connectionString))
         {
-            using (OracleCommand command = new OracleCommand(query, connection))
+            using (OracleCommand command = new OracleCommand(storedProcName, connection))
             {
+                command.CommandType = CommandType.StoredProcedure;
+
                 if (parameters != null)
                 {
                     command.Parameters.AddRange(parameters);
@@ -33,20 +36,36 @@ public class OracleDBContext
         }
     }
 
-    public int ExecuteNonQuery(string query, OracleParameter[] parameters = null)
+    public int ExecuteStoredProc(string storedProcName, OracleParameter[]? parameters = null)
     {
         using (var connection = new OracleConnection(_connectionString))
         {
             connection.Open();
             //System.Diagnostics.Debug.WriteLine($"Conexión abierta: {connection.State == ConnectionState.Open}");
-            
-            using (var command = new OracleCommand(query, connection))
+
+            using (var command = new OracleCommand(storedProcName, connection))
             {
-                command.Parameters.AddRange(parameters);
+                command.CommandType = CommandType.StoredProcedure;
+
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
                 int rowsAffected = command.ExecuteNonQuery();
-                //System.Diagnostics.Debug.WriteLine($"Filas afectadas por la actualización: {rowsAffected}");
-        
+
+
+                var resultParam = parameters?.FirstOrDefault(p => p.Direction == ParameterDirection.Output);
+                if (resultParam != null)
+                {
+                    if (resultParam.Value is OracleDecimal oracleDecimal)
+                    {
+                        return oracleDecimal.ToInt32();
+                    }
+                    return Convert.ToInt32(resultParam.Value);
+                }
+
                 return rowsAffected;
+
             }
         }
 

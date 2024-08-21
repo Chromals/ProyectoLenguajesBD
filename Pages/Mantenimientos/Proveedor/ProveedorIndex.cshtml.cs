@@ -19,71 +19,47 @@ public class ProveedorIndex : PageModel
         LoadData();
     }
 
-    public IActionResult OnGetEditProvider(int id)
-    {
-        var query = "SELECT * FROM Proveedor WHERE ID_Proveedor = :ID_Proveedor";
-        var parameters = new OracleParameter[]
-        {
-            new OracleParameter("ID_Proveedor", OracleDbType.Int32, id, ParameterDirection.Input)
-        };
-
-        DataTable dt = _oracleDbService.ExecuteQuery(query, parameters);
-        if (dt.Rows.Count > 0)
-        {
-            var row = dt.Rows[0];
-            return new JsonResult(new
-            {
-                iD_Proveedor = row["ID_Proveedor"],
-                nombre = row["Nombre"],
-                apellido_1 = row["Apellido_1"],
-                apellido_2 = row["Apellido_2"],
-                telefono = row["Telefono"],
-                correo = row["Correo"],
-                iD_Direccion = row["ID_Direccion"]
-            });
-        }
-        return new JsonResult(null);
-    }
-
-    public IActionResult OnPostSaveProvider(int pID, string pNom, string pApe1, string pApe2, int pTel, string pCorreo, int pIdDire)
+    public JsonResult OnPostSaveProvider(int pID, string pNom, string pApe1, string pApe2, int pTel, string pCorreo, int pIdDire)
     {
         try
         {
-            string query;
             OracleParameter[] parameters;
+            string procedureName;
 
             if (ProveedorExiste(pID))
             {
-                query = "UPDATE Proveedor SET Nombre = :Nombre, Apellido_1 = :Apellido_1, Apellido_2 = :Apellido_2, Telefono = :Telefono, Correo = :Correo, ID_Direccion = :ID_Direccion WHERE ID_Proveedor = :ID_Proveedor";
-                parameters = new OracleParameter[]
-                {
-                    new OracleParameter("ID_Proveedor", OracleDbType.Int32, pID, ParameterDirection.Input),
-                    new OracleParameter("Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("Apellido_1", OracleDbType.Varchar2, pApe1, ParameterDirection.Input),
-                    new OracleParameter("Apellido_2", OracleDbType.Varchar2, pApe2, ParameterDirection.Input),
-                    new OracleParameter("Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
-                    new OracleParameter("Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
-                    new OracleParameter("ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input)
-                };
+                procedureName = "CRUD_PROVEEDOR.Update_Proveedor";
+                parameters =
+                [
+                    new OracleParameter("p_ID_Proveedor", OracleDbType.Int32, pID, ParameterDirection.Input),
+                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_1", OracleDbType.Varchar2, pApe1, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_2", OracleDbType.Varchar2, pApe2, ParameterDirection.Input),
+                    new OracleParameter("p_Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
+                    new OracleParameter("p_Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
+                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                ];
             }
             else
             {
-                query = "INSERT INTO Proveedor (ID_Proveedor, Nombre, Apellido_1, Apellido_2, Telefono, Correo, ID_Direccion) VALUES (:ID_Proveedor, :Nombre, :Apellido_1, :Apellido_2, :Telefono, :Correo, :ID_Direccion)";
-                parameters = new OracleParameter[]
-                {
-                    new OracleParameter("ID_Proveedor", OracleDbType.Int32, pID, ParameterDirection.Input),
-                    new OracleParameter("Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("Apellido_1", OracleDbType.Varchar2, pApe1, ParameterDirection.Input),
-                    new OracleParameter("Apellido_2", OracleDbType.Varchar2, pApe2, ParameterDirection.Input),
-                    new OracleParameter("Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
-                    new OracleParameter("Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
-                    new OracleParameter("ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input)
-                };
+                procedureName = "CRUD_PROVEEDOR.Insert_Proveedor";
+                parameters =
+                [
+                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_1", OracleDbType.Varchar2, pApe1, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_2", OracleDbType.Varchar2, pApe2, ParameterDirection.Input),
+                    new OracleParameter("p_Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
+                    new OracleParameter("p_Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
+                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                ];
             }
 
-            int rowsAffected = _oracleDbService.ExecuteNonQuery(query, parameters);
+            _oracleDbService.ExecuteStoredProc(procedureName, parameters);
 
-            if (rowsAffected > 0)
+            int success = Convert.ToInt32(parameters[parameters.Length - 1].Value);
+            if (success > 0)
             {
                 return new JsonResult(new { success = true });
             }
@@ -98,19 +74,20 @@ public class ProveedorIndex : PageModel
         }
     }
 
-    public IActionResult OnPostDeleteProvider(int id)
+    public JsonResult OnPostDeleteProvider(int id)
     {
         try
         {
-            string query = "DELETE FROM Proveedor WHERE ID_Proveedor = :ID_Proveedor";
             var parameters = new OracleParameter[]
             {
-                new OracleParameter("ID_Proveedor", OracleDbType.Int32, id, ParameterDirection.Input)
+                new OracleParameter("p_ID_Proveedor", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
             };
 
-            int rowsAffected = _oracleDbService.ExecuteNonQuery(query, parameters);
+            _oracleDbService.ExecuteStoredProc("CRUD_PROVEEDOR.Delete_Proveedor", parameters);
 
-            if (rowsAffected > 0)
+            int success = Convert.ToInt32(parameters[1].Value);
+            if (success > 0)
             {
                 return new JsonResult(new { success = true });
             }
@@ -125,21 +102,60 @@ public class ProveedorIndex : PageModel
         }
     }
 
+    public JsonResult OnGetEditProvider(int id)
+    {
+        try
+        {
+            var parameters = new OracleParameter[]
+            {
+                new OracleParameter("p_ID_Proveedor", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+            };
+
+            DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_PROVEEDOR.Select_Proveedor", parameters);
+
+            if (dt.Rows.Count > 0)
+            {
+                var row = dt.Rows[0];
+                var proveedor = new
+                {
+                    ID_Proveedor = row["ID_Proveedor"],
+                    Nombre = row["Nombre"],
+                    Apellido_1 = row["Apellido_1"],
+                    Apellido_2 = row["Apellido_2"],
+                    Telefono = row["Telefono"],
+                    Correo = row["Correo"],
+                    ID_Direccion = row["ID_Direccion"]
+                };
+                return new JsonResult(new { success = true, data = proveedor });
+            }
+            return new JsonResult(new { success = false, message = "No se encontró el proveedor." });
+        }
+        catch (Exception ex)
+        {
+            return new JsonResult(new { success = false, message = ex.Message });
+        }
+    }
+
     private void LoadData()
     {
-        string query = "SELECT * FROM Proveedor";
-        ResultTable = _oracleDbService.ExecuteQuery(query);
+        var parameters = new OracleParameter[]
+        {
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+        };
+
+        ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_PROVEEDOR.Select_All_Proveedor", parameters);
     }
 
     private bool ProveedorExiste(int ID_Proveedor)
     {
-        string query = "SELECT 1 FROM Proveedor WHERE ID_Proveedor = :ID_Proveedor";
         var parameters = new OracleParameter[]
         {
-            new OracleParameter("ID_Proveedor", OracleDbType.Int32, ID_Proveedor, ParameterDirection.Input)
+            new OracleParameter("p_ID_Proveedor", OracleDbType.Int32, ID_Proveedor, ParameterDirection.Input),
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         };
 
-        DataTable dt = _oracleDbService.ExecuteQuery(query, parameters);
+        DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_PROVEEDOR.Select_Proveedor", parameters);
         return dt.Rows.Count > 0;
     }
 }

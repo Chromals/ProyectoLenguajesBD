@@ -24,54 +24,46 @@ public class TrabajadorIndex : PageModel
     {
         try
         {
-            string query;
             OracleParameter[] parameters;
 
             if (TrabajadorExiste(pID))
             {
-                query = "UPDATE Trabajador SET Nombre = :Nombre, Apellido_1 = :Apellido_1, Apellido_2 = :Apellido_2, Cargo = :Cargo, Salario = :Salario, Activo = :Activo, Fecha_Inicio = :Fecha_Inicio, ID_Sucursal = :ID_Sucursal, ID_Direccion = :ID_Direccion WHERE ID_Trabajador = :ID_Trabajador";
-                parameters = new OracleParameter[]
-                {
-                    new OracleParameter("ID_Trabajador", OracleDbType.Int32, pID, ParameterDirection.Input),
-                    new OracleParameter("Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("Apellido_1", OracleDbType.Varchar2, pAp1, ParameterDirection.Input),
-                    new OracleParameter("Apellido_2", OracleDbType.Varchar2, pAp2, ParameterDirection.Input),
-                    new OracleParameter("Cargo", OracleDbType.Varchar2, pCar, ParameterDirection.Input),
-                    new OracleParameter("Salario", OracleDbType.Decimal, pSal, ParameterDirection.Input),
-                    new OracleParameter("Activo", OracleDbType.Int32, pAct, ParameterDirection.Input),
-                    new OracleParameter("Fecha_Inicio", OracleDbType.Date, pFecIni, ParameterDirection.Input),
-                    new OracleParameter("ID_Sucursal", OracleDbType.Int32, pIdSuc, ParameterDirection.Input),
-                    new OracleParameter("ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input)
-                };
+                parameters =
+                [
+                    new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, pID, ParameterDirection.Input),
+                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_1", OracleDbType.Varchar2, pAp1, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_2", OracleDbType.Varchar2, pAp2, ParameterDirection.Input),
+                    new OracleParameter("p_Cargo", OracleDbType.Varchar2, pCar, ParameterDirection.Input),
+                    new OracleParameter("p_Salario", OracleDbType.Decimal, pSal, ParameterDirection.Input),
+                    new OracleParameter("p_Activo", OracleDbType.Int32, pAct, ParameterDirection.Input),
+                    new OracleParameter("p_Fecha_Inicio", OracleDbType.Date, pFecIni, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, pIdSuc, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
+                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                ];
+                _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Update_Trabajador", parameters);
             }
             else
             {
-                query = "INSERT INTO Trabajador (ID_Trabajador, Nombre, Apellido_1, Apellido_2, Cargo, Salario, Activo, Fecha_Inicio, ID_Sucursal, ID_Direccion) VALUES (:ID_Trabajador, :Nombre, :Apellido_1, :Apellido_2, :Cargo, :Salario, :Activo, :Fecha_Inicio, :ID_Sucursal, :ID_Direccion)";
-                parameters = new OracleParameter[]
-                {
-                    new OracleParameter("ID_Trabajador", OracleDbType.Int32, pID, ParameterDirection.Input),
-                    new OracleParameter("Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("Apellido_1", OracleDbType.Varchar2, pAp1, ParameterDirection.Input),
-                    new OracleParameter("Apellido_2", OracleDbType.Varchar2, pAp2, ParameterDirection.Input),
-                    new OracleParameter("Cargo", OracleDbType.Varchar2, pCar, ParameterDirection.Input),
-                    new OracleParameter("Salario", OracleDbType.Decimal, pSal, ParameterDirection.Input),
-                    new OracleParameter("Activo", OracleDbType.Int32, pAct, ParameterDirection.Input),
-                    new OracleParameter("Fecha_Inicio", OracleDbType.Date, pFecIni, ParameterDirection.Input),
-                    new OracleParameter("ID_Sucursal", OracleDbType.Int32, pIdSuc, ParameterDirection.Input),
-                    new OracleParameter("ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input)
-                };
+                parameters =
+                [
+                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_1", OracleDbType.Varchar2, pAp1, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_2", OracleDbType.Varchar2, pAp2, ParameterDirection.Input),
+                    new OracleParameter("p_Cargo", OracleDbType.Varchar2, pCar, ParameterDirection.Input),
+                    new OracleParameter("p_Salario", OracleDbType.Decimal, pSal, ParameterDirection.Input),
+                    new OracleParameter("p_Activo", OracleDbType.Int32, pAct, ParameterDirection.Input),
+                    new OracleParameter("p_Fecha_Inicio", OracleDbType.Date, pFecIni, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, pIdSuc, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
+                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                ];
+                _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Insert_Trabajador", parameters);
             }
 
-            int rowsAffected = _oracleDbService.ExecuteNonQuery(query, parameters);
-
-            if (rowsAffected > 0)
-            {
-                return new JsonResult(new { success = true });
-            }
-            else
-            {
-                return new JsonResult(new { success = false, message = "No se actualizó ningún registro." });
-            }
+            int success = Convert.ToInt32(parameters.Last().Value);
+            return new JsonResult(new { success = success > 0 });
         }
         catch (Exception ex)
         {
@@ -83,22 +75,15 @@ public class TrabajadorIndex : PageModel
     {
         try
         {
-            string query = "DELETE FROM Trabajador WHERE ID_Trabajador = :ID_Trabajador";
-            var parameters = new OracleParameter[]
-            {
-                new OracleParameter("ID_Trabajador", OracleDbType.Int32, id, ParameterDirection.Input)
-            };
+            OracleParameter[] parameters =
+            [
+                new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+            ];
+            _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Delete_Trabajador", parameters);
 
-            int rowsAffected = _oracleDbService.ExecuteNonQuery(query, parameters);
-
-            if (rowsAffected > 0)
-            {
-                return new JsonResult(new { success = true });
-            }
-            else
-            {
-                return new JsonResult(new { success = false, message = "No se eliminó ningún registro." });
-            }
+            int success = Convert.ToInt32(parameters.Last().Value);
+            return new JsonResult(new { success = success > 0 });
         }
         catch (Exception ex)
         {
@@ -110,13 +95,13 @@ public class TrabajadorIndex : PageModel
     {
         try
         {
-            string query = "SELECT * FROM Trabajador WHERE ID_Trabajador = :ID_Trabajador";
-            var parameters = new OracleParameter[]
-            {
-                new OracleParameter("ID_Trabajador", OracleDbType.Int32, id, ParameterDirection.Input)
-            };
+            OracleParameter[] parameters =
+            [
+                new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+            ];
 
-            DataTable dt = _oracleDbService.ExecuteQuery(query, parameters);
+            DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_TRABAJADOR.Select_Trabajador", parameters);
 
             if (dt.Rows.Count > 0)
             {
@@ -149,19 +134,22 @@ public class TrabajadorIndex : PageModel
 
     private void LoadData()
     {
-        string query = "SELECT * FROM Trabajador";
-        ResultTable = _oracleDbService.ExecuteQuery(query);
+        OracleParameter[] parameters =
+        [
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+        ];
+        ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_TRABAJADOR.Select_All_Trabajador", parameters);
     }
 
     private bool TrabajadorExiste(int ID_Trabajador)
     {
-        string query = "SELECT 1 FROM Trabajador WHERE ID_Trabajador = :ID_Trabajador";
-        var parameters = new OracleParameter[]
-        {
-            new OracleParameter("ID_Trabajador", OracleDbType.Int32, ID_Trabajador, ParameterDirection.Input)
-        };
+        OracleParameter[] parameters =
+        [
+            new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, ID_Trabajador, ParameterDirection.Input),
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+        ];
 
-        DataTable dt = _oracleDbService.ExecuteQuery(query, parameters);
+        DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_TRABAJADOR.Select_Trabajador", parameters);
         return dt.Rows.Count > 0;
     }
 }

@@ -19,58 +19,70 @@ public class SucursalIndex : PageModel
         LoadData();
     }
 
-    public IActionResult OnGetEditSucursal(int id)
-    {
-        var query = "SELECT * FROM Sucursal WHERE ID_Sucursal = :ID_Sucursal";
-        var parameters = new OracleParameter[]
-        {
-            new OracleParameter("ID_Sucursal", OracleDbType.Int32, id, ParameterDirection.Input)
-        };
-
-        DataTable dt = _oracleDbService.ExecuteQuery(query, parameters);
-        if (dt.Rows.Count > 0)
-        {
-            var row = dt.Rows[0];
-            return new JsonResult(new
-            {
-                iD_Sucursal = row["ID_Sucursal"],
-                nombre = row["Nombre"],
-                iD_Direccion = row["ID_Direccion"]
-            });
-        }
-        return new JsonResult(null);
-    }
-
-    public IActionResult OnPostSaveSucursal(int pID, string pNom, int pIdDire)
+    public JsonResult OnGetEditSucursal(int id)
     {
         try
         {
-            string query;
+            var parameters = new OracleParameter[]
+            {
+                new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+            };
+
+            DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_SUCURSAL.Select_Sucursal", parameters);
+
+            if (dt.Rows.Count > 0)
+            {
+                var row = dt.Rows[0];
+                var sucursal = new
+                {
+                    ID_Sucursal = row["ID_Sucursal"],
+                    Nombre = row["Nombre"],
+                    ID_Direccion = row["ID_Direccion"]
+                };
+                return new JsonResult(new { success = true, data = sucursal });
+            }
+            return new JsonResult(new { success = false, message = "No se encontró la sucursal." });
+        }
+        catch (Exception ex)
+        {
+            return new JsonResult(new { success = false, message = ex.Message });
+        }
+    }
+
+    public JsonResult OnPostSaveSucursal(int pID, string pNom, int pIdDire)
+    {
+        try
+        {
             OracleParameter[] parameters;
+            string procedureName;
 
             if (SucursalExiste(pID))
             {
-                query = "UPDATE Sucursal SET Nombre = :Nombre, ID_Direccion = :ID_Direccion WHERE ID_Sucursal = :ID_Sucursal";
-                parameters = new OracleParameter[]
-                {
-                    new OracleParameter("ID_Sucursal", OracleDbType.Int32, pID, ParameterDirection.Input),
-                    new OracleParameter("Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input)
-                };
+                procedureName = "CRUD_SUCURSAL.Update_Sucursal";
+                parameters =
+                [
+                    new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, pID, ParameterDirection.Input),
+                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
+                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                ];
             }
             else
             {
-                query = "INSERT INTO Sucursal (Nombre, ID_Direccion) VALUES (:Nombre, :ID_Direccion)";
-                parameters = new OracleParameter[]
-                {
-                    new OracleParameter("Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input)
-                };
+                procedureName = "CRUD_SUCURSAL.Insert_Sucursal";
+                parameters =
+                [
+                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
+                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                ];
             }
 
-            int rowsAffected = _oracleDbService.ExecuteNonQuery(query, parameters);
+            _oracleDbService.ExecuteStoredProc(procedureName, parameters);
 
-            if (rowsAffected > 0)
+            int success = Convert.ToInt32(parameters[parameters.Length - 1].Value);
+            if (success > 0)
             {
                 return new JsonResult(new { success = true });
             }
@@ -85,19 +97,20 @@ public class SucursalIndex : PageModel
         }
     }
 
-    public IActionResult OnPostDeleteSucursal(int id)
+    public JsonResult OnPostDeleteSucursal(int id)
     {
         try
         {
-            string query = "DELETE FROM Sucursal WHERE ID_Sucursal = :ID_Sucursal";
             var parameters = new OracleParameter[]
             {
-                new OracleParameter("ID_Sucursal", OracleDbType.Int32, id, ParameterDirection.Input)
+                new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
             };
 
-            int rowsAffected = _oracleDbService.ExecuteNonQuery(query, parameters);
+            _oracleDbService.ExecuteStoredProc("CRUD_SUCURSAL.Delete_Sucursal", parameters);
 
-            if (rowsAffected > 0)
+            int success = Convert.ToInt32(parameters[1].Value);
+            if (success > 0)
             {
                 return new JsonResult(new { success = true });
             }
@@ -114,19 +127,23 @@ public class SucursalIndex : PageModel
 
     private void LoadData()
     {
-        string query = "SELECT * FROM Sucursal";
-        ResultTable = _oracleDbService.ExecuteQuery(query);
+        var parameters = new OracleParameter[]
+        {
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+        };
+
+        ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_SUCURSAL.Select_All_Sucursal", parameters);
     }
 
     private bool SucursalExiste(int ID_Sucursal)
     {
-        string query = "SELECT 1 FROM Sucursal WHERE ID_Sucursal = :ID_Sucursal";
         var parameters = new OracleParameter[]
         {
-            new OracleParameter("ID_Sucursal", OracleDbType.Int32, ID_Sucursal, ParameterDirection.Input)
+            new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, ID_Sucursal, ParameterDirection.Input),
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         };
 
-        DataTable dt = _oracleDbService.ExecuteQuery(query, parameters);
+        DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_SUCURSAL.Select_Sucursal", parameters);
         return dt.Rows.Count > 0;
     }
 }

@@ -7,3 +7,22 @@ obj/
 
 # Ignorar el archivo appsettings.json
 appsettings.json
+/obj
+appsettings.json
+bin/Debug/net8.0/appsettings.json
+bin/Debug/net8.0/appsettings.json
+bin/Debug/net8.0/LenguajesBD.dll
+bin/Debug/net8.0/LenguajesBD.exe
+bin/Debug/net8.0/LenguajesBD.pdb
+obj/Debug/net8.0/apphost.exe
+obj/Debug/net8.0/LenguajesBD.AssemblyInfo.cs
+obj/Debug/net8.0/LenguajesBD.AssemblyInfoInputs.cache
+obj/Debug/net8.0/LenguajesBD.dll
+obj/Debug/net8.0/LenguajesBD.GeneratedMSBuildEditorConfig.editorconfig
+obj/Debug/net8.0/LenguajesBD.pdb
+obj/Debug/net8.0/LenguajesBD.sourcelink.json
+obj/Debug/net8.0/ref/LenguajesBD.dll
+obj/Debug/net8.0/refint/LenguajesBD.dll
+bin/Debug/net8.0/LenguajesBD.exe
+bin/Debug/net8.0/LenguajesBD.dll
+/bin/Debug/net8.0

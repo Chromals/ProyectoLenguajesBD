@@ -28,16 +28,17 @@ public class IniciarSesion : PageModel
 
     public async Task<IActionResult> OnPostFormLogin()
     {
-        try
+         try
         {
-            string query = $"SELECT * FROM TRABAJADOR WHERE NOMBRE = :nombre AND ID_TRABAJADOR = :id ";
             var parameters = new OracleParameter[]
             {
-                new OracleParameter("nombre", nombre),
-                new OracleParameter("id", id)
+                new OracleParameter("p_Nombre", OracleDbType.Varchar2, nombre, ParameterDirection.Input),
+                new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
             };
 
-            ResultTable = _oracleDbService.ExecuteQuery(query, parameters);
+            // Llama al procedimiento almacenado para verificar el inicio de sesión
+            ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_TRABAJADOR.Select_Trabajador_Login", parameters);
 
             if (ResultTable.Rows.Count > 0)
             {
@@ -49,13 +50,12 @@ public class IniciarSesion : PageModel
                 Result = "Login failed. Invalid username or password.";
                 return Page();
             }
-
-            
         }
         catch (Exception ex)
         {
             Result = $"Error: {ex.Message}";
             return Page();
         }
+    
     }
 }

@@ -16,34 +16,48 @@ public class ClientesIndex : PageModel
 
     public void OnGet()
     {
-        string query = "SELECT * FROM CLIENTE";
-        ResultTable = _oracleDbService.ExecuteQuery(query);
+        try
+        {
+            OracleParameter[] parameters =
+            [
+                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+            ];
+
+            ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_All_Cliente", parameters);
+        }
+        catch (Exception ex)
+        {
+            //System.Diagnostics.Debug.WriteLine($"Error al obtener los clientes: {ex.Message}");
+            DataTable dataTable = new DataTable();
+            ResultTable = dataTable;
+        }
     }
+
 
     public IActionResult OnPostSaveClient(int pID, string pNom, string pApe1, string pApe2, int pTel, string pCorreo, int pIdDire)
     {
         try
         {
+            System.Diagnostics.Debug.WriteLine($"ID_Cliente: {pID}, Nombre: {pNom}, Apellido_1: {pApe1}, Apellido_2: {pApe2}, Telefono: {pTel}, Correo: {pCorreo}, ID_Direccion: {pIdDire}");
+
             if (ClienteExiste(pID))
             {
-                //System.Diagnostics.Debug.WriteLine($"ID_Cliente: {pID}, Nombre: {pNom}, Apellido_1: {pApe1}, Apellido_2: {pApe2}, Telefono: {pTel}, Correo: {pCorreo}, ID_Direccion: {pIdDire}");
                 
-                string query = "UPDATE CLIENTE SET Nombre = :Nombre, Apellido_1 = :Apellido_1, Apellido_2 = :Apellido_2, Telefono = :Telefono, Correo = :Correo, ID_Direccion = :ID_Direccion WHERE ID_Cliente = :ID_Cliente";
-                OracleParameter[] parameters = new OracleParameter[]
-                {
-                    new OracleParameter("ID_Cliente", OracleDbType.Int32, pID, ParameterDirection.Input),
-                    new OracleParameter("Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("Apellido_1", OracleDbType.Varchar2, pApe1, ParameterDirection.Input),
-                    new OracleParameter("Apellido_2", OracleDbType.Varchar2, pApe2, ParameterDirection.Input),
-                    new OracleParameter("Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
-                    new OracleParameter("Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
-                    new OracleParameter("ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input)
-                };
-                
-                int rowsAffected = _oracleDbService.ExecuteNonQuery(query, parameters);
-                //System.Diagnostics.Debug.WriteLine($"Filas afectadas por la actualización: {rowsAffected}");
+                OracleParameter[] parameters =
+                [
+                    new OracleParameter("p_ID_Cliente", OracleDbType.Int32, pID, ParameterDirection.Input),
+                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_1", OracleDbType.Varchar2, pApe1, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_2", OracleDbType.Varchar2, pApe2, ParameterDirection.Input),
+                    new OracleParameter("p_Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
+                    new OracleParameter("p_Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
+                    new OracleParameter("p_Result", OracleDbType.Int32, ParameterDirection.Output)
+                ];
 
-                if (rowsAffected > 0)
+                int result = _oracleDbService.ExecuteStoredProc("CRUD_CLIENTE.Update_Cliente", parameters);
+
+                if (result > 0)
                 {
                     return new JsonResult(new { success = true });
                 }
@@ -52,24 +66,33 @@ public class ClientesIndex : PageModel
                     return new JsonResult(new { success = false, message = "No se actualizó ningún registro." });
                 }
             }
-            else 
+            else
             {
                 // Insertar cliente
-                string query = "INSERT INTO CLIENTE (ID_Cliente, Nombre, Apellido_1, Apellido_2, Telefono, Correo, ID_Direccion) VALUES (:ID_Cliente, :Nombre, :Apellido_1, :Apellido_2, :Telefono, :Correo, :ID_Direccion)";
-                OracleParameter[] parameters = new OracleParameter[]
+                OracleParameter[] parameters =
+                [
+                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_1", OracleDbType.Varchar2, pApe1, ParameterDirection.Input),
+                    new OracleParameter("p_Apellido_2", OracleDbType.Varchar2, pApe2, ParameterDirection.Input),
+                    new OracleParameter("p_Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
+                    new OracleParameter("p_Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
+                    new OracleParameter("p_Result", OracleDbType.Int32, ParameterDirection.Output)
+                ];
+
+                int result = _oracleDbService.ExecuteStoredProc("CRUD_CLIENTE.Insert_Cliente", parameters);
+
+                if (result > 0)
                 {
-                    new OracleParameter("ID_Cliente", OracleDbType.Int32, pID, ParameterDirection.Input),
-                    new OracleParameter("Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("Apellido_1", OracleDbType.Varchar2, pApe1, ParameterDirection.Input),
-                    new OracleParameter("Apellido_2", OracleDbType.Varchar2, pApe2, ParameterDirection.Input),
-                    new OracleParameter("Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
-                    new OracleParameter("Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
-                    new OracleParameter("ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input)
-                };
-                _oracleDbService.ExecuteNonQuery(query, parameters);
+                    return new JsonResult(new { success = true });
+                }
+                else
+                {
+                    return new JsonResult(new { success = false, message = "No se insertó ningún registro." });
+                }
             }
 
-            return new JsonResult(new { success = true });
+            //return new JsonResult(new { success = true });
         }
         catch (Exception ex)
         {
@@ -81,13 +104,14 @@ public class ClientesIndex : PageModel
     {
         try
         {
-            string query = "SELECT * FROM CLIENTE WHERE ID_Cliente = :ID_Cliente";
-            OracleParameter[] parameters = new OracleParameter[]
-            {
-                new OracleParameter("ID_Cliente", id)
-            };
+            OracleParameter[] parameters =
+            [
+                new OracleParameter("p_ID_Cliente", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+            ];
 
-            DataTable dt = _oracleDbService.ExecuteQuery(query, parameters);
+            DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_Cliente", parameters);
+
             if (dt.Rows.Count == 1)
             {
                 DataRow row = dt.Rows[0];
@@ -115,14 +139,23 @@ public class ClientesIndex : PageModel
     {
         try
         {
-            string query = "DELETE FROM CLIENTE WHERE ID_Cliente = :ID_Cliente";
-            OracleParameter[] parameters = new OracleParameter[]
-            {
-                new OracleParameter("ID_Cliente", id)
-            };
+             System.Diagnostics.Debug.WriteLine($"ID_Cliente: {id}");
 
-            _oracleDbService.ExecuteNonQuery(query, parameters);
-            return new JsonResult(new { success = true });
+            OracleParameter[] parameters =
+                        [
+                            new OracleParameter("p_ID_Cliente", OracleDbType.Int32, id, ParameterDirection.Input),
+                            new OracleParameter("p_Result", OracleDbType.Int32, ParameterDirection.Output)
+                        ];
+
+            var res =_oracleDbService.ExecuteStoredProc("CRUD_CLIENTE.Delete_Cliente", parameters);
+            if (res == 1)
+            {
+                return new JsonResult(new { success = true });
+            }
+            else
+            {
+                return new JsonResult(new { success = false, message = "No se pudo eliminar el cliente." });
+            }
         }
         catch (Exception ex)
         {
@@ -133,13 +166,14 @@ public class ClientesIndex : PageModel
 
     private bool ClienteExiste(int ID_Cliente)
     {
-        string query = "SELECT * FROM CLIENTE WHERE ID_Cliente = :ID_Cliente";
-        OracleParameter[] parameters = new OracleParameter[]
-        {
-            new OracleParameter("ID_Cliente", ID_Cliente)
-        };
+        OracleParameter[] parameters =
+        [
+            new OracleParameter("p_ID_Cliente", OracleDbType.Int32, ID_Cliente, ParameterDirection.Input),
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+        ];
 
-        DataTable dt = _oracleDbService.ExecuteQuery(query, parameters);
+        DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_Cliente", parameters);
+
         return dt.Rows.Count > 0;
     }
 }
