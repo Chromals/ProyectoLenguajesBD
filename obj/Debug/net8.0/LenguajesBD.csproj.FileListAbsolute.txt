@@ -173,3 +173,47 @@ C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/obj/Debug/net8.0/ref/Len
 /Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.pdb
 /Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/LenguajesBD.genruntimeconfig.cache
 /Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/obj/Debug/net8.0/ref/LenguajesBD.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\appsettings.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\package-lock.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\package.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.staticwebassets.runtime.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.exe
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.deps.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.runtimeconfig.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\LenguajesBD.pdb
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\Oracle.ManagedDataAccess.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.AssemblyReference.cache
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.AssemblyInfoInputs.cache
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.AssemblyInfo.cs
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.csproj.CoreCompileInputs.cache
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.RazorAssemblyInfo.cache
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.RazorAssemblyInfo.cs
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.sourcelink.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.LenguajesBD.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.build.LenguajesBD.props
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.LenguajesBD.props
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.LenguajesBD.props
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\scopedcss\bundle\LenguajesBD.styles.css
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\scopedcss\projectbundle\LenguajesBD.bundle.scp.css
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\Lenguaje.0355CA79.Up2Date
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\refint\LenguajesBD.dll
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.pdb
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\LenguajesBD.genruntimeconfig.cache
+C:\Users\campo\OneDrive - Universidad Fidélitas\V Cuatri\Lenguajes de BD\ProyectoLenguajesBD\obj\Debug\net8.0\ref\LenguajesBD.dll
