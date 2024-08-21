@@ -44,7 +44,7 @@ public class DireccionIndex : PageModel
                     new OracleParameter("p_Provincia", OracleDbType.Varchar2, pProvincia, ParameterDirection.Input),
                     new OracleParameter("p_Canton", OracleDbType.Varchar2, pCanton, ParameterDirection.Input),
                     new OracleParameter("p_Distrito", OracleDbType.Varchar2, pDistrito, ParameterDirection.Input),
-                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                    new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 };
 
                 _oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Update_Direccion", parameters);
@@ -66,7 +66,7 @@ public class DireccionIndex : PageModel
                     new OracleParameter("p_Provincia", OracleDbType.Varchar2, pProvincia, ParameterDirection.Input),
                     new OracleParameter("p_Canton", OracleDbType.Varchar2, pCanton, ParameterDirection.Input),
                     new OracleParameter("p_Distrito", OracleDbType.Varchar2, pDistrito, ParameterDirection.Input),
-                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                    new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 };
 
                 _oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Insert_Direccion", parameters);
@@ -127,7 +127,7 @@ public class DireccionIndex : PageModel
             OracleParameter[] parameters =
             [
                 new OracleParameter("p_ID_Direccion", id),
-                new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
             ];
 
             _oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Delete_Direccion", parameters);
