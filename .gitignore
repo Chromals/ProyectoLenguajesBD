@@ -1,3 +1,9 @@
 
-/obj
-/bin
+# Ignorar la carpeta bin
+bin/
+
+# Ignorar la carpeta obj
+obj/
+
+# Ignorar el archivo appsettings.json
+appsettings.json
