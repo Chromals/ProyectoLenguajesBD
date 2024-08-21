@@ -45,7 +45,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CATEGORIA AS
 
     PROCEDURE Select_All_Categoria(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Categoria;
+        OPEN p_Result FOR SELECT * FROM Categoria ORDER BY ID_Categoria ASC;
     END Select_All_Categoria;
 
     PROCEDURE Select_Categoria(p_ID_Categoria IN NUMBER, p_Result OUT SYS_REFCURSOR) IS

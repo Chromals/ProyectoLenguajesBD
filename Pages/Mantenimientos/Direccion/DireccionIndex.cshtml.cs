@@ -18,18 +18,24 @@ public class DireccionIndex : PageModel
     {
         try
         {
-            OracleParameter[] parameters =
-            [
-                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
-            ];
-
-            ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_DIRECCION.Select_All_Direccion", parameters);
+            LoadData();
         }
         catch (Exception ex)
         {
             //System.Diagnostics.Debug.WriteLine($"Error al obtener las direcciones: {ex.Message}");
             ResultTable = null;
         }
+    }
+
+    private void LoadData()
+    {
+        OracleParameter[] parameters =
+                    [
+                        new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+                    ];
+
+        ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_DIRECCION.Select_All_Direccion", parameters);
+        
     }
 
     public IActionResult OnPostSaveDireccion(int pID, string pProvincia, string pCanton, string pDistrito)
@@ -55,8 +61,12 @@ public class DireccionIndex : PageModel
                 }
                 else
                 {
-                    if (Convert.ToInt32(res) > 0)
+                    if (string.IsNullOrWhiteSpace(res))
+                    {
+                        LoadData();
                         return new JsonResult(new { success = true });
+
+                    }
                     else
                         return new JsonResult(new { success = false, message = "No se actualizo ningún registro." });
                 }
@@ -79,7 +89,7 @@ public class DireccionIndex : PageModel
                 }
                 else
                 {
-                    if (Convert.ToInt32(res) > 0)
+                    if (string.IsNullOrWhiteSpace(res))
                         return new JsonResult(new { success = true });
                     else
                         return new JsonResult(new { success = false, message = "No se inserto ningún registro." });
@@ -146,7 +156,7 @@ public class DireccionIndex : PageModel
                 }
                 else
                 {
-                    if (Convert.ToInt32(res) > 0)
+                    if (string.IsNullOrWhiteSpace(res))
                         return new JsonResult(new { success = true });
                     else
                         return new JsonResult(new { success = false, message = "No se elimino ningún registro." });

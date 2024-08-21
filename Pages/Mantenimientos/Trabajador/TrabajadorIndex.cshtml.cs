@@ -68,7 +68,7 @@ public class TrabajadorIndex : PageModel
             }
             else
             {
-                if (Convert.ToInt32(res) > 0)
+                if (string.IsNullOrWhiteSpace(res))
                     return new JsonResult(new { success = true });
                 else
                     return new JsonResult(new { success = false, message = "No se realizo ninguna accion con el registro." });
@@ -97,8 +97,11 @@ public class TrabajadorIndex : PageModel
             }
             else
             {
-                if (Convert.ToInt32(res) > 0)
+                if (string.IsNullOrWhiteSpace(res)){
+                    LoadData();
                     return new JsonResult(new { success = true });
+                }
+                    
                 else
                     return new JsonResult(new { success = false, message = "No se elimino ningún registro." });
             }

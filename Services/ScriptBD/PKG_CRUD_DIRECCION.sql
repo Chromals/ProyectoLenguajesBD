@@ -37,7 +37,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_DIRECCION AS
 
     PROCEDURE Select_All_Direccion(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Direccion;
+        OPEN p_Result FOR SELECT * FROM Direccion ORDER BY ID_Direccion ASC;
     END Select_All_Direccion;
 
     PROCEDURE Select_Direccion(p_ID_Direccion IN NUMBER, p_Result OUT SYS_REFCURSOR) IS

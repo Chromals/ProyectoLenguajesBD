@@ -37,7 +37,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_SUCURSAL AS
 
     PROCEDURE Select_All_Sucursal(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Sucursal ORDER BY ID_Sucursal ASC;
+        OPEN p_Result FOR SELECT * FROM Sucursal;
     END Select_All_Sucursal;
 
     PROCEDURE Select_Sucursal(p_ID_Sucursal IN NUMBER, p_Result OUT SYS_REFCURSOR) IS

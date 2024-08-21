@@ -18,12 +18,7 @@ public class ClientesIndex : PageModel
     {
         try
         {
-            OracleParameter[] parameters =
-            [
-                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
-            ];
-            
-            ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_All_Cliente", parameters);
+            LoadData();
         }
         catch (Exception ex)
         {
@@ -33,6 +28,15 @@ public class ClientesIndex : PageModel
         }
     }
 
+    private void LoadData()
+    {
+        OracleParameter[] parameters =
+                    [
+                        new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+                    ];
+
+        ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_All_Cliente", parameters);
+    }
 
     public IActionResult OnPostSaveClient(int pID, string pNom, string pApe1, string pApe2, int pTel, string pCorreo, int pIdDire)
     {
@@ -63,8 +67,12 @@ public class ClientesIndex : PageModel
                 }
                 else
                 {
-                    if (Convert.ToInt32(res) > 0)
+                    if (string.IsNullOrWhiteSpace(res))
+                    {
+                        LoadData();
                         return new JsonResult(new { success = true });
+
+                    }
                     else
                         return new JsonResult(new { success = false, message = "No se actualizo ningún registro." });
                 }
@@ -91,8 +99,11 @@ public class ClientesIndex : PageModel
                 }
                 else
                 {
-                    if (Convert.ToInt32(res) > 0)
+                    if (string.IsNullOrWhiteSpace(res))
+                    {
+                        LoadData();
                         return new JsonResult(new { success = true });
+                    }
                     else
                         return new JsonResult(new { success = false, message = "No se inserto ningún registro." });
                 }
@@ -145,7 +156,7 @@ public class ClientesIndex : PageModel
     {
         try
         {
-            System.Diagnostics.Debug.WriteLine($"ID_Cliente: {id}");
+            //System.Diagnostics.Debug.WriteLine($"ID_Cliente: {id}");
 
             OracleParameter[] parameters =
                         [
@@ -156,13 +167,15 @@ public class ClientesIndex : PageModel
             string res = _oracleDbService.ExecuteStoredProc("CRUD_CLIENTE.Delete_Cliente", parameters);
 
             if (res.StartsWith("Error: "))
-            {
                 return new JsonResult(new { success = false, message = res });
-            }
             else
             {
-                if (Convert.ToInt32(res) > 0)
+                if (string.IsNullOrWhiteSpace(res))
+                {
+                    LoadData();
                     return new JsonResult(new { success = true });
+                }
+
                 else
                     return new JsonResult(new { success = false, message = "No se eliminó ningún registro." });
             }

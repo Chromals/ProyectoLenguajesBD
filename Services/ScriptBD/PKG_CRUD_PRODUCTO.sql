@@ -49,7 +49,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_PRODUCTO AS
 
     PROCEDURE Select_All_Producto(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Producto;
+        OPEN p_Result FOR SELECT * FROM Producto ORDER BY ID_Producto ASC;
     END Select_All_Producto;
 
     PROCEDURE Select_Producto(p_ID_Producto IN NUMBER, p_Result OUT SYS_REFCURSOR) IS

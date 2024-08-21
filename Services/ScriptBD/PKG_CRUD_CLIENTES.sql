@@ -33,6 +33,11 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CLIENTE AS
 
     PROCEDURE Delete_Cliente(p_ID_Cliente IN NUMBER, p_Result OUT VARCHAR2) IS
     BEGIN
+         DELETE FROM Devolucion
+        WHERE ID_Venta IN (SELECT ID_Venta FROM Venta WHERE ID_Cliente = p_ID_Cliente);
+
+        DELETE FROM Venta WHERE ID_Cliente = p_ID_Cliente;
+
         DELETE FROM Cliente WHERE ID_Cliente = p_ID_Cliente;
         p_Result := SQL%ROWCOUNT;
     EXCEPTION
@@ -42,7 +47,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CLIENTE AS
 
     PROCEDURE Select_All_Cliente(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Cliente;
+        OPEN p_Result FOR SELECT * FROM Cliente ORDER BY ID_Cliente ASC;
     END Select_All_Cliente;
 
     PROCEDURE Select_Cliente(p_ID_Cliente IN NUMBER, p_Result OUT SYS_REFCURSOR) IS

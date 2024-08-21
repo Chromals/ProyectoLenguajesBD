@@ -52,7 +52,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_TRABAJADOR AS
 
     PROCEDURE Select_All_Trabajador(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Trabajador;
+        OPEN p_Result FOR SELECT * FROM Trabajador  ORDER BY ID_Trabajador ASC;
     END Select_All_Trabajador;
 
     PROCEDURE Select_Trabajador(p_ID_Trabajador IN NUMBER, p_Result OUT SYS_REFCURSOR) IS

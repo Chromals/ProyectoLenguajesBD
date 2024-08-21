@@ -58,7 +58,7 @@ public class OracleDBContext
                 var resultParam = parameters?.FirstOrDefault(p => p.Direction == ParameterDirection.Output);
                 if (resultParam != null)
                 {
-                    return resultParam.Value.ToString() ?? "";
+                    return resultParam.Value.ToString() ?? rowsAffected.ToString();
                 }
 
                 return rowsAffected.ToString();

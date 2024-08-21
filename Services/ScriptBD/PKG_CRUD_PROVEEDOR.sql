@@ -38,7 +38,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_PROVEEDOR AS
 
     PROCEDURE Select_All_Proveedor(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Proveedor;
+        OPEN p_Result FOR SELECT * FROM Proveedor ORDER BY ID_Proveedor ASC;
     END Select_All_Proveedor;
 
     PROCEDURE Select_Proveedor(p_ID_Proveedor IN NUMBER, p_Result OUT SYS_REFCURSOR) IS
