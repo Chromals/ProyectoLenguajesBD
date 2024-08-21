@@ -25,7 +25,7 @@ public class TrabajadorIndex : PageModel
         try
         {
             OracleParameter[] parameters;
-
+            string res = "";
             if (TrabajadorExiste(pID))
             {
                 parameters =
@@ -42,7 +42,7 @@ public class TrabajadorIndex : PageModel
                     new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
                     new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 ];
-                _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Update_Trabajador", parameters);
+                res = _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Update_Trabajador", parameters);
             }
             else
             {
@@ -59,11 +59,20 @@ public class TrabajadorIndex : PageModel
                     new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
                     new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 ];
-                _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Insert_Trabajador", parameters);
+                res = _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Insert_Trabajador", parameters);
             }
 
-            int success = Convert.ToInt32(parameters.Last().Value);
-            return new JsonResult(new { success = success > 0 });
+            if (res.StartsWith("Error: "))
+            {
+                return new JsonResult(new { success = false, message = res });
+            }
+            else
+            {
+                if (Convert.ToInt32(res) > 0)
+                    return new JsonResult(new { success = true });
+                else
+                    return new JsonResult(new { success = false, message = "No se realizo ninguna accion con el registro." });
+            }
         }
         catch (Exception ex)
         {
@@ -80,10 +89,19 @@ public class TrabajadorIndex : PageModel
                 new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, id, ParameterDirection.Input),
                 new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
             ];
-            _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Delete_Trabajador", parameters);
+            string res = _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Delete_Trabajador", parameters);
 
-            int success = Convert.ToInt32(parameters.Last().Value);
-            return new JsonResult(new { success = success > 0 });
+            if (res.StartsWith("Error: "))
+            {
+                return new JsonResult(new { success = false, message = res });
+            }
+            else
+            {
+                if (Convert.ToInt32(res) > 0)
+                    return new JsonResult(new { success = true });
+                else
+                    return new JsonResult(new { success = false, message = "No se elimino ningún registro." });
+            }
         }
         catch (Exception ex)
         {

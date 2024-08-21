@@ -36,7 +36,7 @@ public class OracleDBContext
         }
     }
 
-    public int ExecuteStoredProc(string storedProcName, OracleParameter[]? parameters = null)
+    public string ExecuteStoredProc(string storedProcName, OracleParameter[]? parameters = null)
     {
         using (var connection = new OracleConnection(_connectionString))
         {
@@ -51,20 +51,17 @@ public class OracleDBContext
                 {
                     command.Parameters.AddRange(parameters);
                 }
+
                 int rowsAffected = command.ExecuteNonQuery();
 
 
                 var resultParam = parameters?.FirstOrDefault(p => p.Direction == ParameterDirection.Output);
                 if (resultParam != null)
                 {
-                    if (resultParam.Value is OracleDecimal oracleDecimal)
-                    {
-                        return oracleDecimal.ToInt32();
-                    }
-                    return Convert.ToInt32(resultParam.Value);
+                    return resultParam.Value.ToString() ?? "";
                 }
 
-                return rowsAffected;
+                return rowsAffected.ToString();
 
             }
         }

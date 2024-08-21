@@ -56,16 +56,18 @@ public class ProveedorIndex : PageModel
                 ];
             }
 
-            _oracleDbService.ExecuteStoredProc(procedureName, parameters);
+            string res = _oracleDbService.ExecuteStoredProc(procedureName, parameters);
 
-            int success = Convert.ToInt32(parameters[parameters.Length - 1].Value);
-            if (success > 0)
+            if (res.StartsWith("Error: "))
             {
-                return new JsonResult(new { success = true });
+                return new JsonResult(new { success = false, message = res });
             }
             else
             {
-                return new JsonResult(new { success = false, message = "No se actualizó ningún registro." });
+                if (Convert.ToInt32(res) > 0)
+                    return new JsonResult(new { success = true });
+                else
+                    return new JsonResult(new { success = false, message = "No se realizo ninguna accion con el registro." });
             }
         }
         catch (Exception ex)
@@ -84,16 +86,18 @@ public class ProveedorIndex : PageModel
                 new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
             };
 
-            _oracleDbService.ExecuteStoredProc("CRUD_PROVEEDOR.Delete_Proveedor", parameters);
+            string res = _oracleDbService.ExecuteStoredProc("CRUD_PROVEEDOR.Delete_Proveedor", parameters);
 
-            int success = Convert.ToInt32(parameters[1].Value);
-            if (success > 0)
+            if (res.StartsWith("Error: "))
             {
-                return new JsonResult(new { success = true });
+                return new JsonResult(new { success = false, message = res });
             }
             else
             {
-                return new JsonResult(new { success = false, message = "No se eliminó ningún registro." });
+                if (Convert.ToInt32(res) > 0)
+                    return new JsonResult(new { success = true });
+                else
+                    return new JsonResult(new { success = false, message = "No se elimino ningún registro." });
             }
         }
         catch (Exception ex)

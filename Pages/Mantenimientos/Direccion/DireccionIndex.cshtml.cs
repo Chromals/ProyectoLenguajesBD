@@ -38,48 +38,54 @@ public class DireccionIndex : PageModel
         {
             if (DireccionExiste(pID))
             {
-                OracleParameter[] parameters = new OracleParameter[]
-                {
+                OracleParameter[] parameters =
+                [
                     new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pID, ParameterDirection.Input),
                     new OracleParameter("p_Provincia", OracleDbType.Varchar2, pProvincia, ParameterDirection.Input),
                     new OracleParameter("p_Canton", OracleDbType.Varchar2, pCanton, ParameterDirection.Input),
                     new OracleParameter("p_Distrito", OracleDbType.Varchar2, pDistrito, ParameterDirection.Input),
                     new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
-                };
+                ];
 
-                _oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Update_Direccion", parameters);
+                string res = _oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Update_Direccion", parameters);
 
-                int success = Convert.ToInt32(parameters[4].Value);
-                if (success > 0)
+                if (res.StartsWith("Error: "))
                 {
-                    return new JsonResult(new { success = true });
+                    return new JsonResult(new { success = false, message = res });
                 }
                 else
                 {
-                    return new JsonResult(new { success = false, message = "No se actualizó ningún registro." });
+                    if (Convert.ToInt32(res) > 0)
+                        return new JsonResult(new { success = true });
+                    else
+                        return new JsonResult(new { success = false, message = "No se actualizo ningún registro." });
                 }
             }
-            else 
+            else
             {
-                OracleParameter[] parameters = new OracleParameter[]
-                {
+                OracleParameter[] parameters =
+                [
                     new OracleParameter("p_Provincia", OracleDbType.Varchar2, pProvincia, ParameterDirection.Input),
                     new OracleParameter("p_Canton", OracleDbType.Varchar2, pCanton, ParameterDirection.Input),
                     new OracleParameter("p_Distrito", OracleDbType.Varchar2, pDistrito, ParameterDirection.Input),
                     new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
-                };
+                ];
 
-                _oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Insert_Direccion", parameters);
-
-                int success = Convert.ToInt32(parameters[3].Value);
-                if (success > 0)
+                string res = _oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Insert_Direccion", parameters);
+                
+                if (res.StartsWith("Error: "))
                 {
-                    return new JsonResult(new { success = true });
+                    return new JsonResult(new { success = false, message = res });
                 }
                 else
                 {
-                    return new JsonResult(new { success = false, message = "No se insertó ningún registro." });
+                    if (Convert.ToInt32(res) > 0)
+                        return new JsonResult(new { success = true });
+                    else
+                        return new JsonResult(new { success = false, message = "No se inserto ningún registro." });
                 }
+
+
             }
         }
         catch (Exception ex)
@@ -99,6 +105,8 @@ public class DireccionIndex : PageModel
             ];
 
             DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_DIRECCION.Select_Direccion", parameters);
+
+            
 
             if (dt.Rows.Count == 1)
             {
@@ -130,17 +138,19 @@ public class DireccionIndex : PageModel
                 new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
             ];
 
-            _oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Delete_Direccion", parameters);
+            string res =_oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Delete_Direccion", parameters);
 
-            int success = Convert.ToInt32(parameters[1].Value);
-            if (success > 0)
-            {
-                return new JsonResult(new { success = true });
-            }
-            else
-            {
-                return new JsonResult(new { success = false, message = "No se eliminó ningún registro." });
-            }
+            if (res.StartsWith("Error: "))
+                {
+                    return new JsonResult(new { success = false, message = res });
+                }
+                else
+                {
+                    if (Convert.ToInt32(res) > 0)
+                        return new JsonResult(new { success = true });
+                    else
+                        return new JsonResult(new { success = false, message = "No se elimino ningún registro." });
+                }
         }
         catch (Exception ex)
         {
