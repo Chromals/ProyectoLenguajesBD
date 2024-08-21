@@ -2409,3 +2409,5 @@ INSERT INTO Auditoria (Fecha, Operacion, ID_Trabajador, Detalles) VALUES (TO_DAT
 INSERT INTO Auditoria (Fecha, Operacion, ID_Trabajador, Detalles) VALUES (TO_DATE('2016-03-02', 'YYYY-MM-DD'), 'Devoluci?n de producto', 199, 'Se proces? una devoluci?n de productos 198');
 INSERT INTO Auditoria (Fecha, Operacion, ID_Trabajador, Detalles) VALUES (TO_DATE('2012-11-28', 'YYYY-MM-DD'), 'Consulta de precios', 200, 'Se realiz? una consulta de precios de productos 199');
 INSERT INTO Auditoria (Fecha, Operacion, ID_Trabajador, Detalles) VALUES (TO_DATE('2013-09-26', 'YYYY-MM-DD'), 'Venta de producto', 1, 'Se realiz? una venta de productos 200');
+
+commit;
