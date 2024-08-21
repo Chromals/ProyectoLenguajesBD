@@ -192,7 +192,9 @@
                 method: 'GET',
                 data: { id: id },
                 success: function(data) {
+                    
                     if (data) {
+                        console.log(data);
                         $('#ID_Proveedor_Edit').val(data.iD_Proveedor);
                         $('#Nombre_Edit').val(data.nombre);
                         $('#Apellido_1_Edit').val(data.apellido_1);
@@ -202,6 +204,7 @@
                         $('#ID_Direccion_Edit').val(data.iD_Direccion);
                         $('#editModal').modal('show'); 
                     } else {
+                        //console.log(data);
                         $('#ID_Proveedor_Edit').val('');
                         $('#Nombre_Edit').val('');
                         $('#Apellido_1_Edit').val('');

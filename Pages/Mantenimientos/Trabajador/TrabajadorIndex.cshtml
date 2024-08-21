@@ -218,21 +218,22 @@
 
         function editTrabajador(id) {
             $.ajax({
-                url: '@Url.Page("TrabajadorIndex")?handler=GetTrabajador',
-                method: 'POST',
+                url: '@Url.Page("TrabajadorIndex")?handler=EditTrabajador',
+                method: 'GET',
                 data: { id: id },
-                success: function(response) {
-                    if (response.data) {
-                        $('#ID_Trabajador_Edit').val(response.data.ID_Trabajador);
-                        $('#Nombre_Edit').val(response.data.Nombre);
-                        $('#Apellido_1_Edit').val(response.data.Apellido_1);
-                        $('#Apellido_2_Edit').val(response.data.Apellido_2);
-                        $('#Cargo_Edit').val(response.data.Cargo);
-                        $('#Salario_Edit').val(response.data.Salario);
-                        $('#Activo_Edit').val(response.data.Activo);
-                        $('#Fecha_Inicio_Edit').val(response.data.Fecha_Inicio);
-                        $('#ID_Sucursal_Edit').val(response.data.ID_Sucursal);
-                        $('#ID_Direccion_Edit').val(response.data.ID_Direccion);
+                success: function(data) {
+                    if (data) {
+                        console.log(data);
+                        $('#ID_Trabajador_Edit').val(data.iD_Trabajador);
+                        $('#Nombre_Edit').val(data.nombre);
+                        $('#Apellido_1_Edit').val(data.apellido_1);
+                        $('#Apellido_2_Edit').val(data.apellido_2);
+                        $('#Cargo_Edit').val(data.cargo);
+                        $('#Salario_Edit').val(data.salario);
+                        $('#Activo_Edit').val(data.activo);
+                        $('#Fecha_Inicio_Edit').val(data.fecha_Inicio.substring(0, 10));
+                        $('#ID_Sucursal_Edit').val(data.iD_Sucursal);
+                        $('#ID_Direccion_Edit').val(data.iD_Direccion);
                     }
                 },
                 error: function(xhr, status, error) {

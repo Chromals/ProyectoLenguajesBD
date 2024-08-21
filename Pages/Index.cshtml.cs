@@ -16,11 +16,11 @@ public class IniciarSesion : PageModel
     }
 
     [BindProperty]
-    public string nombre { get; set; }
+    public string? nombre { get; set; }
     [BindProperty]
-    public string id { get; set; }
-    public string Result { get; set; }
-    public DataTable ResultTable { get; private set; }
+    public string? id { get; set; }
+    public string ?Result { get; set; }
+    public DataTable? ResultTable { get; private set; }
     
     public void OnGet()
     {

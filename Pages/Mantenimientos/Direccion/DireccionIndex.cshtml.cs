@@ -7,7 +7,7 @@ public class DireccionIndex : PageModel
 {
     private readonly OracleDBContext _oracleDbService;
 
-    public DataTable ResultTable { get; private set; }
+    public DataTable? ResultTable { get; private set; }
 
     public DireccionIndex(OracleDBContext oracleDbService)
     {
@@ -20,10 +20,10 @@ public class DireccionIndex : PageModel
         {
             LoadData();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             //System.Diagnostics.Debug.WriteLine($"Error al obtener las direcciones: {ex.Message}");
-            ResultTable = null;
+            ResultTable = new DataTable();
         }
     }
 

@@ -12,7 +12,7 @@ public class ProveedorIndex : PageModel
         _oracleDbService = oracleDbService;
     }
 
-    public DataTable ResultTable { get; set; }
+    public DataTable? ResultTable { get; set; }
 
     public void OnGet()
     {
@@ -106,7 +106,7 @@ public class ProveedorIndex : PageModel
         }
     }
 
-    public JsonResult OnGetEditProvider(int id)
+    public  IActionResult OnGetEditProvider(int id)
     {
         try
         {
@@ -131,9 +131,9 @@ public class ProveedorIndex : PageModel
                     Correo = row["Correo"],
                     ID_Direccion = row["ID_Direccion"]
                 };
-                return new JsonResult(new { success = true, data = proveedor });
+                return new JsonResult(proveedor);
             }
-            return new JsonResult(new { success = false, message = "No se encontró el proveedor." });
+            return new JsonResult(null);
         }
         catch (Exception ex)
         {

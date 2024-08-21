@@ -12,14 +12,14 @@ public class SucursalIndex : PageModel
         _oracleDbService = oracleDbService;
     }
 
-    public DataTable ResultTable { get; set; }
+    public DataTable? ResultTable { get; set; }
 
     public void OnGet()
     {
         LoadData();
     }
 
-    public JsonResult OnGetEditSucursal(int id)
+    public IActionResult OnGetEditSucursal(int id)
     {
         try
         {
@@ -40,9 +40,9 @@ public class SucursalIndex : PageModel
                     Nombre = row["Nombre"],
                     ID_Direccion = row["ID_Direccion"]
                 };
-                return new JsonResult(new { success = true, data = sucursal });
+                return new JsonResult(sucursal);
             }
-            return new JsonResult(new { success = false, message = "No se encontró la sucursal." });
+            return new JsonResult(null);
         }
         catch (Exception ex)
         {

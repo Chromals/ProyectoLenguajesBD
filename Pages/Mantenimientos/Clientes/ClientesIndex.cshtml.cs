@@ -7,7 +7,7 @@ public class ClientesIndex : PageModel
 {
     private readonly OracleDBContext _oracleDbService;
 
-    public DataTable ResultTable { get; private set; }
+    public DataTable? ResultTable { get; private set; }
 
     public ClientesIndex(OracleDBContext oracleDbService)
     {
@@ -20,11 +20,10 @@ public class ClientesIndex : PageModel
         {
             LoadData();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             //System.Diagnostics.Debug.WriteLine($"Error al obtener los clientes: {ex.Message}");
-            DataTable dataTable = new DataTable();
-            ResultTable = dataTable;
+            ResultTable = new DataTable();
         }
     }
 

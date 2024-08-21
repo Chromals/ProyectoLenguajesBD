@@ -13,7 +13,7 @@ public class TrabajadorIndex : PageModel
         _oracleDbService = oracleDbService;
     }
 
-    public DataTable ResultTable { get; set; }
+    public DataTable? ResultTable { get; set; }
 
     public void OnGet()
     {
@@ -112,7 +112,7 @@ public class TrabajadorIndex : PageModel
         }
     }
 
-    public JsonResult OnPostGetTrabajador(int id)
+    public IActionResult OnGetEditTrabajador(int id)
     {
         try
         {
@@ -140,12 +140,9 @@ public class TrabajadorIndex : PageModel
                     ID_Sucursal = row["ID_Sucursal"],
                     ID_Direccion = row["ID_Direccion"]
                 };
-                return new JsonResult(new { success = true, data = trabajador });
+                return new JsonResult(trabajador);
             }
-            else
-            {
-                return new JsonResult(new { success = false, message = "No se encontró el trabajador." });
-            }
+            return new JsonResult(null);
         }
         catch (Exception ex)
         {
