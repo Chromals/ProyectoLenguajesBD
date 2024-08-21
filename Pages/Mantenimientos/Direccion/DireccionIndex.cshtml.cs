@@ -145,7 +145,7 @@ public class DireccionIndex : PageModel
             OracleParameter[] parameters =
             [
                 new OracleParameter("p_ID_Direccion", id),
-                new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
+                new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
             ];
 
             string res =_oracleDbService.ExecuteStoredProc("CRUD_DIRECCION.Delete_Direccion", parameters);

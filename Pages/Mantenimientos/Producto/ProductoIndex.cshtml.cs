@@ -4,11 +4,11 @@ using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;
 
-public class TrabajadorIndex : PageModel
+public class ProductoIndex : PageModel
 {
     private readonly OracleDBContext _oracleDbService;
 
-    public TrabajadorIndex(OracleDBContext oracleDbService)
+    public ProductoIndex(OracleDBContext oracleDbService)
     {
         _oracleDbService = oracleDbService;
     }
@@ -20,17 +20,17 @@ public class TrabajadorIndex : PageModel
         LoadData();
     }
 
-    public JsonResult OnPostSaveTrabajador(int pID, string pNom, string pAp1, string pAp2, string pCar, decimal pSal, int pAct, DateTime pFecIni, int pIdSuc, int pIdDire)
+    public JsonResult OnPostSaveProducto(int pID, string pNom, string pAp1, string pAp2, string pCar, decimal pSal, int pAct, DateTime pFecIni, int pIdSuc, int pIdDire)
     {
         try
         {
             OracleParameter[] parameters;
             string res = "";
-            if (TrabajadorExiste(pID))
+            if (ProductoExiste(pID))
             {
                 parameters =
                 [
-                    new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, pID, ParameterDirection.Input),
+                    new OracleParameter("p_ID_Producto", OracleDbType.Int32, pID, ParameterDirection.Input),
                     new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
                     new OracleParameter("p_Apellido_1", OracleDbType.Varchar2, pAp1, ParameterDirection.Input),
                     new OracleParameter("p_Apellido_2", OracleDbType.Varchar2, pAp2, ParameterDirection.Input),
@@ -42,7 +42,7 @@ public class TrabajadorIndex : PageModel
                     new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
                     new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 ];
-                res = _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Update_Trabajador", parameters);
+                res = _oracleDbService.ExecuteStoredProc("CRUD_Producto.Update_Producto", parameters);
             }
             else
             {
@@ -59,7 +59,7 @@ public class TrabajadorIndex : PageModel
                     new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
                     new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 ];
-                res = _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Insert_Trabajador", parameters);
+                res = _oracleDbService.ExecuteStoredProc("CRUD_Producto.Insert_Producto", parameters);
             }
 
             if (res.StartsWith("Error: "))
@@ -80,16 +80,16 @@ public class TrabajadorIndex : PageModel
         }
     }
 
-    public JsonResult OnPostDeleteTrabajador(int id)
+    public JsonResult OnPostDeleteProducto(int id)
     {
         try
         {
             OracleParameter[] parameters =
             [
-                new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_ID_Producto", OracleDbType.Int32, id, ParameterDirection.Input),
                 new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
             ];
-            string res = _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Delete_Trabajador", parameters);
+            string res = _oracleDbService.ExecuteStoredProc("CRUD_Producto.Delete_Producto", parameters);
 
             if (res.StartsWith("Error: "))
             {
@@ -112,24 +112,24 @@ public class TrabajadorIndex : PageModel
         }
     }
 
-    public IActionResult OnGetEditTrabajador(int id)
+    public IActionResult OnGetEditProducto(int id)
     {
         try
         {
             OracleParameter[] parameters =
             [
-                new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, id, ParameterDirection.Input),
-                new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+                new OracleParameter("p_ID_Producto", OracleDbType.Int32, id, ParameterDirection.Input),
+                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
             ];
 
-            DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_TRABAJADOR.Select_Trabajador", parameters);
+            DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_Producto.Select_Producto", parameters);
 
             if (dt.Rows.Count > 0)
             {
                 var row = dt.Rows[0];
-                var trabajador = new
+                var Producto = new
                 {
-                    ID_Trabajador = row["ID_Trabajador"],
+                    ID_Producto = row["ID_Producto"],
                     Nombre = row["Nombre"],
                     Apellido_1 = row["Apellido_1"],
                     Apellido_2 = row["Apellido_2"],
@@ -140,7 +140,7 @@ public class TrabajadorIndex : PageModel
                     ID_Sucursal = row["ID_Sucursal"],
                     ID_Direccion = row["ID_Direccion"]
                 };
-                return new JsonResult(trabajador);
+                return new JsonResult(Producto);
             }
             return new JsonResult(null);
         }
@@ -154,20 +154,20 @@ public class TrabajadorIndex : PageModel
     {
         OracleParameter[] parameters =
         [
-            new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         ];
-        ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_TRABAJADOR.Select_All_Trabajador", parameters);
+        ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_Producto.Select_All_Producto", parameters);
     }
 
-    private bool TrabajadorExiste(int ID_Trabajador)
+    private bool ProductoExiste(int ID_Producto)
     {
         OracleParameter[] parameters =
         [
-            new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, ID_Trabajador, ParameterDirection.Input),
-            new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+            new OracleParameter("p_ID_Producto", OracleDbType.Int32, ID_Producto, ParameterDirection.Input),
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         ];
 
-        DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_TRABAJADOR.Select_Trabajador", parameters);
+        DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_Producto.Select_Producto", parameters);
         return dt.Rows.Count > 0;
     }
 }

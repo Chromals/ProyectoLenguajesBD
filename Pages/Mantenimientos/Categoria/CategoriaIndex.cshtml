@@ -1,0 +1,201 @@
+@page
+@model CategoriaIndex
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Categoria";
+}
+<h2>Categoria</h2>
+<button id="addCategoriaBtn" type="button" class="btn btn-primary">Agregar Categoria</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            @foreach (System.Data.DataColumn column in Model.ResultTable.Columns)
+            {
+                <th>@column.ColumnName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.ResultTable.Rows)
+        {
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal"
+                        onclick='editCategoria(@row["ID_Categoria"])'>Editar</button>
+                    <button type="button" class="btn btn-danger"
+                        onclick='confirmDelete(@row["ID_Categoria"])'>Eliminar</button>
+                </td>
+                @foreach (var item in row.ItemArray)
+                {
+                    <td>@item</td>
+                }
+            </tr>
+        }
+        @if (Model.ResultTable.Rows.Count == 0)
+        {
+            <tr>
+                <td colspan="@Model.ResultTable.Columns.Count+1">No hay datos disponibles</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal para Agregar Categoria -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Agregar Categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addForm" method="post">
+                    <div class="form-group">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre_Add" name="pNom" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Editar Categoria -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm" method="post">
+                    <div class="form-group">
+                        <label for="ID_Categoria">ID Categoria</label>
+                        <input type="text" class="form-control" id="ID_Categoria_Edit" name="pID" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre_Edit" name="pNom" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#addForm').submit(function (event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '@Url.Page("CategoriaIndex")?handler=SaveCategoria',
+                    method: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire('Éxito', 'Categoria agregado exitosamente.', 'success').then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire('Error', response.message, 'error');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        Swal.fire('Error', 'Error al agregar el Categoria.', 'error');
+                    }
+                });
+            });
+
+            $('#editForm').submit(function (event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '@Url.Page("CategoriaIndex")?handler=SaveCategoria',
+                    method: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire('Éxito', 'Categoria actualizado exitosamente.', 'success').then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire('Error', response.message, 'error');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        Swal.fire('Error', 'Error al actualizar el Categoria.', 'error');
+                    }
+                });
+            });
+
+            $('#addCategoriaBtn').click(function () {
+                $('#addModal').modal('show');
+            });
+        });
+
+        function editCategoria(id) {
+            $.ajax({
+                url: '@Url.Page("CategoriaIndex")?handler=EditCategoria',
+                method: 'GET',
+                data: { id: id },
+                success: function (data) {
+                    if (data) {
+                        $('#ID_Categoria_Edit').val(data.iD_Categoria);
+                        $('#Nombre_Edit').val(data.nombre);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    Swal.fire('Error', 'Error al obtener el Categoria.', 'error');
+                }
+            });
+        }
+
+        function confirmDelete(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'No podrás recuperar este registro después de eliminarlo.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminarlo',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Page("CategoriaIndex")?handler=DeleteCategoria',
+                        method: 'POST',
+                        data: { id: id },
+                        headers: {
+                            'RequestVerificationToken': $('input[name = "__RequestVerificationToken"]').val()
+                        },
+                        success: function (response) {
+                            if (response.success) {
+                                Swal.fire('Eliminado', 'El Categoria ha sido eliminado.', 'success').then(() => {
+                                    location.reload();
+                                });
+                            } else {
+                                Swal.fire('Error', response.message, 'error');
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            Swal.fire('Error', 'Error al eliminar el Categoria.', 'error');
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}
+

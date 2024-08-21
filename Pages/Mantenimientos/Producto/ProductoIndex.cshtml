@@ -1,0 +1,281 @@
+@page
+@model ProductoIndex
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Producto";
+}
+<h2>Producto</h2>
+<button id="addProductoBtn" type="button" class="btn btn-primary">Agregar Producto</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            @foreach (System.Data.DataColumn column in Model.ResultTable.Columns)
+            {
+                <th>@column.ColumnName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.ResultTable.Rows)
+        {
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal" onclick='editProducto(@row["ID_Producto"])'>Editar</button>
+                    <button type="button" class="btn btn-danger" onclick='confirmDelete(@row["ID_Producto"])'>Eliminar</button>
+                </td>
+                @foreach (var item in row.ItemArray)
+                {
+                    <td>@item</td>
+                }
+            </tr>
+        }
+        @if (Model.ResultTable.Rows.Count == 0)
+        {
+            <tr>
+                <td colspan="@Model.ResultTable.Columns.Count+1">No hay datos disponibles</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal para Agregar Producto -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Agregar Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addForm" method="post">
+                    @* <div class="form-group">
+                        <label for="ID_Producto">ID Producto</label>
+                        <input type="text" class="form-control" id="ID_Producto_Add" name="pID"/>
+                    </div> *@
+                    <div class="form-group">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre_Add" name="pNom" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Apellido_1">Primer Apellido</label>
+                        <input type="text" class="form-control" id="Apellido_1_Add" name="pAp1" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Apellido_2">Segundo Apellido</label>
+                        <input type="text" class="form-control" id="Apellido_2_Add" name="pAp2" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Cargo">Cargo</label>
+                        <input type="text" class="form-control" id="Cargo_Add" name="pCar" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Salario">Salario</label>
+                        <input type="number" step="0.01" class="form-control" id="Salario_Add" name="pSal" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Activo">Activo</label>
+                        <select class="form-control" id="Activo_Add" name="pAct" required>
+                            <option value="1">Sí</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Fecha_Inicio">Fecha de Inicio</label>
+                        <input type="date" class="form-control" id="Fecha_Inicio_Add" name="pFecIni" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="ID_Sucursal">ID Sucursal</label>
+                        <input type="number" class="form-control" id="ID_Sucursal_Add" name="pIdSuc" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="ID_Direccion">ID Dirección</label>
+                        <input type="number" class="form-control" id="ID_Direccion_Add" name="pIdDire" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Editar Producto -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Editar Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm" method="post">
+                    <div class="form-group">
+                        <label for="ID_Producto">ID Producto</label>
+                        <input type="text" class="form-control" id="ID_Producto_Edit" name="pID" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre_Edit" name="pNom" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Apellido_1">Primer Apellido</label>
+                        <input type="text" class="form-control" id="Apellido_1_Edit" name="pAp1" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Apellido_2">Segundo Apellido</label>
+                        <input type="text" class="form-control" id="Apellido_2_Edit" name="pAp2" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Cargo">Cargo</label>
+                        <input type="text" class="form-control" id="Cargo_Edit" name="pCar" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Salario">Salario</label>
+                        <input type="number" step="0.01" class="form-control" id="Salario_Edit" name="pSal" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="Activo">Activo</label>
+                        <select class="form-control" id="Activo_Edit" name="pAct" required>
+                            <option value="1">Sí</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Fecha_Inicio">Fecha de Inicio</label>
+                        <input type="date" class="form-control" id="Fecha_Inicio_Edit" name="pFecIni" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="ID_Sucursal">ID Sucursal</label>
+                        <input type="number" class="form-control" id="ID_Sucursal_Edit" name="pIdSuc" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="ID_Direccion">ID Dirección</label>
+                        <input type="number" class="form-control" id="ID_Direccion_Edit" name="pIdDire" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#addForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '@Url.Page("ProductoIndex")?handler=SaveProducto',
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire('Éxito', 'Producto agregado exitosamente.', 'success').then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire('Error', response.message, 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire('Error', 'Error al agregar el Producto.', 'error');
+                    }
+                });
+            });
+
+            $('#editForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '@Url.Page("ProductoIndex")?handler=SaveProducto',
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire('Éxito', 'Producto actualizado exitosamente.', 'success').then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire('Error', response.message, 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire('Error', 'Error al actualizar el Producto.', 'error');
+                    }
+                });
+            });
+
+            $('#addProductoBtn').click(function() {
+                $('#addModal').modal('show');
+            });
+        });
+
+        function editProducto(id) {
+            $.ajax({
+                url: '@Url.Page("ProductoIndex")?handler=EditProducto',
+                method: 'GET',
+                data: { id: id },
+                success: function(data) {
+                    if (data) {
+                        console.log(data);
+                        $('#ID_Producto_Edit').val(data.iD_Producto);
+                        $('#Nombre_Edit').val(data.nombre);
+                        $('#Apellido_1_Edit').val(data.apellido_1);
+                        $('#Apellido_2_Edit').val(data.apellido_2);
+                        $('#Cargo_Edit').val(data.cargo);
+                        $('#Salario_Edit').val(data.salario);
+                        $('#Activo_Edit').val(data.activo);
+                        $('#Fecha_Inicio_Edit').val(data.fecha_Inicio.substring(0, 10));
+                        $('#ID_Sucursal_Edit').val(data.iD_Sucursal);
+                        $('#ID_Direccion_Edit').val(data.iD_Direccion);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire('Error', 'Error al obtener el Producto.', 'error');
+                }
+            });
+        }
+
+        function confirmDelete(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'No podrás recuperar este registro después de eliminarlo.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminarlo',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Page("ProductoIndex")?handler=DeleteProducto',
+                        method: 'POST',
+                        data: { id: id },
+                        headers: {
+                            'RequestVerificationToken': $('input[name = "__RequestVerificationToken"]').val()
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire('Eliminado', 'El Producto ha sido eliminado.', 'success').then(() => {
+                                    location.reload();
+                                });
+                            } else {
+                                Swal.fire('Error', response.message, 'error');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            Swal.fire('Error', 'Error al eliminar el Producto.', 'error');
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}

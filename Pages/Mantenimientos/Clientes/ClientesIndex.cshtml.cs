@@ -31,7 +31,7 @@ public class ClientesIndex : PageModel
     {
         OracleParameter[] parameters =
                     [
-                        new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+                        new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                     ];
 
         ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_All_Cliente", parameters);
@@ -123,7 +123,7 @@ public class ClientesIndex : PageModel
             OracleParameter[] parameters =
             [
                 new OracleParameter("p_ID_Cliente", OracleDbType.Int32, id, ParameterDirection.Input),
-                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+                new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
             ];
 
             DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_Cliente", parameters);
@@ -160,7 +160,8 @@ public class ClientesIndex : PageModel
             OracleParameter[] parameters =
                         [
                             new OracleParameter("p_ID_Cliente", OracleDbType.Int32, id, ParameterDirection.Input),
-                            new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
+                            new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+                            
                         ];
 
             string res = _oracleDbService.ExecuteStoredProc("CRUD_CLIENTE.Delete_Cliente", parameters);
@@ -191,7 +192,7 @@ public class ClientesIndex : PageModel
         OracleParameter[] parameters =
         [
             new OracleParameter("p_ID_Cliente", OracleDbType.Int32, ID_Cliente, ParameterDirection.Input),
-            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
+            new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
         ];
 
         DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_Cliente", parameters);
