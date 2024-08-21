@@ -26,3 +26,8 @@ obj/Debug/net8.0/refint/LenguajesBD.dll
 bin/Debug/net8.0/LenguajesBD.exe
 bin/Debug/net8.0/LenguajesBD.dll
 /bin/Debug/net8.0
+obj/Debug/net8.0/LenguajesBD.AssemblyInfo.cs
+obj/Debug/net8.0/LenguajesBD.AssemblyInfoInputs.cache
+/obj/Debug
+/obj
+obj/LenguajesBD.csproj.nuget.dgspec.json

@@ -38,7 +38,7 @@ public class ProveedorIndex : PageModel
                     new OracleParameter("p_Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
                     new OracleParameter("p_Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
                     new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
-                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                    new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 ];
             }
             else
@@ -52,7 +52,7 @@ public class ProveedorIndex : PageModel
                     new OracleParameter("p_Telefono", OracleDbType.Int32, pTel, ParameterDirection.Input),
                     new OracleParameter("p_Correo", OracleDbType.Varchar2, pCorreo, ParameterDirection.Input),
                     new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
-                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                    new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 ];
             }
 
@@ -81,7 +81,7 @@ public class ProveedorIndex : PageModel
             var parameters = new OracleParameter[]
             {
                 new OracleParameter("p_ID_Proveedor", OracleDbType.Int32, id, ParameterDirection.Input),
-                new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
             };
 
             _oracleDbService.ExecuteStoredProc("CRUD_PROVEEDOR.Delete_Proveedor", parameters);

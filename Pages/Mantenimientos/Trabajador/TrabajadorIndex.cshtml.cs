@@ -40,7 +40,7 @@ public class TrabajadorIndex : PageModel
                     new OracleParameter("p_Fecha_Inicio", OracleDbType.Date, pFecIni, ParameterDirection.Input),
                     new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, pIdSuc, ParameterDirection.Input),
                     new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
-                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                    new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 ];
                 _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Update_Trabajador", parameters);
             }
@@ -57,7 +57,7 @@ public class TrabajadorIndex : PageModel
                     new OracleParameter("p_Fecha_Inicio", OracleDbType.Date, pFecIni, ParameterDirection.Input),
                     new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, pIdSuc, ParameterDirection.Input),
                     new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
-                    new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                    new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
                 ];
                 _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Insert_Trabajador", parameters);
             }
@@ -78,7 +78,7 @@ public class TrabajadorIndex : PageModel
             OracleParameter[] parameters =
             [
                 new OracleParameter("p_ID_Trabajador", OracleDbType.Int32, id, ParameterDirection.Input),
-                new OracleParameter("p_Success", OracleDbType.Int32, ParameterDirection.Output)
+                new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
             ];
             _oracleDbService.ExecuteStoredProc("CRUD_TRABAJADOR.Delete_Trabajador", parameters);
 
