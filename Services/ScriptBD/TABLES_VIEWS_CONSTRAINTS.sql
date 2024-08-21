@@ -169,6 +169,41 @@ INNER JOIN Venta v ON c.ID_Cliente = v.ID_Cliente
 INNER JOIN Producto p ON v.ID_Producto = p.ID_Producto
 WHERE c.ID_Cliente = 1;
 
+-- Reporte -  Creación de la Vista  de Trabajadores con mas de 5 años en la empresa
+
+CREATE OR REPLACE VIEW Trabajadores_Con_Mas_5_Anios AS
+SELECT 
+	s.Nombre AS Sucursal, t.Nombre || ' ' || t.Apellido_1 || ' ' || t.Apellido_2 
+	SELECT AS Trabajador, t.Fecha_Inicio, 
+	ROUND(MONTHS_BETWEEN(SYSDATE, t.Fecha_Inicio) / 12, 2) AS Antigüedad 
+FROM Trabajador t
+JOIN Sucursal s ON t.ID_Sucursal = s.ID_Sucursal 
+WHERE ROUND(MONTHS_BETWEEN(SYSDATE, t.Fecha_Inicio) / 12, 2) > 5
+ORDER BY s.Nombre, t.Fecha_Inicio;
+
+-- Reporte -  Creación de la Vista Productos con Bajo Inventario
+CREATE OR REPLACE VIEW Bajo_inventario AS
+SELECT
+	p.Nombre AS Producto, i.Cantidad_Disponible, s.Nombre  AS Sucursal 
+FROM Inventario i 
+JOIN Producto p ON i.ID_Producto = p.ID_Producto 
+JOIN Sucursal s ON i.ID_Sucursal = s.ID_Sucursal 
+WHERE i.Cantidad_Disponible < 10;
+
+-- Reporte -  Creación de la Vista cantidad de productos comprados a cada proveedor 
+CREATE OR REPLACE VIEW productos_por_proveedor AS
+SELECT 
+    pr.Nombre || ' ' || pr.Apellido_1 || ' ' || pr.Apellido_2 AS Proveedor,
+    COUNT(cp.ID_Compra_Producto) AS Total_Productos_Comprados
+FROM 
+    Proveedor pr
+JOIN 
+    CompraProductos cp ON pr.ID_Proveedor = cp.ID_Proveedor
+GROUP BY 
+    pr.Nombre, pr.Apellido_1, pr.Apellido_2
+ORDER BY 
+    Total_Productos_Comprados DESC;
+
 -- Creación de constraints y foreign keys
 ALTER TABLE Auditoria ADD CONSTRAINT FK_Auditoria_Trabajador FOREIGN KEY (ID_Trabajador) REFERENCES Trabajador(ID_Trabajador);
 ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_Direccion FOREIGN KEY (ID_Direccion) REFERENCES Direccion(ID_Direccion);
