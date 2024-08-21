@@ -42,12 +42,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Categoria/CategoriaIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcQ2F0ZWdvcmlhXENhdGVnb3JpYUluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Clientes/ClientesIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcQ2xpZW50ZXNcQ2xpZW50ZXNJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Direccion/DireccionIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcRGlyZWNjaW9uXERpcmVjY2lvbkluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Producto/ProductoIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcUHJvZHVjdG9cUHJvZHVjdG9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Proveedor/ProveedorIndex.cshtml]
