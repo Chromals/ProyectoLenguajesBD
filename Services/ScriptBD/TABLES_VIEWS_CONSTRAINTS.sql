@@ -132,7 +132,7 @@ SELECT s.Nombre AS Sucursal,
 FROM Sucursal s
 INNER JOIN Trabajador t 
 ON s.ID_Sucursal = t.ID_Sucursal
-WHERE s.Nombre = 'Sucursal Liberia' AND t.Activo = 1;
+WHERE s.ID_Sucursal = 44 AND t.Activo = 1;
 
 -- Creación de la Vista cantproducto_vendido
 CREATE OR REPLACE VIEW cantproducto_vendido AS 
@@ -173,9 +173,10 @@ WHERE c.ID_Cliente = 1;
 
 CREATE OR REPLACE VIEW Trabajadores_Con_Mas_5_Anios AS
 SELECT 
-	s.Nombre AS Sucursal, t.Nombre || ' ' || t.Apellido_1 || ' ' || t.Apellido_2 
-	SELECT AS Trabajador, t.Fecha_Inicio, 
-	ROUND(MONTHS_BETWEEN(SYSDATE, t.Fecha_Inicio) / 12, 2) AS Antigüedad 
+	s.Nombre AS Sucursal, 
+    t.Nombre || ' ' || t.Apellido_1 || ' ' || t.Apellido_2 AS Trabajador, 
+    t.Fecha_Inicio, 
+	ROUND(MONTHS_BETWEEN(SYSDATE, t.Fecha_Inicio) / 12, 2) AS Antiguedad 
 FROM Trabajador t
 JOIN Sucursal s ON t.ID_Sucursal = s.ID_Sucursal 
 WHERE ROUND(MONTHS_BETWEEN(SYSDATE, t.Fecha_Inicio) / 12, 2) > 5
@@ -203,6 +204,42 @@ GROUP BY
     pr.Nombre, pr.Apellido_1, pr.Apellido_2
 ORDER BY 
     Total_Productos_Comprados DESC;
+
+-- Creación de la Vista Vista_VentasPorSucursalFecha
+CREATE OR REPLACE VIEW Vista_VentasPorSucursalFecha AS
+SELECT
+    s.Nombre AS Nombre_Sucursal,
+    v.Fecha,
+    SUM(v.Total_Venta) AS Total_Ventas,
+    COUNT(v.ID_Venta) AS Numero_Ventas
+FROM
+    Venta v
+JOIN
+    Sucursal s ON v.ID_Sucursal = s.ID_Sucursal
+GROUP BY
+    s.Nombre,
+    v.Fecha
+ORDER BY
+    v.Fecha, s.Nombre;
+
+-- Creación de la Vista Vista_ProveedoresMasUtilizados
+CREATE OR REPLACE VIEW Vista_ProveedoresMasUtilizados AS
+SELECT
+    p.Nombre AS Nombre_Proveedor,
+    p.Apellido_1 AS Apellido1_Proveedor,
+    p.Apellido_2 AS Apellido2_Proveedor,
+    COUNT(cp.ID_Compra_Producto) AS Numero_Compras,
+    SUM(cp.Cantidad_Comprada) AS Total_Productos_Comprados,
+    SUM(cp.Costo_Total) AS Total_Gastado
+FROM
+    Proveedor p
+JOIN
+    CompraProductos cp ON p.ID_Proveedor = cp.ID_Proveedor
+GROUP BY
+    p.Nombre, p.Apellido_1, p.Apellido_2
+ORDER BY
+    Total_Productos_Comprados DESC, Total_Gastado DESC;
+
 
 -- Creación de constraints y foreign keys
 ALTER TABLE Auditoria ADD CONSTRAINT FK_Auditoria_Trabajador FOREIGN KEY (ID_Trabajador) REFERENCES Trabajador(ID_Trabajador);

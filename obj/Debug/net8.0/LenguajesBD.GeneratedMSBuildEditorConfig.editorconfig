@@ -9,63 +9,63 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LenguajesBD
 build_property.RootNamespace = LenguajesBD
-build_property.ProjectDir = /Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/
+build_property.ProjectDir = C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD
+build_property.MSBuildProjectDirectory = C:\Users\dchav\Documents\GitHub\LBD\ProyectoLenguajesBD
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Comun/MenuPrincipal.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tdW4vTWVudVByaW5jaXBhbC5jc2h0bWw=
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Comun/MenuPrincipal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tdW5cTWVudVByaW5jaXBhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Mantenimientos/Clientes/ClientesIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWFudGVuaW1pZW50b3MvQ2xpZW50ZXMvQ2xpZW50ZXNJbmRleC5jc2h0bWw=
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Clientes/ClientesIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcQ2xpZW50ZXNcQ2xpZW50ZXNJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Mantenimientos/Direccion/DireccionIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWFudGVuaW1pZW50b3MvRGlyZWNjaW9uL0RpcmVjY2lvbkluZGV4LmNzaHRtbA==
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Direccion/DireccionIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcRGlyZWNjaW9uXERpcmVjY2lvbkluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Mantenimientos/Proveedor/ProveedorIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWFudGVuaW1pZW50b3MvUHJvdmVlZG9yL1Byb3ZlZWRvckluZGV4LmNzaHRtbA==
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Proveedor/ProveedorIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcUHJvdmVlZG9yXFByb3ZlZWRvckluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Mantenimientos/Sucursal/SucursalIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWFudGVuaW1pZW50b3MvU3VjdXJzYWwvU3VjdXJzYWxJbmRleC5jc2h0bWw=
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Sucursal/SucursalIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcU3VjdXJzYWxcU3VjdXJzYWxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Mantenimientos/Trabajador/TrabajadorIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWFudGVuaW1pZW50b3MvVHJhYmFqYWRvci9UcmFiYWphZG9ySW5kZXguY3NodG1s
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Mantenimientos/Trabajador/TrabajadorIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcVHJhYmFqYWRvclxUcmFiYWphZG9ySW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Shared/_LayoutLogin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXRMb2dpbi5jc2h0bWw=
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Shared/_LayoutLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juvardz/Desktop/Fidelitas/Lenguajes de Base de Datos/ProyectoLenguajesBD/Pages/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-1p47ugf6a3
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-0ji0nodu1i
