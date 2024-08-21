@@ -20,65 +20,59 @@ public class ProductoIndex : PageModel
         LoadData();
     }
 
-    public JsonResult OnPostSaveProducto(int pID, string pNom, string pAp1, string pAp2, string pCar, decimal pSal, int pAct, DateTime pFecIni, int pIdSuc, int pIdDire)
+    public JsonResult OnPostSaveProducto(int pID_Producto, string pNombre, string pDescripcion, decimal pPrecio, int pID_Categoria, int pCantidad)
+{
+    try
     {
-        try
-        {
-            OracleParameter[] parameters;
-            string res = "";
-            if (ProductoExiste(pID))
-            {
-                parameters =
-                [
-                    new OracleParameter("p_ID_Producto", OracleDbType.Int32, pID, ParameterDirection.Input),
-                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("p_Apellido_1", OracleDbType.Varchar2, pAp1, ParameterDirection.Input),
-                    new OracleParameter("p_Apellido_2", OracleDbType.Varchar2, pAp2, ParameterDirection.Input),
-                    new OracleParameter("p_Cargo", OracleDbType.Varchar2, pCar, ParameterDirection.Input),
-                    new OracleParameter("p_Salario", OracleDbType.Decimal, pSal, ParameterDirection.Input),
-                    new OracleParameter("p_Activo", OracleDbType.Int32, pAct, ParameterDirection.Input),
-                    new OracleParameter("p_Fecha_Inicio", OracleDbType.Date, pFecIni, ParameterDirection.Input),
-                    new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, pIdSuc, ParameterDirection.Input),
-                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
-                    new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
-                ];
-                res = _oracleDbService.ExecuteStoredProc("CRUD_Producto.Update_Producto", parameters);
-            }
-            else
-            {
-                parameters =
-                [
-                    new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNom, ParameterDirection.Input),
-                    new OracleParameter("p_Apellido_1", OracleDbType.Varchar2, pAp1, ParameterDirection.Input),
-                    new OracleParameter("p_Apellido_2", OracleDbType.Varchar2, pAp2, ParameterDirection.Input),
-                    new OracleParameter("p_Cargo", OracleDbType.Varchar2, pCar, ParameterDirection.Input),
-                    new OracleParameter("p_Salario", OracleDbType.Decimal, pSal, ParameterDirection.Input),
-                    new OracleParameter("p_Activo", OracleDbType.Int32, pAct, ParameterDirection.Input),
-                    new OracleParameter("p_Fecha_Inicio", OracleDbType.Date, pFecIni, ParameterDirection.Input),
-                    new OracleParameter("p_ID_Sucursal", OracleDbType.Int32, pIdSuc, ParameterDirection.Input),
-                    new OracleParameter("p_ID_Direccion", OracleDbType.Int32, pIdDire, ParameterDirection.Input),
-                    new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
-                ];
-                res = _oracleDbService.ExecuteStoredProc("CRUD_Producto.Insert_Producto", parameters);
-            }
+        string res;
+        OracleParameter[] parameters;
 
-            if (res.StartsWith("Error: "))
-            {
-                return new JsonResult(new { success = false, message = res });
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(res))
-                    return new JsonResult(new { success = true });
-                else
-                    return new JsonResult(new { success = false, message = "No se realizo ninguna accion con el registro." });
-            }
-        }
-        catch (Exception ex)
+        if (ProductoExiste(pID_Producto))
         {
-            return new JsonResult(new { success = false, message = ex.Message });
+            parameters =
+            [
+                new OracleParameter("p_ID_Producto", OracleDbType.Int32, pID_Producto, ParameterDirection.Input),
+                new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNombre, ParameterDirection.Input),
+                new OracleParameter("p_Descripcion", OracleDbType.Varchar2, pDescripcion, ParameterDirection.Input),
+                new OracleParameter("p_Precio", OracleDbType.Decimal, pPrecio, ParameterDirection.Input),
+                new OracleParameter("p_ID_Categoria", OracleDbType.Int32, pID_Categoria, ParameterDirection.Input),
+                new OracleParameter("p_Cantidad", OracleDbType.Int32, pCantidad, ParameterDirection.Input),
+                new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+            ];
+            res = _oracleDbService.ExecuteStoredProc("CRUD_PRODUCTO.Update_Producto", parameters);
+        }
+        else
+        {
+            parameters =
+            [
+                new OracleParameter("p_Nombre", OracleDbType.Varchar2, pNombre, ParameterDirection.Input),
+                new OracleParameter("p_Descripcion", OracleDbType.Varchar2, pDescripcion, ParameterDirection.Input),
+                new OracleParameter("p_Precio", OracleDbType.Decimal, pPrecio, ParameterDirection.Input),
+                new OracleParameter("p_ID_Categoria", OracleDbType.Int32, pID_Categoria, ParameterDirection.Input),
+                new OracleParameter("p_Cantidad", OracleDbType.Int32, pCantidad, ParameterDirection.Input),
+                new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+            ];
+            res = _oracleDbService.ExecuteStoredProc("CRUD_PRODUCTO.Insert_Producto", parameters);
+        }
+
+        if (res.StartsWith("Error: "))
+        {
+            return new JsonResult(new { success = false, message = res });
+        }
+        else
+        {
+            if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
+                return new JsonResult(new { success = true });
+            else
+                return new JsonResult(new { success = false, message = "No se realizó ninguna acción con el registro." });
         }
     }
+    catch (Exception ex)
+    {
+        return new JsonResult(new { success = false, message = ex.Message });
+    }
+}
+
 
     public JsonResult OnPostDeleteProducto(int id)
     {
@@ -87,9 +81,9 @@ public class ProductoIndex : PageModel
             OracleParameter[] parameters =
             [
                 new OracleParameter("p_ID_Producto", OracleDbType.Int32, id, ParameterDirection.Input),
-                new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
+                new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
             ];
-            string res = _oracleDbService.ExecuteStoredProc("CRUD_Producto.Delete_Producto", parameters);
+            string res = _oracleDbService.ExecuteStoredProc("CRUD_PRODUCTO.Delete_Producto", parameters);
 
             if (res.StartsWith("Error: "))
             {
@@ -97,13 +91,13 @@ public class ProductoIndex : PageModel
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(res)){
+                if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
+                {
                     LoadData();
                     return new JsonResult(new { success = true });
                 }
-                    
                 else
-                    return new JsonResult(new { success = false, message = "No se elimino ningún registro." });
+                    return new JsonResult(new { success = false, message = "No se eliminó ningún registro." });
             }
         }
         catch (Exception ex)
@@ -122,7 +116,7 @@ public class ProductoIndex : PageModel
                 new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
             ];
 
-            DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_Producto.Select_Producto", parameters);
+            DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_PRODUCTO.Select_Producto", parameters);
 
             if (dt.Rows.Count > 0)
             {
@@ -131,14 +125,10 @@ public class ProductoIndex : PageModel
                 {
                     ID_Producto = row["ID_Producto"],
                     Nombre = row["Nombre"],
-                    Apellido_1 = row["Apellido_1"],
-                    Apellido_2 = row["Apellido_2"],
-                    Cargo = row["Cargo"],
-                    Salario = row["Salario"],
-                    Activo = row["Activo"],
-                    Fecha_Inicio = row["Fecha_Inicio"],
-                    ID_Sucursal = row["ID_Sucursal"],
-                    ID_Direccion = row["ID_Direccion"]
+                    Descripcion = row["Descripcion"],
+                    Precio = row["Precio"],
+                    ID_Categoria = row["ID_Categoria"],
+                    Cantidad = row["Cantidad"]
                 };
                 return new JsonResult(Producto);
             }
@@ -156,7 +146,7 @@ public class ProductoIndex : PageModel
         [
             new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         ];
-        ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_Producto.Select_All_Producto", parameters);
+        ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_PRODUCTO.Select_All_Producto", parameters);
     }
 
     private bool ProductoExiste(int ID_Producto)
@@ -167,7 +157,7 @@ public class ProductoIndex : PageModel
             new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         ];
 
-        DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_Producto.Select_Producto", parameters);
+        DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_PRODUCTO.Select_Producto", parameters);
         return dt.Rows.Count > 0;
     }
 }

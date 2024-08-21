@@ -64,7 +64,7 @@ public class ProveedorIndex : PageModel
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(res))
+                if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
                     return new JsonResult(new { success = true });
                 else
                     return new JsonResult(new { success = false, message = "No se realizo ninguna accion con el registro." });
@@ -94,7 +94,7 @@ public class ProveedorIndex : PageModel
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(res))
+                if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
                     return new JsonResult(new { success = true });
                 else
                     return new JsonResult(new { success = false, message = "No se elimino ningún registro." });
@@ -145,7 +145,7 @@ public class ProveedorIndex : PageModel
     {
         var parameters = new OracleParameter[]
         {
-            new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         };
 
         ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_PROVEEDOR.Select_All_Proveedor", parameters);
@@ -156,7 +156,7 @@ public class ProveedorIndex : PageModel
         var parameters = new OracleParameter[]
         {
             new OracleParameter("p_ID_Proveedor", OracleDbType.Int32, ID_Proveedor, ParameterDirection.Input),
-            new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         };
 
         DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_PROVEEDOR.Select_Proveedor", parameters);

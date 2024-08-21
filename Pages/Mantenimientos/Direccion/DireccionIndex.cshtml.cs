@@ -61,7 +61,7 @@ public class DireccionIndex : PageModel
                 }
                 else
                 {
-                    if (string.IsNullOrWhiteSpace(res))
+                    if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
                     {
                         LoadData();
                         return new JsonResult(new { success = true });
@@ -89,7 +89,7 @@ public class DireccionIndex : PageModel
                 }
                 else
                 {
-                    if (string.IsNullOrWhiteSpace(res))
+                    if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
                         return new JsonResult(new { success = true });
                     else
                         return new JsonResult(new { success = false, message = "No se inserto ningún registro." });
@@ -156,7 +156,7 @@ public class DireccionIndex : PageModel
                 }
                 else
                 {
-                    if (string.IsNullOrWhiteSpace(res))
+                    if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
                         return new JsonResult(new { success = true });
                     else
                         return new JsonResult(new { success = false, message = "No se elimino ningún registro." });

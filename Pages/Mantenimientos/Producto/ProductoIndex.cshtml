@@ -52,48 +52,25 @@
             </div>
             <div class="modal-body">
                 <form id="addForm" method="post">
-                    @* <div class="form-group">
-                        <label for="ID_Producto">ID Producto</label>
-                        <input type="text" class="form-control" id="ID_Producto_Add" name="pID"/>
-                    </div> *@
                     <div class="form-group">
                         <label for="Nombre">Nombre</label>
-                        <input type="text" class="form-control" id="Nombre_Add" name="pNom" required />
+                        <input type="text" class="form-control" id="Nombre_Add" name="pNombre" required />
                     </div>
                     <div class="form-group">
-                        <label for="Apellido_1">Primer Apellido</label>
-                        <input type="text" class="form-control" id="Apellido_1_Add" name="pAp1" required />
+                        <label for="Descripcion">Descripción</label>
+                        <input type="text" class="form-control" id="Descripcion_Add" name="pDescripcion" required />
                     </div>
                     <div class="form-group">
-                        <label for="Apellido_2">Segundo Apellido</label>
-                        <input type="text" class="form-control" id="Apellido_2_Add" name="pAp2" required />
+                        <label for="Precio">Precio</label>
+                        <input type="number" step="0.01" class="form-control" id="Precio_Add" name="pPrecio" required />
                     </div>
                     <div class="form-group">
-                        <label for="Cargo">Cargo</label>
-                        <input type="text" class="form-control" id="Cargo_Add" name="pCar" required />
+                        <label for="ID_Categoria">ID Categoría</label>
+                        <input type="number" class="form-control" id="ID_Categoria_Add" name="pID_Categoria" required />
                     </div>
                     <div class="form-group">
-                        <label for="Salario">Salario</label>
-                        <input type="number" step="0.01" class="form-control" id="Salario_Add" name="pSal" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="Activo">Activo</label>
-                        <select class="form-control" id="Activo_Add" name="pAct" required>
-                            <option value="1">Sí</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="Fecha_Inicio">Fecha de Inicio</label>
-                        <input type="date" class="form-control" id="Fecha_Inicio_Add" name="pFecIni" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="ID_Sucursal">ID Sucursal</label>
-                        <input type="number" class="form-control" id="ID_Sucursal_Add" name="pIdSuc" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="ID_Direccion">ID Dirección</label>
-                        <input type="number" class="form-control" id="ID_Direccion_Add" name="pIdDire" required />
+                        <label for="Cantidad">Cantidad</label>
+                        <input type="number" class="form-control" id="Cantidad_Add" name="pCantidad" required />
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
@@ -116,46 +93,27 @@
                 <form id="editForm" method="post">
                     <div class="form-group">
                         <label for="ID_Producto">ID Producto</label>
-                        <input type="text" class="form-control" id="ID_Producto_Edit" name="pID" readonly />
+                        <input type="text" class="form-control" id="ID_Producto_Edit" name="pID_Producto" readonly />
                     </div>
                     <div class="form-group">
                         <label for="Nombre">Nombre</label>
-                        <input type="text" class="form-control" id="Nombre_Edit" name="pNom" required />
+                        <input type="text" class="form-control" id="Nombre_Edit" name="pNombre" required />
                     </div>
                     <div class="form-group">
-                        <label for="Apellido_1">Primer Apellido</label>
-                        <input type="text" class="form-control" id="Apellido_1_Edit" name="pAp1" required />
+                        <label for="Descripcion">Descripción</label>
+                        <input type="text" class="form-control" id="Descripcion_Edit" name="pDescripcion" required />
                     </div>
                     <div class="form-group">
-                        <label for="Apellido_2">Segundo Apellido</label>
-                        <input type="text" class="form-control" id="Apellido_2_Edit" name="pAp2" required />
+                        <label for="Precio">Precio</label>
+                        <input type="number" step="0.01" class="form-control" id="Precio_Edit" name="pPrecio" required />
                     </div>
                     <div class="form-group">
-                        <label for="Cargo">Cargo</label>
-                        <input type="text" class="form-control" id="Cargo_Edit" name="pCar" required />
+                        <label for="ID_Categoria">ID Categoría</label>
+                        <input type="number" class="form-control" id="ID_Categoria_Edit" name="pID_Categoria" required />
                     </div>
                     <div class="form-group">
-                        <label for="Salario">Salario</label>
-                        <input type="number" step="0.01" class="form-control" id="Salario_Edit" name="pSal" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="Activo">Activo</label>
-                        <select class="form-control" id="Activo_Edit" name="pAct" required>
-                            <option value="1">Sí</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="Fecha_Inicio">Fecha de Inicio</label>
-                        <input type="date" class="form-control" id="Fecha_Inicio_Edit" name="pFecIni" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="ID_Sucursal">ID Sucursal</label>
-                        <input type="number" class="form-control" id="ID_Sucursal_Edit" name="pIdSuc" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="ID_Direccion">ID Dirección</label>
-                        <input type="number" class="form-control" id="ID_Direccion_Edit" name="pIdDire" required />
+                        <label for="Cantidad">Cantidad</label>
+                        <input type="number" class="form-control" id="Cantidad_Edit" name="pCantidad" required />
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
@@ -223,17 +181,12 @@
                 data: { id: id },
                 success: function(data) {
                     if (data) {
-                        console.log(data);
                         $('#ID_Producto_Edit').val(data.iD_Producto);
                         $('#Nombre_Edit').val(data.nombre);
-                        $('#Apellido_1_Edit').val(data.apellido_1);
-                        $('#Apellido_2_Edit').val(data.apellido_2);
-                        $('#Cargo_Edit').val(data.cargo);
-                        $('#Salario_Edit').val(data.salario);
-                        $('#Activo_Edit').val(data.activo);
-                        $('#Fecha_Inicio_Edit').val(data.fecha_Inicio.substring(0, 10));
-                        $('#ID_Sucursal_Edit').val(data.iD_Sucursal);
-                        $('#ID_Direccion_Edit').val(data.iD_Direccion);
+                        $('#Descripcion_Edit').val(data.descripcion);
+                        $('#Precio_Edit').val(data.precio);
+                        $('#ID_Categoria_Edit').val(data.iD_Categoria);
+                        $('#Cantidad_Edit').val(data.cantidad);
                     }
                 },
                 error: function(xhr, status, error) {

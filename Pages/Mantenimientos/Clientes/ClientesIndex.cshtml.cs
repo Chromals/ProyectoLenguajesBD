@@ -20,10 +20,11 @@ public class ClientesIndex : PageModel
         {
             LoadData();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            //System.Diagnostics.Debug.WriteLine($"Error al obtener los clientes: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Error al obtener los clientes: {ex.Message}");
             ResultTable = new DataTable();
+            //return new JsonResult(new { success = false, message = ex.Message });
         }
     }
 
@@ -31,7 +32,7 @@ public class ClientesIndex : PageModel
     {
         OracleParameter[] parameters =
                     [
-                        new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
+                        new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
                     ];
 
         ResultTable = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_All_Cliente", parameters);
@@ -66,7 +67,7 @@ public class ClientesIndex : PageModel
                 }
                 else
                 {
-                    if (string.IsNullOrWhiteSpace(res))
+                    if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
                     {
                         LoadData();
                         return new JsonResult(new { success = true });
@@ -98,7 +99,7 @@ public class ClientesIndex : PageModel
                 }
                 else
                 {
-                    if (string.IsNullOrWhiteSpace(res))
+                    if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
                     {
                         LoadData();
                         return new JsonResult(new { success = true });
@@ -170,7 +171,7 @@ public class ClientesIndex : PageModel
                 return new JsonResult(new { success = false, message = res });
             else
             {
-                if (string.IsNullOrWhiteSpace(res))
+                if (string.IsNullOrWhiteSpace(res) || Convert.ToInt32(res) > 0)
                 {
                     LoadData();
                     return new JsonResult(new { success = true });
@@ -192,7 +193,7 @@ public class ClientesIndex : PageModel
         OracleParameter[] parameters =
         [
             new OracleParameter("p_ID_Cliente", OracleDbType.Int32, ID_Cliente, ParameterDirection.Input),
-            new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+            new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         ];
 
         DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_Cliente", parameters);
