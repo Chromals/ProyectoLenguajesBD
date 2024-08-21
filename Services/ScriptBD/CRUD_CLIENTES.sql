@@ -19,7 +19,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CLIENTE AS
         p_Result := SQL%ROWCOUNT;
     EXCEPTION
         WHEN OTHERS THEN
-            p_Result := -1;
+            p_Result := 'Error: ' || SQLERRM;
     END Insert_Cliente;
 
     PROCEDURE Update_Cliente(p_ID_Cliente IN NUMBER, p_Nombre IN VARCHAR2, p_Apellido_1 IN VARCHAR2, p_Apellido_2 IN VARCHAR2, p_Telefono IN NUMBER, p_Correo IN VARCHAR2, p_ID_Direccion IN NUMBER, p_Result OUT VARCHAR2) IS
@@ -28,7 +28,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CLIENTE AS
         p_Result := SQL%ROWCOUNT;
     EXCEPTION
         WHEN OTHERS THEN
-            p_Result := -1;
+            p_Result := 'Error: ' || SQLERRM;
     END Update_Cliente;
 
     PROCEDURE Delete_Cliente(p_ID_Cliente IN NUMBER, p_Result OUT VARCHAR2) IS
@@ -37,7 +37,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_CLIENTE AS
         p_Result := SQL%ROWCOUNT;
     EXCEPTION
         WHEN OTHERS THEN
-            p_Result := -1;
+            p_Result := 'Error: ' || SQLERRM;
     END Delete_Cliente;
 
     PROCEDURE Select_All_Cliente(p_Result OUT SYS_REFCURSOR) IS
