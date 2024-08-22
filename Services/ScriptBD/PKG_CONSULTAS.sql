@@ -17,17 +17,17 @@ CREATE OR REPLACE PACKAGE BODY PKG_CONSULTAS AS
 
     PROCEDURE Select_All_Auditoria(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Auditoria;
+        OPEN p_Result FOR SELECT * FROM Auditoria ORDER BY id_Auditoria ASC;
     END Select_All_Auditoria;
 
     PROCEDURE Select_All_CompraProductos(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM CompraProductos;
+        OPEN p_Result FOR SELECT * FROM CompraProductos ORDER BY ID_Compra_Producto ASC;
     END Select_All_CompraProductos;
 
     PROCEDURE Select_All_Devolucion(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Devolucion;
+        OPEN p_Result FOR SELECT * FROM Devolucion ORDER BY ID_Devolucion ASC;
     END Select_All_Devolucion;
 
     PROCEDURE Listar_Devoluciones(p_Result OUT SYS_REFCURSOR) IS
