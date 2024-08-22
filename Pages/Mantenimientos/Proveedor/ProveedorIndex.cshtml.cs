@@ -113,7 +113,7 @@ public class ProveedorIndex : PageModel
             var parameters = new OracleParameter[]
             {
                 new OracleParameter("p_ID_Proveedor", OracleDbType.Int32, id, ParameterDirection.Input),
-                new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, null, ParameterDirection.Output)
+                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
             };
 
             DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_PROVEEDOR.Select_Proveedor", parameters);

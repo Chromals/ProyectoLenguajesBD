@@ -124,7 +124,7 @@ public class ClientesIndex : PageModel
             OracleParameter[] parameters =
             [
                 new OracleParameter("p_ID_Cliente", OracleDbType.Int32, id, ParameterDirection.Input),
-                new OracleParameter("p_Result", OracleDbType.Varchar2, ParameterDirection.Output)
+                new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
             ];
 
             DataTable dt = _oracleDbService.ExecuteStoredProcCursor("CRUD_CLIENTE.Select_Cliente", parameters);
