@@ -92,3 +92,41 @@ EXCEPTION
         RAISE;
 END;
 /
+--Calcular salario total de un trabajador
+CREATE OR REPLACE FUNCTION CalcularSalarioTotalTrabajador(
+    p_id_trabajador IN INT
+) RETURN NUMBER IS
+    v_salario_total NUMBER;
+BEGIN
+    SELECT Salario * MONTHS_BETWEEN(SYSDATE, Fecha_Inicio)
+    INTO v_salario_total
+    FROM Trabajador
+    WHERE ID_Trabajador = p_id_trabajador;
+
+    RETURN v_salario_total;
+EXCEPTION
+    WHEN OTHERS THEN
+        RETURN -1;
+END;
+/
+
+--Obtener nombre de un cliente
+CREATE OR REPLACE FUNCTION ObtenerNombreCompletoCliente(
+    p_id_cliente IN INT
+) RETURN VARCHAR2 IS
+    v_nombre_completo VARCHAR2(200);
+BEGIN
+    SELECT Nombre || ' ' || Apellido_1 || ' ' || Apellido_2
+    INTO v_nombre_completo
+    FROM Cliente
+    WHERE ID_Cliente = p_id_cliente;
+
+    RETURN v_nombre_completo;
+EXCEPTION
+    WHEN OTHERS THEN
+        RETURN 'Error';
+END;
+/
+
+
+

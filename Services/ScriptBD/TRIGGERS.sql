@@ -33,3 +33,24 @@ BEGIN
 END;
 /
 
+--Update inventario despues de devouluciones 
+CREATE OR REPLACE TRIGGER TGR_ActualizarInventarioDespuesDevolucion
+AFTER INSERT ON Devolucion
+FOR EACH ROW
+BEGIN
+    UPDATE Inventario
+    SET Cantidad_Disponible = Cantidad_Disponible + (SELECT Cantidad_Vendida FROM Venta WHERE ID_Venta = :NEW.ID_Venta)
+    WHERE ID_Producto = (SELECT ID_Producto FROM Venta WHERE ID_Venta = :NEW.ID_Venta);
+END;
+/
+
+--Auditar cambios de cargo en trabajadores
+CREATE OR REPLACE TRIGGER TGR_RegistrarAuditoriaCambioCargo
+AFTER UPDATE OF Cargo ON Trabajador
+FOR EACH ROW
+BEGIN
+    INSERT INTO Auditoria (Fecha, Operacion, ID_Trabajador, Detalles)
+    VALUES (SYSDATE, 'Cambio de Cargo', :NEW.ID_Trabajador, 'El cargo fue actualizado a ' || :NEW.Cargo);
+END;
+/
+

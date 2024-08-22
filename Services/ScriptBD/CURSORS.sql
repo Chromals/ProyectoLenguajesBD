@@ -57,3 +57,35 @@ LEFT JOIN Venta v ON s.ID_Sucursal = v.ID_Sucursal
 GROUP BY s.ID_Sucursal, s.Nombre
 ORDER BY COUNT(v.ID_Venta) ASC;
 
+--Listar trabajadores activos por Sucursal
+CURSOR cur_TrabajadoresActivosPorSucursal IS
+SELECT t.Nombre, t.Apellido_1, s.Nombre AS Sucursal
+FROM Trabajador t
+JOIN Sucursal s ON t.ID_Sucursal = s.ID_Sucursal
+WHERE t.Activo = 1;
+
+
+--Listar Productos bajos en stock
+CURSOR cur_ProductosConStockBajo IS
+SELECT p.Nombre, i.Cantidad_Disponible, s.Nombre AS Sucursal
+FROM Producto p
+JOIN Inventario i ON p.ID_Producto = i.ID_Producto
+JOIN Sucursal s ON i.ID_Sucursal = s.ID_Sucursal
+WHERE i.Cantidad_Disponible < 10;
+
+
+--listar compras proveedor
+CURSOR cur_ComprasPorProveedor IS
+SELECT p.Nombre AS Producto, cp.Cantidad_Comprada, pr.Nombre AS Proveedor
+FROM CompraProductos cp
+JOIN Producto p ON cp.ID_Producto = p.ID_Producto
+JOIN Proveedor pr ON cp.ID_Proveedor = pr.ID_Proveedor;
+
+
+--Listar devoluciones por mes
+CURSOR cur_DevolucionesPorMes IS
+SELECT d.ID_Devolucion, d.Motivo, TO_CHAR(d.Fecha, 'YYYY-MM') AS Mes
+FROM Devolucion d
+ORDER BY TO_CHAR(d.Fecha, 'YYYY-MM');
+
+

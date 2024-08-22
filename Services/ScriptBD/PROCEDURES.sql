@@ -296,3 +296,118 @@ EXCEPTION
         p_error := 'Error al generar el reporte de ventas mensuales: ' || SQLERRM;
 END;
 /
+
+--Trabajadores Activos / con cursor
+CREATE OR REPLACE PROCEDURE ProcesarTrabajadoresActivos IS
+    v_nombre_trabajador VARCHAR2(50);
+    v_apellido_trabajador VARCHAR2(50);
+    v_nombre_sucursal VARCHAR2(50);
+BEGIN
+    OPEN cur_TrabajadoresActivosPorSucursal;
+
+    LOOP
+        FETCH cur_TrabajadoresActivosPorSucursal INTO v_nombre_trabajador, v_apellido_trabajador, v_nombre_sucursal;
+
+        EXIT WHEN cur_TrabajadoresActivosPorSucursal%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('Trabajador: ' || v_nombre_trabajador || ' ' || v_apellido_trabajador || ' - Sucursal: ' || v_nombre_sucursal);
+        
+    END LOOP;
+
+    -- Cerrar el cursor después de terminar
+    CLOSE cur_TrabajadoresActivosPorSucursal;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error en ProcesarTrabajadoresActivos: ' || SQLERRM);
+END;
+/
+
+--Devoluciones por mes / con cursor
+CREATE OR REPLACE PROCEDURE ProcesarDevolucionesPorMes IS
+    v_id_devolucion NUMBER;
+    v_motivo VARCHAR2(300);
+    v_mes VARCHAR2(7);
+BEGIN
+    OPEN cur_DevolucionesPorMes;
+
+    LOOP
+        FETCH cur_DevolucionesPorMes INTO v_id_devolucion, v_motivo, v_mes;
+
+        EXIT WHEN cur_DevolucionesPorMes%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('Devolución ID: ' || v_id_devolucion || ' - Motivo: ' || v_motivo || ' - Mes: ' || v_mes);
+
+        
+    END LOOP;
+
+    -- Cerrar el cursor después de terminar
+    CLOSE cur_DevolucionesPorMes;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error en ProcesarDevolucionesPorMes: ' || SQLERRM);
+END;
+/
+
+
+--Listar compras por proveedor / Con cursor
+
+CREATE OR REPLACE PROCEDURE ProcesarComprasPorProveedor IS
+    v_nombre_producto VARCHAR2(50);
+    v_cantidad_comprada NUMBER;
+    v_nombre_proveedor VARCHAR2(50);
+BEGIN
+    OPEN cur_ComprasPorProveedor;
+
+    LOOP
+        FETCH cur_ComprasPorProveedor INTO v_nombre_producto, v_cantidad_comprada, v_nombre_proveedor;
+
+        EXIT WHEN cur_ComprasPorProveedor%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('Producto: ' || v_nombre_producto || ' - Cantidad Comprada: ' || v_cantidad_comprada || ' - Proveedor: ' || v_nombre_proveedor);
+
+        
+    END LOOP;
+
+    -- Cerrar el cursor después de terminar
+    CLOSE cur_ComprasPorProveedor;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error en ProcesarComprasPorProveedor: ' || SQLERRM);
+END;
+/
+
+--Mostrar Productos bajos en stock / Con cursor
+
+CREATE OR REPLACE PROCEDURE ProcesarProductosConStockBajo IS
+    v_nombre_producto VARCHAR2(50);
+    v_cantidad_disponible NUMBER;
+    v_nombre_sucursal VARCHAR2(50);
+BEGIN
+    OPEN cur_ProductosConStockBajo;
+
+    LOOP
+        FETCH cur_ProductosConStockBajo INTO v_nombre_producto, v_cantidad_disponible, v_nombre_sucursal;
+
+        EXIT WHEN cur_ProductosConStockBajo%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('Producto: ' || v_nombre_producto || ' - Stock: ' || v_cantidad_disponible || ' - Sucursal: ' || v_nombre_sucursal);
+
+
+        
+    END LOOP;
+
+    -- Cerrar el cursor después de terminar
+    CLOSE cur_ProductosConStockBajo;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error en ProcesarProductosConStockBajo: ' || SQLERRM);
+END;
+/
+
+
+
+
