@@ -449,26 +449,6 @@ EXCEPTION
 END;
 /
 
-
---Lista las devoluciones con sus detalles.
-CREATE OR REPLACE PROCEDURE ListarDevoluciones(
-    p_cursor OUT SYS_REFCURSOR,
-    p_error OUT VARCHAR2
-) AS
-    CURSOR cur_Devoluciones IS
-    SELECT d.ID_Devolucion, d.Fecha, d.Motivo, v.ID_Venta
-    FROM Devolucion d
-    JOIN Venta v ON d.ID_Venta = v.ID_Venta;
-BEGIN
-    OPEN p_cursor FOR cur_Devoluciones;
-    p_error := NULL;
-EXCEPTION
-    WHEN OTHERS THEN
-        p_error := 'Error al listar las devoluciones: ' || SQLERRM;
-END;
-/
-
-
 --Con este cursor se Obtienen productos por categoría.
 CREATE OR REPLACE PROCEDURE ListarCategoriasProductos(
     p_cursor OUT SYS_REFCURSOR,
