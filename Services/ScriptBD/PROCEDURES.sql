@@ -407,6 +407,24 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('Error en ProcesarProductosConStockBajo: ' || SQLERRM);
 END;
 /
+CREATE OR REPLACE PROCEDURE ListarClientesActivos(
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+    CURSOR cur_ClientesActivos IS
+    SELECT c.ID_Cliente, c.Nombre, c.Apellido_1, c.Apellido_2
+    FROM Cliente c
+    JOIN Venta v ON c.ID_Cliente = v.ID_Cliente
+    GROUP BY c.ID_Cliente, c.Nombre, c.Apellido_1, c.Apellido_2
+    HAVING COUNT(v.ID_Venta) > 0;
+BEGIN
+    OPEN p_cursor FOR cur_ClientesActivos;
+    p_error := NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error := 'Error al listar los clientes activos: ' || SQLERRM;
+END;
+/
 
 
 
