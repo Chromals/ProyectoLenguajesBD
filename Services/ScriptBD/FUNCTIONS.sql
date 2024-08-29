@@ -74,6 +74,8 @@ BEGIN
     RETURN mensaje;
 END;
 /
+
+-- Creación de la Función calcular el valor total del inventario que pertenecen a una categoría
 CREATE OR REPLACE FUNCTION CalcularValorInventarioCategoria(
     p_id_categoria INT
 ) RETURN NUMBER IS
@@ -92,7 +94,7 @@ EXCEPTION
         RAISE;
 END;
 /
---Calcular salario total de un trabajador
+-- Creación de la Función Calcular salario total de un trabajador
 CREATE OR REPLACE FUNCTION CalcularSalarioTotalTrabajador(
     p_id_trabajador IN INT
 ) RETURN NUMBER IS
@@ -110,7 +112,7 @@ EXCEPTION
 END;
 /
 
---Obtener nombre de un cliente
+-- Creación de la Función Obtener nombre de un cliente
 CREATE OR REPLACE FUNCTION ObtenerNombreCompletoCliente(
     p_id_cliente IN INT
 ) RETURN VARCHAR2 IS
@@ -128,5 +130,59 @@ EXCEPTION
 END;
 /
 
+-- Creación de la Función para verificar si aplica la devolución (basada en la fecha):
+CREATE OR REPLACE FUNCTION VerificarAplicacionDevolucion(
+    p_fecha_compra DATE) RETURN VARCHAR2 IS
+    v_aplica_devolucion VARCHAR2(20);
+BEGIN
+    IF MONTHS_BETWEEN(SYSDATE, p_fecha_compra) > 60 THEN
+        v_aplica_devolucion := 'No Aplica';
+    ELSE
+        v_aplica_devolucion := 'Aplica';
+    END IF;
+    
+    RETURN v_aplica_devolucion;
+EXCEPTION
+    WHEN OTHERS THEN
+        RETURN 'Error';
+END;
+/
 
+-- Creación de la Función para Verificar si se hace la devolucion 
+CREATE OR REPLACE FUNCTION VerificarDevolucion(id_venta NUMBER) RETURN VARCHAR2 IS
+    resultado VARCHAR2(1);
+BEGIN
+    SELECT CASE 
+            WHEN COUNT(*) > 0 THEN 'S'
+            ELSE 'N'
+           END
+    INTO resultado
+    FROM Devolucion
+    WHERE ID_Venta = id_venta;
 
+    RETURN resultado;
+EXCEPTION
+    WHEN OTHERS THEN
+        RETURN 'Error';
+END;
+/
+
+-- Creación de la Función para Calcular el total de ventas de un producto en una sucursal 
+CREATE OR REPLACE FUNCTION CalcularTotalVentasProductoSucursal( p_id_producto IN NUMBER, p_id_sucursal IN NUMBER) RETURN NUMBER IS
+    v_total_ventas NUMBER := 0;
+BEGIN
+    SELECT SUM(Total_Venta)
+    INTO v_total_ventas
+    FROM Venta
+    WHERE ID_Producto = p_id_producto AND ID_Sucursal = p_id_sucursal;
+
+    RETURN v_total_ventas;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 0;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+-- Creación de la Función para Obtener la Cantidad Vendida de un Producto
