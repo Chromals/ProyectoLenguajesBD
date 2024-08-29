@@ -20,14 +20,16 @@
         @foreach (System.Data.DataRow row in Model.ResultTable.Rows)
         {
             <tr>
-                <td>
-                    @if (row["ind_devuelto"].ToString() == "S")
+                <td >
+                    @if (row["ind_devuelto"].ToString() == "N" && row["aplica_devolucion"].ToString() == "Aplica")
                     {
-                        <button type="button" class="btn btn-info" onclick='DevolverProducto("@row["ID_Venta"]")'>Devolver</button>
+                        <button type="button" class="btn btn-info" onclick='MostrarModalDevolucion("@row["ID_Venta"]")'>Devolver</button>
                     }
-                    else if (row["ind_devuelto"].ToString() == "N")
+                    else if (row["ind_devuelto"].ToString() == "S" || row["aplica_devolucion"].ToString() == "No Aplica")
                     {
-                        <button type="button" class="btn btn-info" disabled>Devolver</button>
+                        <button type="button" class="btn btn-danger" disabled>Ya Devuelto</button>
+                        
+                        
                     }
                 </td>
                 @foreach (var item in row.ItemArray)
@@ -80,33 +82,62 @@
     </tbody>
 </table>
 
-<!-- Modal para la Venta de productos -->
-<div class="modal fade" id="VentaModal" tabindex="-1" aria-labelledby="VentaModalLabel" aria-hidden="true">
+<!-- Modal para Devolución de Producto -->
+<div class="modal fade" id="devolucionModal" tabindex="-1" aria-labelledby="devolucionModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="VentaModalLabel">Vender Producto</h5>
+                <h5 class="modal-title" id="devolucionModalLabel">Devolución de Producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="VentaForm" method="post">
-                    <input type="hidden" id="productoId" name="idProducto">
+                <form id="devolucionForm">
+                    <input type="hidden" id="ventaId" name="ventaId">
                     <div class="mb-3">
-                        <label for="productoNombre" class="form-label">Producto</label>
-                        <input type="text" class="form-control" id="productoNombre" disabled>
+                        <label for="motivo" class="form-label">Motivo de la Devolución</label>
+                        <input type="text" class="form-control" id="motivo" name="motivo" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Devolver Producto</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ventaModal" tabindex="-1" aria-labelledby="ventaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ventaModalLabel">Realizar Venta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="ventaForm">
+                    <div class="mb-3">
+                        <label for="idProducto" class="form-label">Producto</label>
+                        <select class="form-select" id="idProducto" name="idProducto" required>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idSucursal" class="form-label">Sucursal</label>
+                        <select class="form-select" id="idSucursal" name="idSucursal" required>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idCliente" class="form-label">Cliente</label>
+                        <select class="form-select" id="idCliente" name="idCliente" required>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idTrabajador" class="form-label">Trabajador</label>
+                        <select class="form-select" id="idTrabajador" name="idTrabajador" required>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="cantidad" class="form-label">Cantidad</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="proveedor" class="form-label">Proveedor</label>
-                        <select class="form-select" id="proveedor" name="idProveedor" required>
-                            <!-- Proveedores cargados dinámicamente -->
-                        </select>
-                    </div>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Vender</button>
+                    <button type="submit" class="btn btn-primary">Realizar Venta</button>
                 </form>
             </div>
         </div>
@@ -114,40 +145,143 @@
 </div>
 
 
+
+
 @section Scripts{
     <script>
-        function VenderProductos(idProducto, nombreProducto) {
-            document.getElementById('productoId').value = idProducto;
-            document.getElementById('productoNombre').value = nombreProducto;
+        function MostrarModalDevolucion(idVenta) {
+            document.getElementById('ventaId').value = idVenta;
 
-            fetch('?handler=Proveedores')
-                .then(response => response.json())
-                .then(data => {
-                    let proveedorSelect = document.getElementById('proveedor');
-                    proveedorSelect.innerHTML = '';
-                    data.forEach(proveedor => {
-                        let option = document.createElement('option');
-                        option.value = proveedor.iD_Proveedor;
-                        option.textContent = proveedor.nombre;
-                        proveedorSelect.appendChild(option);
-                    });
-                });
+            var devolucionModal = new bootstrap.Modal(document.getElementById('devolucionModal'));
+            devolucionModal.show();
+        }
 
-            var VentaModal = new bootstrap.Modal(document.getElementById('VentaModal'));
-            VentaModal.show();
+        function RealizarVenta() {
+            var ventaModal = new bootstrap.Modal(document.getElementById('ventaModal'));
+            ventaModal.show();
+
+            cargarDatosModal();
+        }
+
+        function cargarDatosModal() 
+        {
+            // Cargar productos
+            $.ajax({
+                url: '@Url.Page("VentaIndex")?handler=Productos',
+                method: 'GET',
+                success: function(response) {
+                    if (response.success) {
+                        var productosHtml = response.map(function(producto) {
+                            return '<option value="' + producto.ID_Producto + '">' + producto.Nombre + '</option>';
+                        }).join('');
+                        $('#idProducto').html(productosHtml);
+                    } else {
+                        Swal.fire('Error', 'Error al cargar los productos.', 'error');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire('Error', 'Error al cargar los productos.', 'error');
+                }
+            });
+
+            // Cargar sucursales
+            $.ajax({
+                url: '@Url.Page("VentaIndex")?handler=Sucursales',
+                method: 'GET',
+                success: function(response) {
+                    if (response.success) {
+                        var sucursalesHtml = response.map(function(sucursal) {
+                            return '<option value="' + sucursal.ID_Sucursal + '">' + sucursal.Nombre + '</option>';
+                        }).join('');
+                        $('#idSucursal').html(sucursalesHtml);
+                    } else {
+                        Swal.fire('Error', 'Error al cargar las sucursales.', 'error');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire('Error', 'Error al cargar las sucursales.', 'error');
+                }
+            });
+
+            // Cargar clientes
+            $.ajax({
+                url: '@Url.Page("VentaIndex")?handler=Clientes',
+                method: 'GET',
+                success: function(response) {
+                    if (response.success) {
+                        var clientesHtml = response.map(function(cliente) {
+                            return '<option value="' + cliente.ID_Cliente + '">' + cliente.Nombre + '</option>';
+                        }).join('');
+                        $('#idCliente').html(clientesHtml);
+                    } else {
+                        Swal.fire('Error', 'Error al cargar los clientes.', 'error');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire('Error', 'Error al cargar los clientes.', 'error');
+                }
+            });
+
+            // Cargar trabajadores
+            $.ajax({
+                url: '@Url.Page("VentaIndex")?handler=Trabajadores',
+                method: 'GET',
+                success: function(response) {
+                    if (response.success) {
+                        var trabajadoresHtml = response.map(function(trabajador) {
+                            return '<option value="' + trabajador.ID_Trabajador + '">' + trabajador.Nombre + '</option>';
+                        }).join('');
+                        $('#idTrabajador').html(trabajadoresHtml);
+                    } else {
+                        Swal.fire('Error', 'Error al cargar los trabajadores.', 'error');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire('Error', 'Error al cargar los trabajadores.', 'error');
+                }
+            });
         }
 
         $(document).ready(function() {
-            $('#VentaForm').submit(function(event) {
-                event.preventDefault();
-                var formData = $(this).serialize();
+            $('#devolucionForm').submit(function(event) {
+                event.preventDefault(); 
+                var formData = $(this).serialize(); 
                 $.ajax({
-                    url: '@Url.Page("ProductoIndex")?handler=RealizarVenta',
+                    url: '@Url.Page("VentaIndex")?handler=DevolverProducto',
                     method: 'POST',
                     data: formData,
                     success: function(response) {
                         if (response.success) {
-                            Swal.fire('Éxito', 'Venta de productos realizada exitosamente.', 'success').then(() => {
+                            Swal.fire('Éxito', response.message, 'success').then(() => {
+                                location.reload(); 
+                            });
+                        } else {
+                            Swal.fire('Error', response.message, 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire('Error', 'Error al procesar la devolución del producto.', 'error');
+                    }
+                });
+            });
+
+            $('#ventaModal').on('show.bs.modal', function (e) {
+                cargarDatosModal();
+            });
+
+            // Manejar el envío del formulario de venta
+            $('#ventaForm').submit(function(event) {
+                event.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: '@Url.Page("VentaIndex")?handler=RealizarVenta',
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire('Éxito', response.message, 'success').then(() => {
                                 location.reload();
                             });
                         } else {
@@ -155,7 +289,7 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        Swal.fire('Error', 'Error al agregar al Vender productos.', 'error');
+                        Swal.fire('Error', 'Error al realizar la venta.', 'error');
                     }
                 });
             });

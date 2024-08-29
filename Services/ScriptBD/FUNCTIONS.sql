@@ -132,10 +132,13 @@ END;
 
 -- Creación de la Función para verificar si aplica la devolución (basada en la fecha):
 CREATE OR REPLACE FUNCTION VerificarAplicacionDevolucion(
-    p_fecha_compra DATE) RETURN VARCHAR2 IS
+    p_id_venta NUMBER) RETURN VARCHAR2 IS
     v_aplica_devolucion VARCHAR2(20);
+    v_fecha_compra DATE;
 BEGIN
-    IF MONTHS_BETWEEN(SYSDATE, p_fecha_compra) > 60 THEN
+    select fecha into v_fecha_compra from venta where id_venta = p_id_venta;
+
+    IF MONTHS_BETWEEN(SYSDATE, v_fecha_compra) > 60 THEN
         v_aplica_devolucion := 'No Aplica';
     ELSE
         v_aplica_devolucion := 'Aplica';
@@ -149,21 +152,17 @@ END;
 /
 
 -- Creación de la Función para Verificar si se hace la devolucion 
-CREATE OR REPLACE FUNCTION VerificarDevolucion(id_venta NUMBER) RETURN VARCHAR2 IS
+CREATE OR REPLACE FUNCTION VerificarDevolucion(p_id_venta NUMBER) RETURN VARCHAR2 IS
     resultado VARCHAR2(1);
+
 BEGIN
-    SELECT CASE 
-            WHEN COUNT(*) > 0 THEN 'S'
-            ELSE 'N'
-           END
-    INTO resultado
-    FROM Devolucion
-    WHERE ID_Venta = id_venta;
+
+    Select 'S' into resultado from Devolucion where id_venta = p_id_venta;
 
     RETURN resultado;
 EXCEPTION
     WHEN OTHERS THEN
-        RETURN 'Error';
+        RETURN 'N';
 END;
 /
 

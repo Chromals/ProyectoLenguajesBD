@@ -36,7 +36,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_VENTA_PROD AS
         WHEN OTHERS THEN
             p_Result := 'Error: ' || SQLERRM;
     END Devolver_Producto;
-    /
+    
 
     PROCEDURE Listar_Ventas(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
@@ -48,7 +48,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_VENTA_PROD AS
             ID_Cliente, 
             Cantidad_Vendida, 
             Total_Venta, 
-            VerificarAplicaDevolucion(ID_Venta) AS Aplica_Devolucion,
+            VerificarAplicacionDevolucion(ID_Venta) AS Aplica_Devolucion,
             VerificarDevolucion(ID_Venta) AS ind_devuelto
         FROM Venta;
     END Listar_Ventas;
