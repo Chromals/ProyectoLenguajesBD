@@ -59,7 +59,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_VENTA_PROD AS
 
             ActualizarInventario(p_id_producto, p_id_sucursal, p_cantidad, p_Result);
 
-            RegistrarAuditoria(p_id_trabajador, 'Realizar Venta', 'Venta realizada con éxito', p_Result);
+            RegistrarAuditoria(p_id_trabajador, 'Realizar Venta', 'Venta realizada con éxito al cliente: ' || ObtenerNombreCompletoCliente(p_id_cliente), p_Result);
 
         EXCEPTION
             WHEN OTHERS THEN

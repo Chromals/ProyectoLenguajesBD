@@ -52,7 +52,12 @@ CREATE OR REPLACE PACKAGE BODY CRUD_TRABAJADOR AS
 
     PROCEDURE Select_All_Trabajador(p_Result OUT SYS_REFCURSOR) IS
     BEGIN
-        OPEN p_Result FOR SELECT * FROM Trabajador  ORDER BY ID_Trabajador ASC;
+        OPEN p_Result FOR 
+            SELECT 
+                ID_Trabajador, Nombre, Apellido_1, Apellido_2, Cargo, Activo, Fecha_Inicio, ID_Sucursal, ID_Direccion,
+                '$' || CalcularSalarioTotalTrabajador(ID_Trabajador) AS Salario_Total
+            FROM Trabajador
+            ORDER BY ID_Trabajador ASC;
     END Select_All_Trabajador;
 
     PROCEDURE Select_Trabajador(p_ID_Trabajador IN NUMBER, p_Result OUT SYS_REFCURSOR) IS
