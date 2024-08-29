@@ -90,7 +90,7 @@ public class CompraIndex : PageModel
 
             _oracleDbService.ExecuteStoredProc("PKG_COMPRA_PROD.Insertar_CompraProducto", compraParameters);
             string result = compraParameters[5].Value.ToString();
-
+            LoadData();
             if (result == "1")
             {
                 return new JsonResult(new { success = true, message = "Compra realizada con éxito." });

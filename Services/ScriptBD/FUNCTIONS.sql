@@ -57,13 +57,13 @@ END;
 /
 
 -- Creación de la Función VerificarDisponibilidadProducto
-CREATE OR REPLACE FUNCTION VerificarDisponibilidadProducto(id_producto NUMBER, id_sucursal NUMBER) RETURN VARCHAR2 IS
+CREATE OR REPLACE FUNCTION VerificarDisponibilidadProducto(id_producto NUMBER) RETURN VARCHAR2 IS
     cantidad_disponible NUMBER;
     mensaje VARCHAR2(100);
 BEGIN
-    SELECT Cantidad_Disponible INTO cantidad_disponible
-    FROM Inventario
-    WHERE ID_Producto = id_producto AND ID_Sucursal = id_sucursal;
+    SELECT NVL(SUM(Cantidad_Disponible),0) INTO cantidad_disponible
+        FROM Inventario
+        WHERE ID_Producto = id_producto;
 
     IF cantidad_disponible > 0 THEN
         mensaje := 'Disponible';
