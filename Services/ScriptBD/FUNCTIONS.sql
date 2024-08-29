@@ -1,4 +1,4 @@
--- Creación de la Función CalcularDescuentoCliente
+-- Creación de la Función CalcularDescuentoCliente ****************************
 CREATE OR REPLACE FUNCTION CalcularDescuentoCliente(id_producto NUMBER) RETURN NUMBER IS
     descuento NUMBER(5, 2);
 BEGIN
@@ -18,7 +18,7 @@ BEGIN
 END;
 /
 
--- Creación de la Función CalcularImpuestos
+-- Creación de la Función CalcularImpuestos***************
 CREATE OR REPLACE FUNCTION CalcularImpuestos(monto NUMBER) RETURN NUMBER IS
     impuestos NUMBER(10, 2);
 BEGIN
@@ -27,7 +27,7 @@ BEGIN
 END;
 /
 
--- Creación de la Función CantidadProducto
+-- Creación de la Función CantidadProducto ************
 CREATE OR REPLACE FUNCTION CantidadProducto(id_producto NUMBER) RETURN NUMBER IS
     cantidad NUMBER;
 BEGIN
@@ -36,7 +36,7 @@ BEGIN
 END;
 /
 
--- Creación de la Función ConvertirMoneda
+-- Creación de la Función ConvertirMoneda******************
 CREATE OR REPLACE FUNCTION ConvertirMoneda(monto_colon NUMBER) RETURN NUMBER IS
     monto_dolar NUMBER(10, 2);
 BEGIN
@@ -45,7 +45,7 @@ BEGIN
 END;
 /
 
--- Creación de la Función GenerarCodigoProducto
+-- Creación de la Función GenerarCodigoProducto*********************U
 CREATE OR REPLACE FUNCTION GenerarCodigoProducto(nombre_producto VARCHAR2, id_categoria NUMBER) RETURN VARCHAR2 IS
     codigo VARCHAR2(20);
 BEGIN
@@ -56,7 +56,7 @@ BEGIN
 END;
 /
 
--- Creación de la Función VerificarDisponibilidadProducto
+-- Creación de la Función VerificarDisponibilidadProducto**********************
 CREATE OR REPLACE FUNCTION VerificarDisponibilidadProducto(id_producto NUMBER, id_sucursal NUMBER) RETURN VARCHAR2 IS
     cantidad_disponible NUMBER;
     mensaje VARCHAR2(100);
