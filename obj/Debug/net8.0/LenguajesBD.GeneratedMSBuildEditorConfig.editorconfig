@@ -70,6 +70,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudGVuaW1pZW50b3NcVHJhYmFqYWRvclxUcmFiYWphZG9ySW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Productos/Compra/CompraIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdG9zXENvbXByYVxDb21wcmFJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/dchav/Documents/GitHub/LBD/ProyectoLenguajesBD/Pages/Shared/_LayoutLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

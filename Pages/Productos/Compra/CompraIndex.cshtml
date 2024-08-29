@@ -1,0 +1,125 @@
+@page
+@model CompraIndex
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Compra";
+}
+<h2>Productos En Stock</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            @foreach (System.Data.DataColumn column in Model.ResultTable.Columns)
+            {
+                <th>@column.ColumnName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.ResultTable.Rows)
+        {
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-info" onclick='ComprarProductos("@row["ID_Producto"]", "@row["Nombre"]")'>Comprar</button>
+                </td>
+                @foreach (var item in row.ItemArray)
+                {
+                    <td style="@(item.ToString() == "Disponible" ? "color:green;" : item.ToString() == "No Disponible" ? "color:red;" : "")">
+                        @item
+                    </td>
+                }
+            </tr>
+        }
+        @if (Model.ResultTable.Rows.Count == 0)
+        {
+            <tr>
+                <td colspan="@Model.ResultTable.Columns.Count+1">No hay datos disponibles</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal para la compra de productos -->
+<div class="modal fade" id="compraModal" tabindex="-1" aria-labelledby="compraModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="compraModalLabel">Comprar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="compraForm">
+                    <div class="mb-3">
+                        <label for="productoNombre" class="form-label">Producto</label>
+                        <input type="text" class="form-control" id="productoNombre" disabled>
+                        <input type="hidden" id="productoId">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidad" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" id="cantidad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="proveedor" class="form-label">Proveedor</label>
+                        <select class="form-select" id="proveedor" required>
+                            <!-- Proveedores cargados dinámicamente -->
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="realizarCompra()">Comprar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        function ComprarProductos(idProducto, nombreProducto) {
+            document.getElementById('productoId').value = idProducto;
+            document.getElementById('productoNombre').value = nombreProducto;
+
+            fetch('?handler=Proveedores')
+                .then(response => response.json())
+                .then(data => {
+                    let proveedorSelect = document.getElementById('proveedor');
+                    proveedorSelect.innerHTML = '';
+                    data.forEach(proveedor => {
+                        let option = document.createElement('option');
+                        option.value = proveedor.iD_Proveedor;
+                        option.textContent = proveedor.nombre;
+                        proveedorSelect.appendChild(option);
+                    });
+                });
+
+            var compraModal = new bootstrap.Modal(document.getElementById('compraModal'));
+            compraModal.show();
+        }
+
+        function realizarCompra() {
+            let idProducto = document.getElementById('productoId').value;
+            let cantidad = document.getElementById('cantidad').value;
+            let idProveedor = document.getElementById('proveedor').value;
+
+            fetch('?handler=RealizarCompra', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ idProducto, cantidad, idProveedor })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    location.reload();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            });
+        }
+    </script>
+}
