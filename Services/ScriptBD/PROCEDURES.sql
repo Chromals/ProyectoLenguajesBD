@@ -408,6 +408,144 @@ EXCEPTION
 END;
 /
 
+-- Obtiene clientes que han realizado al menos una compra
+CREATE OR REPLACE PROCEDURE ListarClientesActivos(
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+    CURSOR cur_ClientesActivos IS
+    SELECT c.ID_Cliente, c.Nombre, c.Apellido_1, c.Apellido_2
+    FROM Cliente c
+    JOIN Venta v ON c.ID_Cliente = v.ID_Cliente
+    GROUP BY c.ID_Cliente, c.Nombre, c.Apellido_1, c.Apellido_2
+    HAVING COUNT(v.ID_Venta) > 0;
+BEGIN
+    OPEN p_cursor FOR cur_ClientesActivos;
+    p_error := NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error := 'Error al listar los clientes activos: ' || SQLERRM;
+END;
+/
 
+ 
+--este cursor Lista los productos con stock bajo en diferentes sucursales.
+CREATE OR REPLACE PROCEDURE ListarProductosBajosEnInventario(
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+    CURSOR cur_ProductosBajosEnInventario IS
+    SELECT p.ID_Producto, p.Nombre, i.Cantidad_Disponible, s.Nombre AS Sucursal
+    FROM Producto p
+    JOIN Inventario i ON p.ID_Producto = i.ID_Producto
+    JOIN Sucursal s ON i.ID_Sucursal = s.ID_Sucursal
+    WHERE i.Cantidad_Disponible < 6;
+BEGIN
+    OPEN p_cursor FOR cur_ProductosBajosEnInventario;
+    p_error := NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error := 'Error al listar los productos bajos en inventario: ' || SQLERRM;
+END;
+/
+
+--Con este cursor se Obtienen productos por categoría.
+CREATE OR REPLACE PROCEDURE ListarCategoriasProductos(
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+    CURSOR cur_CategoriasProductos IS
+    SELECT c.Nombre AS Categoria, p.Nombre AS Producto
+    FROM Categoria c
+    JOIN Producto p ON c.ID_Categoria = p.ID_Categoria;
+BEGIN
+    OPEN p_cursor FOR cur_CategoriasProductos;
+    p_error := NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error := 'Error al listar las categorías y productos: ' || SQLERRM;
+END;
+/
+
+
+--con el cursor se Obtienen ventas agrupadas por sucursal.
+CREATE OR REPLACE PROCEDURE ListarVentasPorSucursal(
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+    CURSOR cur_VentasPorSucursal IS
+    SELECT v.ID_Venta, v.Fecha, v.Total_Venta, s.Nombre AS Sucursal
+    FROM Venta v
+    JOIN Sucursal s ON v.ID_Sucursal = s.ID_Sucursal
+    ORDER BY s.Nombre, v.Fecha;
+BEGIN
+    OPEN p_cursor FOR cur_VentasPorSucursal;
+    p_error := NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error := 'Error al listar las ventas por sucursal: ' || SQLERRM;
+END;
+/
+
+
+--Lista los productos más vendidos en el último mes.
+CREATE OR REPLACE PROCEDURE ListarProductosMasVendidosUltimoMes(
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+    CURSOR cur_ProductosMasVendidosUltimoMes IS
+    SELECT p.Nombre AS Producto, SUM(v.Cantidad_Vendida) AS Cantidad_Total_Vendida
+    FROM Venta v
+    JOIN Producto p ON v.ID_Producto = p.ID_Producto
+    WHERE v.Fecha >= ADD_MONTHS(SYSDATE, -1)
+    GROUP BY p.Nombre
+    ORDER BY SUM(v.Cantidad_Vendida) DESC;
+BEGIN
+    OPEN p_cursor FOR cur_ProductosMasVendidosUltimoMes;
+    p_error := NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error := 'Error al listar los productos más vendidos del último mes: ' || SQLERRM;
+END;
+
+--Con este cursor se obtienen auditorías recientes.
+CREATE OR REPLACE PROCEDURE ListarAuditoriasRecientes(
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+    CURSOR cur_AuditoriasRecientes IS
+    SELECT a.id_Auditoria, a.Fecha, a.Operacion, t.Nombre || ' ' || t.Apellido_1 AS Trabajador, a.Detalles
+    FROM Auditoria a
+    JOIN Trabajador t ON a.ID_Trabajador = t.ID_Trabajador
+    ORDER BY a.Fecha DESC;
+BEGIN
+    OPEN p_cursor FOR cur_AuditoriasRecientes;
+    p_error := NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error := 'Error al listar las auditorías recientes: ' || SQLERRM;
+END;
+/
+
+
+ --Obtiene sucursales con menos ventas.
+CREATE OR REPLACE PROCEDURE ListarSucursalesMenosVentas(
+    p_cursor OUT SYS_REFCURSOR,
+    p_error OUT VARCHAR2
+) AS
+    CURSOR cur_SucursalesMenosVentas IS
+    SELECT s.ID_Sucursal, s.Nombre, COUNT(v.ID_Venta) AS Total_Ventas
+    FROM Sucursal s
+    LEFT JOIN Venta v ON s.ID_Sucursal = v.ID_Sucursal
+    GROUP BY s.ID_Sucursal, s.Nombre
+    ORDER BY COUNT(v.ID_Venta) ASC;
+BEGIN
+    OPEN p_cursor FOR cur_SucursalesMenosVentas;
+    p_error := NULL;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_error := 'Error al listar las sucursales con menos ventas: ' || SQLERRM;
+END;
+/
 
 
