@@ -26,7 +26,7 @@ public class CompraIndex : PageModel
         [
             new OracleParameter("p_Result", OracleDbType.RefCursor, ParameterDirection.Output)
         ];
-        ResultTable = _oracleDbService.ExecuteStoredProcCursor("PKG_VENTA_PROD.Listar_VentaProductos", parameters);
+        ResultTable = _oracleDbService.ExecuteStoredProcCursor("PKG_COMPRA_PROD.Listar_VentaProductos", parameters);
     }
 
     public JsonResult OnGetProveedores()
@@ -47,56 +47,54 @@ public class CompraIndex : PageModel
         return new JsonResult(proveedoresList);
     }
 
-    public IActionResult OnPostRealizarCompra([FromBody] CompraModel compra)
-{
-    if (compra == null)
+    public IActionResult OnPostRealizarCompra([FromBody] dynamic compra)
     {
-        return BadRequest(new { success = false, message = "Solicitud inválida" });
-    }
-
-    try
-    {
-        OracleParameter[] precioParameters =
+        try
         {
-            new OracleParameter("p_ID_Producto", compra.idProducto),
-            new OracleParameter("p_Precio", OracleDbType.Decimal, ParameterDirection.Output)
-        };
+            int idProducto = (int)compra.idProducto;
+            int cantidad = (int)compra.cantidad;
+            int idProveedor = (int)compra.idProveedor;
 
-        _oracleDbService.ExecuteStoredProc("PKG_VENTA_PROD.ObtenerPrecioProductoProc", precioParameters);
-        decimal precioProducto = Convert.ToDecimal(precioParameters[1].Value);
+            OracleParameter[] precioParameters =
+            {
+                new OracleParameter("p_ID_Producto", idProducto),
+                new OracleParameter("p_Precio", OracleDbType.Decimal, ParameterDirection.Output)
+            };
 
-        if (precioProducto == 0)
-        {
-            return new JsonResult(new { success = false, message = "No se encontró el producto o el precio es inválido." });
+            _oracleDbService.ExecuteStoredProc("PKG_COMPRA_PROD.ObtenerPrecioProductoProc", precioParameters);
+            decimal precioProducto = Convert.ToDecimal(precioParameters[1].Value);
+
+            if (precioProducto == 0)
+            {
+                return new JsonResult(new { success = false, message = "No se encontró el producto o el precio es inválido." });
+            }
+
+            OracleParameter[] compraParameters =
+            {
+                new OracleParameter("p_ID_Proveedor", idProveedor),
+                new OracleParameter("p_ID_Producto", idProducto),
+                new OracleParameter("p_Cantidad_Comprada", cantidad),
+                new OracleParameter("p_Costo_Total", cantidad * precioProducto),
+                new OracleParameter("p_Fecha_Compra", DateTime.Now),
+                new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, ParameterDirection.Output)
+            };
+
+            _oracleDbService.ExecuteStoredProc("PKG_COMPRA_PROD.Insertar_CompraProducto", compraParameters);
+            string result = compraParameters[5].Value.ToString();
+
+            if (result == "1")
+            {
+                return new JsonResult(new { success = true, message = "Compra realizada con éxito." });
+            }
+            else
+            {
+                return new JsonResult(new { success = false, message = result });
+            }
         }
-
-        OracleParameter[] compraParameters =
+        catch (Exception ex)
         {
-            new OracleParameter("p_ID_Proveedor", compra.idProveedor),
-            new OracleParameter("p_ID_Producto", compra.idProducto),
-            new OracleParameter("p_Cantidad_Comprada", compra.cantidad),
-            new OracleParameter("p_Costo_Total", compra.cantidad * precioProducto),
-            new OracleParameter("p_Fecha_Compra", DateTime.Now),
-            new OracleParameter("p_Result", OracleDbType.Varchar2, 4000, ParameterDirection.Output)
-        };
-
-        _oracleDbService.ExecuteStoredProc("PKG_VENTA_PROD.Insertar_CompraProducto", compraParameters);
-        string result = compraParameters[5].Value.ToString();
-
-        if (result == "1")
-        {
-            return new JsonResult(new { success = true, message = "Compra realizada con éxito." });
-        }
-        else
-        {
-            return new JsonResult(new { success = false, message = result });
+            return new JsonResult(new { success = false, message = ex.Message });
         }
     }
-    catch (Exception ex)
-    {
-        return new JsonResult(new { success = false, message = ex.Message });
-    }
-}
-
 
 }

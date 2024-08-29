@@ -111,15 +111,40 @@
                 },
                 body: JSON.stringify({ idProducto, cantidad, idProveedor })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
-                    alert(data.message);
-                    location.reload();
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Compra realizada!',
+                        text: data.message,
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        location.reload();
+                    });
                 } else {
-                    alert('Error: ' + data.message);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.message,
+                        confirmButtonText: 'OK'
+                    });
                 }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de red',
+                    text: 'Hubo un problema con la compra: ' + error.message,
+                    confirmButtonText: 'OK'
+                });
             });
         }
+
     </script>
 }
