@@ -186,3 +186,67 @@ END;
 /
 
 -- Creación de la Función para Obtener la Cantidad Vendida de un Producto
+CREATE OR REPLACE FUNCTION ObtenerCantidadVendidaProducto(p_id_producto IN NUMBER) RETURN NUMBER IS
+    v_cantidad_vendida NUMBER := 0;
+BEGIN
+    SELECT SUM(Cantidad_Vendida)
+    INTO v_cantidad_vendida
+    FROM Venta
+    WHERE ID_Producto = p_id_producto;
+
+    RETURN v_cantidad_vendida;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 0;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+-- Creación de la Función para Calcular el Total de Ventas en un Periodo
+CREATE OR REPLACE FUNCTION CalcularTotalVentasPeriodo(p_fecha_inicio IN DATE, p_fecha_fin IN DATE ) RETURN NUMBER IS
+    v_total_ventas NUMBER := 0;
+BEGIN
+    SELECT SUM(Total_Venta)
+    INTO v_total_ventas
+    FROM Venta
+    WHERE Fecha BETWEEN p_fecha_inicio AND p_fecha_fin;
+
+    RETURN v_total_ventas;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 0;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+-- Creación de la Función para Obtener el Producto con Mayor Cantidad Vendida en una Sucursal
+CREATE OR REPLACE FUNCTION ProductoMayorCantidadVendidaSucursal(p_id_sucursal IN NUMBER) RETURN VARCHAR2 IS
+    v_id_producto NUMBER;
+    v_nombre_producto VARCHAR2(200);
+BEGIN
+    SELECT ID_Producto
+    INTO v_id_producto
+    FROM (
+        SELECT ID_Producto, SUM(Cantidad_Vendida) AS Total_Cantidad
+        FROM Venta
+        WHERE ID_Sucursal = p_id_sucursal
+        GROUP BY ID_Producto
+        ORDER BY Total_Cantidad DESC
+    )
+    WHERE ROWNUM = 1;
+
+    SELECT Nombre
+    INTO v_nombre_producto
+    FROM Producto
+    WHERE ID_Producto = v_id_producto;
+
+    RETURN v_nombre_producto;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 'Producto no encontrado';
+    WHEN OTHERS THEN
+        RETURN 'Error en la función';
+END;
+/
