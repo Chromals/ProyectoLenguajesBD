@@ -57,23 +57,39 @@ END;
 /
 
 -- Creación de la Función VerificarDisponibilidadProducto**********************
-CREATE OR REPLACE FUNCTION VerificarDisponibilidadProducto(id_producto NUMBER, id_sucursal NUMBER) RETURN VARCHAR2 IS
-    cantidad_disponible NUMBER;
-    mensaje VARCHAR2(100);
-BEGIN
-    SELECT Cantidad_Disponible INTO cantidad_disponible
-    FROM Inventario
-    WHERE ID_Producto = id_producto AND ID_Sucursal = id_sucursal;
+CREATE OR REPLACE FUNCTION VerificarDisponibilidadProducto(p_id_producto NUMBER) RETURN VARCHAR2 IS
+        cantidad_disponible NUMBER;
+        mensaje VARCHAR2(100);
+    BEGIN
+        SELECT NVL(SUM(Cantidad_Disponible),0) INTO cantidad_disponible
+        FROM Inventario
+        WHERE ID_Producto = p_id_producto;
 
-    IF cantidad_disponible > 0 THEN
-        mensaje := 'Disponible';
-    ELSE
-        mensaje := 'No Disponible';
-    END IF;
+        IF cantidad_disponible > 0 THEN
+            mensaje := 'Disponible';
+        ELSE
+            mensaje := 'No Disponible';
+        END IF;
 
-    RETURN mensaje;
-END;
+        RETURN mensaje;
+    END;
 /
+
+CREATE OR REPLACE FUNCTION ObtenerPrecioProducto(p_ID_Producto IN NUMBER) RETURN NUMBER IS
+        v_Precio NUMBER;
+    BEGIN
+        SELECT Precio INTO v_Precio
+        FROM Producto
+        WHERE ID_Producto = p_ID_Producto;
+
+        RETURN v_Precio;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RETURN NULL;
+        WHEN OTHERS THEN
+            RETURN NULL;
+    END ObtenerPrecioProducto;
+
 CREATE OR REPLACE FUNCTION CalcularValorInventarioCategoria(
     p_id_categoria INT
 ) RETURN NUMBER IS
