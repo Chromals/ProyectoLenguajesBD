@@ -1,7 +1,9 @@
 CREATE OR REPLACE PACKAGE PKG_VENTA_PROD AS
 
-    PROCEDURE RealizarVenta(p_id_producto IN NUMBER, p_id_sucursal IN NUMBER, p_id_cliente IN NUMBER, p_cantidad IN NUMBER, p_total_venta OUT NUMBER, p_Result OUT VARCHAR2
-    );
+    PROCEDURE Devolver_Producto(p_ID_Venta IN NUMBER,p_Motivo IN VARCHAR2,p_Result OUT VARCHAR2);
+    PROCEDURE Listar_Ventas(p_Result OUT SYS_REFCURSOR);
+    PROCEDURE Listar_Devoluciones(p_Result OUT SYS_REFCURSOR);
+    PROCEDURE RealizarVenta(p_id_producto IN NUMBER, p_id_sucursal IN NUMBER, p_id_cliente IN NUMBER,p_id_trabajador IN NUMBER, p_cantidad IN NUMBER, p_total_venta OUT NUMBER, p_Result OUT VARCHAR2);
     
     PROCEDURE ActualizarInventario(p_id_producto IN NUMBER, p_id_sucursal IN NUMBER, p_cantidad_vendida IN NUMBER, p_Result OUT VARCHAR2 );
     
@@ -12,6 +14,50 @@ END PKG_VENTA_PROD;
 
 
 CREATE OR REPLACE PACKAGE BODY PKG_VENTA_PROD AS
+
+    PROCEDURE Devolver_Producto(
+        p_ID_Venta IN NUMBER,
+        p_Motivo IN VARCHAR2,
+        p_Result OUT VARCHAR2
+    ) IS
+    BEGIN
+        -- Insertar la devolución
+        INSERT INTO Devolucion (ID_Venta, Motivo, Fecha)
+        VALUES (p_ID_Venta, p_Motivo, SYSDATE);
+
+        -- Actualizar la cantidad vendida (puedes ajustar según la lógica de negocio)
+        UPDATE Venta
+        SET Cantidad_Vendida = Cantidad_Vendida - 1 -- Aquí se asume que se devuelve una unidad; ajusta según sea necesario
+        WHERE ID_Venta = p_ID_Venta;
+
+        -- Devuelve el éxito
+        p_Result := 'Devolución realizada con éxito';
+    EXCEPTION
+        WHEN OTHERS THEN
+            p_Result := 'Error: ' || SQLERRM;
+    END Devolver_Producto;
+    /
+
+    PROCEDURE Listar_Ventas(p_Result OUT SYS_REFCURSOR) IS
+    BEGIN
+        OPEN p_Result FOR
+        SELECT 
+            ID_Venta, 
+            ID_Producto, 
+            ID_Sucursal, 
+            ID_Cliente, 
+            Cantidad_Vendida, 
+            Total_Venta, 
+            VerificarAplicaDevolucion(ID_Venta) AS Aplica_Devolucion,
+            VerificarDevolucion(ID_Venta) AS ind_devuelto
+        FROM Venta;
+    END Listar_Ventas;
+
+    PROCEDURE Listar_Devoluciones(p_Result OUT SYS_REFCURSOR) IS
+    BEGIN
+        OPEN p_Result FOR
+        SELECT * FROM Devolucion;
+    END Listar_Devoluciones;
 
     PROCEDURE RealizarVenta(
         p_id_producto IN NUMBER,

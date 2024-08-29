@@ -1,0 +1,164 @@
+@page
+@model VentaIndex
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Venta";
+}
+<h2>Venta al Cliente</h2>
+<button type="button" class="btn btn-info" onclick='RealizarVenta()'>Realizar Venta</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            @foreach (System.Data.DataColumn column in Model.ResultTable.Columns)
+            {
+                <th>@column.ColumnName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.ResultTable.Rows)
+        {
+            <tr>
+                <td>
+                    @if (row["ind_devuelto"].ToString() == "S")
+                    {
+                        <button type="button" class="btn btn-info" onclick='DevolverProducto("@row["ID_Venta"]")'>Devolver</button>
+                    }
+                    else if (row["ind_devuelto"].ToString() == "N")
+                    {
+                        <button type="button" class="btn btn-info" disabled>Devolver</button>
+                    }
+                </td>
+                @foreach (var item in row.ItemArray)
+                {
+                    <td style="@(item.ToString() == "Aplica" ? "color:green;" : item.ToString() == "No Aplica" ? "color:red;" : "")">
+                        @item
+                    </td>
+                }
+            </tr>
+        }
+        @if (Model.ResultTable.Rows.Count == 0)
+        {
+            <tr>
+                <td colspan="@Model.ResultTable.Columns.Count+1">No hay datos disponibles</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br/>
+<br/>
+<h2>Devoluciones</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            @foreach (System.Data.DataColumn column in Model.ResultTableDevoluciones.Columns)
+            {
+                <th>@column.ColumnName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.ResultTableDevoluciones.Rows)
+        {
+            <tr>
+                
+                @foreach (var item in row.ItemArray)
+                {
+                    <td>@item</td>
+                }
+            </tr>
+        }
+        @if (Model.ResultTableDevoluciones.Rows.Count == 0)
+        {
+            <tr>
+                <td colspan="@Model.ResultTableDevoluciones.Columns.Count+1">No hay datos disponibles</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal para la Venta de productos -->
+<div class="modal fade" id="VentaModal" tabindex="-1" aria-labelledby="VentaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="VentaModalLabel">Vender Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="VentaForm" method="post">
+                    <input type="hidden" id="productoId" name="idProducto">
+                    <div class="mb-3">
+                        <label for="productoNombre" class="form-label">Producto</label>
+                        <input type="text" class="form-control" id="productoNombre" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidad" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="proveedor" class="form-label">Proveedor</label>
+                        <select class="form-select" id="proveedor" name="idProveedor" required>
+                            <!-- Proveedores cargados dinámicamente -->
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Vender</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        function VenderProductos(idProducto, nombreProducto) {
+            document.getElementById('productoId').value = idProducto;
+            document.getElementById('productoNombre').value = nombreProducto;
+
+            fetch('?handler=Proveedores')
+                .then(response => response.json())
+                .then(data => {
+                    let proveedorSelect = document.getElementById('proveedor');
+                    proveedorSelect.innerHTML = '';
+                    data.forEach(proveedor => {
+                        let option = document.createElement('option');
+                        option.value = proveedor.iD_Proveedor;
+                        option.textContent = proveedor.nombre;
+                        proveedorSelect.appendChild(option);
+                    });
+                });
+
+            var VentaModal = new bootstrap.Modal(document.getElementById('VentaModal'));
+            VentaModal.show();
+        }
+
+        $(document).ready(function() {
+            $('#VentaForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '@Url.Page("ProductoIndex")?handler=RealizarVenta',
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire('Éxito', 'Venta de productos realizada exitosamente.', 'success').then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire('Error', response.message, 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire('Error', 'Error al agregar al Vender productos.', 'error');
+                    }
+                });
+            });
+        });
+    </script>
+}

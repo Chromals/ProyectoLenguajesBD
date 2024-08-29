@@ -90,6 +90,7 @@ CREATE OR REPLACE FUNCTION ObtenerPrecioProducto(p_ID_Producto IN NUMBER) RETURN
             RETURN NULL;
     END ObtenerPrecioProducto;
 
+--****
 CREATE OR REPLACE FUNCTION CalcularValorInventarioCategoria(
     p_id_categoria INT
 ) RETURN NUMBER IS
@@ -154,7 +155,7 @@ EXCEPTION
     WHEN OTHERS THEN
         RAISE;
 END;
-/
+
 
 
 
