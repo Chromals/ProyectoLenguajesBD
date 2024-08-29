@@ -1,4 +1,4 @@
--- Creación de la Función CalcularDescuentoCliente
+-- Creación de la Función CalcularDescuentoCliente ****************************
 CREATE OR REPLACE FUNCTION CalcularDescuentoCliente(id_producto NUMBER) RETURN NUMBER IS
     descuento NUMBER(5, 2);
 BEGIN
@@ -18,7 +18,7 @@ BEGIN
 END;
 /
 
--- Creación de la Función CalcularImpuestos
+-- Creación de la Función CalcularImpuestos***************
 CREATE OR REPLACE FUNCTION CalcularImpuestos(monto NUMBER) RETURN NUMBER IS
     impuestos NUMBER(10, 2);
 BEGIN
@@ -27,7 +27,7 @@ BEGIN
 END;
 /
 
--- Creación de la Función CantidadProducto
+-- Creación de la Función CantidadProducto ************
 CREATE OR REPLACE FUNCTION CantidadProducto(id_producto NUMBER) RETURN NUMBER IS
     cantidad NUMBER;
 BEGIN
@@ -36,7 +36,7 @@ BEGIN
 END;
 /
 
--- Creación de la Función ConvertirMoneda
+-- Creación de la Función ConvertirMoneda******************
 CREATE OR REPLACE FUNCTION ConvertirMoneda(monto_colon NUMBER) RETURN NUMBER IS
     monto_dolar NUMBER(10, 2);
 BEGIN
@@ -45,7 +45,7 @@ BEGIN
 END;
 /
 
--- Creación de la Función GenerarCodigoProducto
+-- Creación de la Función GenerarCodigoProducto*********************U
 CREATE OR REPLACE FUNCTION GenerarCodigoProducto(nombre_producto VARCHAR2, id_categoria NUMBER) RETURN VARCHAR2 IS
     codigo VARCHAR2(20);
 BEGIN
@@ -56,26 +56,41 @@ BEGIN
 END;
 /
 
--- Creación de la Función VerificarDisponibilidadProducto
-CREATE OR REPLACE FUNCTION VerificarDisponibilidadProducto(id_producto NUMBER, id_sucursal NUMBER) RETURN VARCHAR2 IS
-    cantidad_disponible NUMBER;
-    mensaje VARCHAR2(100);
-BEGIN
-    SELECT Cantidad_Disponible INTO cantidad_disponible
-    FROM Inventario
-    WHERE ID_Producto = id_producto AND ID_Sucursal = id_sucursal;
+-- Creación de la Función VerificarDisponibilidadProducto**********************
+CREATE OR REPLACE FUNCTION VerificarDisponibilidadProducto(p_id_producto NUMBER) RETURN VARCHAR2 IS
+        cantidad_disponible NUMBER;
+        mensaje VARCHAR2(100);
+    BEGIN
+        SELECT NVL(SUM(Cantidad_Disponible),0) INTO cantidad_disponible
+        FROM Inventario
+        WHERE ID_Producto = p_id_producto;
 
-    IF cantidad_disponible > 0 THEN
-        mensaje := 'Disponible';
-    ELSE
-        mensaje := 'No Disponible';
-    END IF;
+        IF cantidad_disponible > 0 THEN
+            mensaje := 'Disponible';
+        ELSE
+            mensaje := 'No Disponible';
+        END IF;
 
-    RETURN mensaje;
-END;
+        RETURN mensaje;
+    END;
 /
 
--- Creación de la Función calcular el valor total del inventario que pertenecen a una categoría
+CREATE OR REPLACE FUNCTION ObtenerPrecioProducto(p_ID_Producto IN NUMBER) RETURN NUMBER IS
+        v_Precio NUMBER;
+    BEGIN
+        SELECT Precio INTO v_Precio
+        FROM Producto
+        WHERE ID_Producto = p_ID_Producto;
+
+        RETURN v_Precio;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RETURN NULL;
+        WHEN OTHERS THEN
+            RETURN NULL;
+    END ObtenerPrecioProducto;
+
+--****
 CREATE OR REPLACE FUNCTION CalcularValorInventarioCategoria(
     p_id_categoria INT
 ) RETURN NUMBER IS
@@ -94,7 +109,7 @@ EXCEPTION
         RAISE;
 END;
 /
--- Creación de la Función Calcular salario total de un trabajador
+--Calcular salario total de un trabajador
 CREATE OR REPLACE FUNCTION CalcularSalarioTotalTrabajador(
     p_id_trabajador IN INT
 ) RETURN NUMBER IS
@@ -112,7 +127,7 @@ EXCEPTION
 END;
 /
 
--- Creación de la Función Obtener nombre de un cliente
+--Obtener nombre de un cliente
 CREATE OR REPLACE FUNCTION ObtenerNombreCompletoCliente(
     p_id_cliente IN INT
 ) RETURN VARCHAR2 IS
@@ -129,6 +144,82 @@ EXCEPTION
         RETURN 'Error';
 END;
 /
+
+--Calcular salario total de un trabajador ************************
+CREATE OR REPLACE FUNCTION CalcularSalarioTotalTrabajador(
+    p_id_trabajador IN INT
+) RETURN NUMBER IS
+    v_salario_total NUMBER;
+BEGIN
+    SELECT ROUND(Salario * MONTHS_BETWEEN(SYSDATE, Fecha_Inicio), 2)
+    INTO v_salario_total
+    FROM Trabajador
+    WHERE ID_Trabajador = p_id_trabajador;
+
+    RETURN v_salario_total;
+EXCEPTION
+    WHEN OTHERS THEN
+        RETURN -1;
+END;
+/
+
+--Calcular el valor del inventario que tiene una categoria especifica************************
+CREATE OR REPLACE FUNCTION CalcularValorInventarioCategoria(
+    p_id_categoria INT
+) RETURN NUMBER IS
+    v_valor_total NUMBER := 0;
+BEGIN
+    SELECT  ROUND(SUM(Precio * Cantidad),2)
+    INTO v_valor_total
+    FROM Producto
+    WHERE ID_Categoria = p_id_categoria;
+
+    RETURN NVL(v_valor_total,0);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 0;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+
+
+--Calcular salario total de un trabajador ************************
+CREATE OR REPLACE FUNCTION CalcularSalarioTotalTrabajador(
+    p_id_trabajador IN INT
+) RETURN NUMBER IS
+    v_salario_total NUMBER;
+BEGIN
+    SELECT ROUND(Salario * MONTHS_BETWEEN(SYSDATE, Fecha_Inicio), 2)
+    INTO v_salario_total
+    FROM Trabajador
+    WHERE ID_Trabajador = p_id_trabajador;
+
+    RETURN v_salario_total;
+EXCEPTION
+    WHEN OTHERS THEN
+        RETURN -1;
+END;
+/
+
+--Calcular el valor del inventario que tiene una categoria especifica************************
+CREATE OR REPLACE FUNCTION CalcularValorInventarioCategoria(
+    p_id_categoria INT
+) RETURN NUMBER IS
+    v_valor_total NUMBER := 0;
+BEGIN
+    SELECT  ROUND(SUM(Precio * Cantidad),2)
+    INTO v_valor_total
+    FROM Producto
+    WHERE ID_Categoria = p_id_categoria;
+
+    RETURN NVL(v_valor_total,0);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN 0;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+
 
 -- Creación de la Función para verificar si aplica la devolución (basada en la fecha):
 CREATE OR REPLACE FUNCTION VerificarAplicacionDevolucion(

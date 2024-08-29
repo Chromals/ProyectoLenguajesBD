@@ -1,0 +1,125 @@
+@page
+@model CompraIndex
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Compra";
+}
+<h2>Productos En Stock</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            @foreach (System.Data.DataColumn column in Model.ResultTable.Columns)
+            {
+                <th>@column.ColumnName</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.ResultTable.Rows)
+        {
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-info" onclick='ComprarProductos("@row["ID_Producto"]", "@row["Nombre"]")'>Comprar</button>
+                </td>
+                @foreach (var item in row.ItemArray)
+                {
+                    <td style="@(item.ToString() == "Disponible" ? "color:green;" : item.ToString() == "No Disponible" ? "color:red;" : "")">
+                        @item
+                    </td>
+                }
+            </tr>
+        }
+        @if (Model.ResultTable.Rows.Count == 0)
+        {
+            <tr>
+                <td colspan="@Model.ResultTable.Columns.Count+1">No hay datos disponibles</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<!-- Modal para la compra de productos -->
+<div class="modal fade" id="compraModal" tabindex="-1" aria-labelledby="compraModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="compraModalLabel">Comprar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="compraForm" method="post">
+                    <input type="hidden" id="productoId" name="idProducto">
+                    <div class="mb-3">
+                        <label for="productoNombre" class="form-label">Producto</label>
+                        <input type="text" class="form-control" id="productoNombre" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidad" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="proveedor" class="form-label">Proveedor</label>
+                        <select class="form-select" id="proveedor" name="idProveedor" required>
+                            <!-- Proveedores cargados dinámicamente -->
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Comprar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        function ComprarProductos(idProducto, nombreProducto) {
+            document.getElementById('productoId').value = idProducto;
+            document.getElementById('productoNombre').value = nombreProducto;
+
+            fetch('?handler=Proveedores')
+                .then(response => response.json())
+                .then(data => {
+                    let proveedorSelect = document.getElementById('proveedor');
+                    proveedorSelect.innerHTML = '';
+                    data.forEach(proveedor => {
+                        let option = document.createElement('option');
+                        option.value = proveedor.iD_Proveedor;
+                        option.textContent = proveedor.nombre;
+                        proveedorSelect.appendChild(option);
+                    });
+                });
+
+            var compraModal = new bootstrap.Modal(document.getElementById('compraModal'));
+            compraModal.show();
+        }
+
+        $(document).ready(function() {
+            $('#compraForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '@Url.Page("ProductoIndex")?handler=RealizarCompra',
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire('Éxito', 'Compra de productos realizada exitosamente.', 'success').then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire('Error', response.message, 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire('Error', 'Error al agregar al comprar productos.', 'error');
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj": {}
+    "c:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj": {
+    "c:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj",
+        "projectUniqueName": "c:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj",
         "projectName": "LenguajesBD",
-        "projectPath": "C:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj",
+        "projectPath": "c:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj",
         "packagesPath": "C:\\Users\\dchav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\obj\\",
+        "outputPath": "c:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

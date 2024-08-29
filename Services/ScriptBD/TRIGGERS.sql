@@ -1,15 +1,12 @@
 -- Creación de triggers
-CREATE OR REPLACE TRIGGER Tr_ActualizacionAutomaticaPrecios
-AFTER INSERT OR UPDATE ON Producto
+CREATE OR REPLACE TRIGGER trg_update_producto_cantidad
+AFTER INSERT ON CompraProductos
 FOR EACH ROW
 BEGIN
-    IF TO_CHAR(SYSDATE, 'MMDD') = '0101' THEN
-        UPDATE Producto
-        SET Precio = Precio + CalcularImpuestos(Precio)
-        WHERE ID_Producto = :NEW.ID_Producto;
-    END IF;
+    UPDATE Producto
+    SET cantidad = cantidad + :NEW.Cantidad_Comprada
+    WHERE ID_Producto = :NEW.ID_Producto;
 END;
-/
 
 CREATE OR REPLACE TRIGGER AuditLog_Salario
 AFTER UPDATE ON Trabajador
