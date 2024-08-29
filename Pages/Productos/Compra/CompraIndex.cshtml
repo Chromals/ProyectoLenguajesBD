@@ -40,6 +40,7 @@
     </tbody>
 </table>
 
+
 <!-- Modal para la compra de productos -->
 <div class="modal fade" id="compraModal" tabindex="-1" aria-labelledby="compraModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -49,27 +50,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="compraForm">
+                <form id="compraForm" method="post">
+                    <input type="hidden" id="productoId" name="idProducto">
                     <div class="mb-3">
                         <label for="productoNombre" class="form-label">Producto</label>
                         <input type="text" class="form-control" id="productoNombre" disabled>
-                        <input type="hidden" id="productoId">
                     </div>
                     <div class="mb-3">
                         <label for="cantidad" class="form-label">Cantidad</label>
-                        <input type="number" class="form-control" id="cantidad" required>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
                     </div>
                     <div class="mb-3">
                         <label for="proveedor" class="form-label">Proveedor</label>
-                        <select class="form-select" id="proveedor" required>
+                        <select class="form-select" id="proveedor" name="idProveedor" required>
                             <!-- Proveedores cargados dinámicamente -->
                         </select>
                     </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Comprar</button>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" onclick="realizarCompra()">Comprar</button>
             </div>
         </div>
     </div>
@@ -99,52 +98,28 @@
             compraModal.show();
         }
 
-        function realizarCompra() {
-            let idProducto = document.getElementById('productoId').value;
-            let cantidad = document.getElementById('cantidad').value;
-            let idProveedor = document.getElementById('proveedor').value;
-
-            fetch('?handler=RealizarCompra', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ idProducto, cantidad, idProveedor })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡Compra realizada!',
-                        text: data.message,
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        location.reload();
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: data.message,
-                        confirmButtonText: 'OK'
-                    });
-                }
-            })
-            .catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error de red',
-                    text: 'Hubo un problema con la compra: ' + error.message,
-                    confirmButtonText: 'OK'
+        $(document).ready(function() {
+            $('#compraForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: '@Url.Page("ProductoIndex")?handler=RealizarCompra',
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire('Éxito', 'Compra de productos realizada exitosamente.', 'success').then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire('Error', response.message, 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire('Error', 'Error al agregar al comprar productos.', 'error');
+                    }
                 });
             });
-        }
-
+        });
     </script>
 }

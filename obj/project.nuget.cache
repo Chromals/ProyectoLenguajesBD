@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GguSBQkJWN1GjvneMoaGSsQYXePTBR3t4rev2Jd/Kulmcg9/Vccb0nx4lir81mbHuUb4gzhMLtcfUPhFeQGCkg==",
+  "dgSpecHash": "j1mR2RfvQBjJm3CQjKm18i79k6vPkVyJpuZlp/LAAAcQGhz5HANz+A/gj6IDmJ/+gbbOrYoLPwPLxoUpwlvLuA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj",
+  "projectFilePath": "c:\\Users\\dchav\\Documents\\GitHub\\LBD\\ProyectoLenguajesBD\\LenguajesBD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dchav\\.nuget\\packages\\oracle.manageddataaccess.core\\23.5.0\\oracle.manageddataaccess.core.23.5.0.nupkg.sha512",
     "C:\\Users\\dchav\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",
